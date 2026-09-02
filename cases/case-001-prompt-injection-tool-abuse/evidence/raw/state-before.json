@@ -1,0 +1,17 @@
+{
+  "snapshot_id": "state-before-0001",
+  "timestamp": "2026-09-02T14:03:09.000Z",
+  "trace_id": "trace-case-001",
+  "agent_session": "active",
+  "delegated_session": "not-issued",
+  "connector_enabled": true,
+  "policy_override_active": true,
+  "restricted_document": {
+    "target": "synthetic://documents/customer-rollup-17",
+    "content_sha256": "c9c86dea528296a8912471912f441c0bcb4ff749d8776379dea9c5a6c743b223",
+    "classification": "synthetic-restricted"
+  },
+  "external_copies": [],
+  "collector": "lab-state-collector"
+}
+

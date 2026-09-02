@@ -1,0 +1,105 @@
+{
+  "case_id": "case-001",
+  "generated_at": "2026-09-02T15:00:00.000Z",
+  "synthetic_data": true,
+  "tooling": [
+    "AI Forensic Readiness v0.1 event model",
+    "SHA-256"
+  ],
+  "artifacts": [
+    {
+      "path": "evidence/README.md",
+      "media_type": "text/markdown",
+      "sha256": "026600a5013f30736e18b2ceba438c34edf7f73e8f578a0d2f64a62cf715a651",
+      "source": "case-author",
+      "collection_time": "2026-09-02T15:00:00.000Z",
+      "notes": "Evidence inventory and handling notes."
+    },
+    {
+      "path": "evidence/normalized/events.json",
+      "media_type": "application/json",
+      "sha256": "511f9372b383f289b01bf8dbc2b2ade81705057c0518eb09bb075374d771681c",
+      "source": "lab-evidence-normalizer",
+      "collection_time": "2026-09-02T14:11:00.000Z",
+      "notes": "Normalized v0.1 investigation event trajectory."
+    },
+    {
+      "path": "evidence/raw/agent-runtime.jsonl",
+      "media_type": "application/x-ndjson",
+      "sha256": "66cbb824f96165704a5ead0d48ca4be5b38093bff006b57b3d63dd67ecf8f594",
+      "source": "lab-agent-audit",
+      "collection_time": "2026-09-02T14:10:10.025Z"
+    },
+    {
+      "path": "evidence/raw/authorization.jsonl",
+      "media_type": "application/x-ndjson",
+      "sha256": "dbfa7e25edc5645d3e5ce16968cb628cb6571ceac0d23573aa991759bc14956f",
+      "source": "lab-identity-control-plane",
+      "collection_time": "2026-09-02T14:10:20.030Z"
+    },
+    {
+      "path": "evidence/raw/containment-validation.json",
+      "media_type": "application/json",
+      "sha256": "edee6a2794099edff76aa15a00a408ade1345e0794936813f94456f9c7745f08",
+      "source": "lab-independent-response-controller",
+      "collection_time": "2026-09-02T14:10:22.000Z"
+    },
+    {
+      "path": "evidence/raw/deployment-manifest.json",
+      "media_type": "application/json",
+      "sha256": "e171742556a490040bde4d8fd8986358b523d8875f5b735702a95fdc482c8603",
+      "source": "lab-configuration-registry",
+      "collection_time": "2026-09-02T14:00:00.000Z"
+    },
+    {
+      "path": "evidence/raw/downstream-audit.jsonl",
+      "media_type": "application/x-ndjson",
+      "sha256": "e6a7c7202964ebd6eafd80371224f9db78a1a2c54e1ec8666082e411a7f0d677",
+      "source": "lab-document-and-external-audit",
+      "collection_time": "2026-09-02T14:03:19.240Z"
+    },
+    {
+      "path": "evidence/raw/network-egress.jsonl",
+      "media_type": "application/x-ndjson",
+      "sha256": "d492013f6b096bd1cce9b2724c9b79e87d20b9e676b0a2b8faa44b8aedd40fbe",
+      "source": "lab-customer-egress-gateway",
+      "collection_time": "2026-09-02T14:03:19.260Z"
+    },
+    {
+      "path": "evidence/raw/retrieved-content.json",
+      "media_type": "application/json",
+      "sha256": "28738f52f8b31c5e72069a979f4cb535d9887afe6839e87820bf4914195f0d7d",
+      "source": "lab-retrieval-gateway",
+      "collection_time": "2026-09-02T14:03:12.120Z"
+    },
+    {
+      "path": "evidence/raw/state-after.json",
+      "media_type": "application/json",
+      "sha256": "02343850683487284f4ea269dea94736e94528e577391216bf38a0a6c806cbdd",
+      "source": "lab-state-collector",
+      "collection_time": "2026-09-02T14:10:22.000Z"
+    },
+    {
+      "path": "evidence/raw/state-before.json",
+      "media_type": "application/json",
+      "sha256": "bee6045067c4d058479ce53495683c5dcd3bad381722dd30e2467ae2af4f0dc8",
+      "source": "lab-state-collector",
+      "collection_time": "2026-09-02T14:03:09.000Z"
+    },
+    {
+      "path": "evidence/raw/tool-gateway.jsonl",
+      "media_type": "application/x-ndjson",
+      "sha256": "ccd05069cec41cfd8b84ec99ea5cc33f8e4d40dbf8ff64561d59e8cc76111dd7",
+      "source": "lab-tool-gateway",
+      "collection_time": "2026-09-02T14:03:19.204Z"
+    },
+    {
+      "path": "evidence/raw/user-instruction.json",
+      "media_type": "application/json",
+      "sha256": "0f7b303657a5eb456ca2393c9f90fe833f5ac147c8a1589923ead8933ef3d676",
+      "source": "lab-agent-audit",
+      "collection_time": "2026-09-02T14:03:10.020Z"
+    }
+  ]
+}
+

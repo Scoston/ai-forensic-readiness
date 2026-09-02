@@ -1,0 +1,4 @@
+# Preserve byte-stable evidence fixtures for manifest verification on all platforms.
+cases/case-001-prompt-injection-tool-abuse/evidence/** text eol=lf
+cases/case-001-prompt-injection-tool-abuse/manifest.json text eol=lf
+

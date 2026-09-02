@@ -1,0 +1,48 @@
+{
+  "record_type": "deployment_manifest",
+  "record_id": "deployment-case-001",
+  "effective_at": "2026-09-02T14:00:00.000Z",
+  "tenant_id": "lab-tenant",
+  "agent": {
+    "agent_id": "research-agent",
+    "agent_version": "0.3.1-lab",
+    "runtime_identity": "workload-research-agent",
+    "system_prompt_version": "sha256:7d6c46656b69a8f8043ed1b04ce41680eafb65b3b9266ac7ce9c8b243d510dc2"
+  },
+  "model": {
+    "model_id": "synthetic-model",
+    "model_version": "2026-08-lab",
+    "provider": "laboratory"
+  },
+  "policy": {
+    "policy_version": "policy-lab-004",
+    "rule_id": "allow-public-validation",
+    "rule_summary": "Allow document read and webhook send when request classification equals public-validation.",
+    "known_control_defect": "The classification is accepted from agent-supplied arguments instead of an authoritative data-classification service.",
+    "r3_human_approval_required": false
+  },
+  "delegated_identity": {
+    "principal": "svc-afr-lab-reader",
+    "eligible_scopes": [
+      "documents:read",
+      "webhook:send"
+    ],
+    "session_id": "delegated-session-001"
+  },
+  "tool": {
+    "tool_id": "synthetic-document-transfer",
+    "tool_version": "1.0.0",
+    "operations": [
+      "read_document",
+      "send_webhook"
+    ]
+  },
+  "connector": {
+    "connector_id": "connector-case-001",
+    "enabled": true,
+    "destination_policy": "allow-https"
+  },
+  "collector": "lab-configuration-registry",
+  "access_label": "synthetic-restricted"
+}
+

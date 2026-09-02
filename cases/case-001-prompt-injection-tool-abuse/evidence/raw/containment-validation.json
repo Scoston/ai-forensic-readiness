@@ -1,0 +1,70 @@
+{
+  "record_type": "containment_validation",
+  "record_id": "containment-case-001",
+  "trace_id": "trace-case-001",
+  "initiated_by": "analyst-ir-01",
+  "actions": [
+    {
+      "action_id": "contain-0001",
+      "timestamp": "2026-09-02T14:10:05.000Z",
+      "control": "revoke-delegated-session",
+      "target": "delegated-session-001",
+      "result": "revoked"
+    },
+    {
+      "action_id": "contain-0002",
+      "timestamp": "2026-09-02T14:10:07.000Z",
+      "control": "disable-workflow-connector",
+      "target": "connector-case-001",
+      "result": "disabled"
+    },
+    {
+      "action_id": "contain-0003",
+      "timestamp": "2026-09-02T14:10:08.000Z",
+      "control": "disable-policy-override",
+      "target": "policy-lab-004:allow-public-validation",
+      "result": "disabled-for-workflow"
+    },
+    {
+      "action_id": "contain-0004",
+      "timestamp": "2026-09-02T14:10:10.000Z",
+      "control": "terminate-agent-session",
+      "target": "session-synthetic-001",
+      "result": "terminated"
+    }
+  ],
+  "validation": [
+    {
+      "validation_id": "validate-0001",
+      "timestamp": "2026-09-02T14:10:20.000Z",
+      "method": "independent-control-plane-call",
+      "credential": "delegated-session-001",
+      "operation": "read_document",
+      "target": "synthetic://documents/customer-rollup-17",
+      "expected": "deny",
+      "observed": "deny",
+      "reason": "session-revoked"
+    },
+    {
+      "validation_id": "validate-0002",
+      "timestamp": "2026-09-02T14:10:21.000Z",
+      "method": "connector-inventory-query",
+      "target": "connector-case-001",
+      "expected": "disabled",
+      "observed": "disabled"
+    },
+    {
+      "validation_id": "validate-0003",
+      "timestamp": "2026-09-02T14:10:22.000Z",
+      "method": "external-deletion-receipt-query",
+      "target": "external-receipt-0001",
+      "expected": "deletion-confirmed",
+      "observed": "no-authoritative-result"
+    }
+  ],
+  "prospective_revocation": "confirmed",
+  "retrospective_disposition": "unresolved",
+  "residual_risk_owner": "lab-risk-owner",
+  "collector": "lab-independent-response-controller"
+}
+
