@@ -26,6 +26,16 @@ The first draft proposes:
 
 [Read the specification](https://github.com/Scoston/ai-forensic-readiness/blob/main/spec/AI-Forensic-Readiness-v0.1.md) · [Run the assessment](https://github.com/Scoston/ai-forensic-readiness/blob/main/assessments/maturity-assessment.md) · [Review the cases](https://github.com/Scoston/ai-forensic-readiness/tree/main/cases) · [Contribute](https://github.com/Scoston/ai-forensic-readiness/blob/main/CONTRIBUTING.md)
 
+## Reference Case 001
+
+### Prompt Injection → Tool Abuse
+
+Case 001 presents a complete synthetic investigation of an AI agent influenced by untrusted retrieved content. The resulting trajectory includes delegated identity use, restricted-data access, an outbound transfer, prospective revocation, and unresolved retrospective data disposition.
+
+The package contains **19 normalized events**, **13 integrity-verified evidence artifacts**, an AI Incident Reconstruction Graph, analyst guidance, findings, containment validation, and reproduction instructions.
+
+[Examine Case 001](https://github.com/Scoston/ai-forensic-readiness/tree/main/cases/case-001-prompt-injection-tool-abuse) · [Review the AIRG](https://github.com/Scoston/ai-forensic-readiness/blob/main/cases/case-001-prompt-injection-tool-abuse/airg.md) · [Submit Case 001 feedback](https://github.com/Scoston/ai-forensic-readiness/issues/4)
+
 ## Status
 
 Public review is open through **October 17, 2026**. [Submit feedback](https://github.com/Scoston/ai-forensic-readiness/issues/1). This remains a working practitioner draft, not a formal standard.
