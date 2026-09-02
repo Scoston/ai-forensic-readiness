@@ -1,0 +1,38 @@
+name: Reference investigation case
+description: Propose a controlled case that tests a forensic-readiness claim.
+title: "[Case]: "
+labels: [reference-case]
+body:
+  - type: textarea
+    id: scenario
+    attributes:
+      label: Scenario
+      description: Describe the controlled system, attack or failure, and consequential action.
+    validations:
+      required: true
+  - type: textarea
+    id: questions
+    attributes:
+      label: Investigation questions tested
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Required synthetic evidence
+    validations:
+      required: true
+  - type: textarea
+    id: success
+    attributes:
+      label: Reproduction and success criteria
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety confirmation
+      options:
+        - label: The case will use only synthetic data, identities, credentials, and endpoints.
+          required: true
+

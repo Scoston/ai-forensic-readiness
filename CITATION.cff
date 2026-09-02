@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this discussion draft, cite it and identify the version reviewed."
+title: "AI Forensic Readiness"
+type: report
+version: "0.1.0-draft"
+date-released: 2026-09-01
+authors:
+  - family-names: Coston
+    given-names: Stephen
+    honorific-suffix: D.Sc.
+license: CC-BY-4.0
+repository-code: "https://github.com/Scoston/ai-forensic-readiness"
+abstract: "A working model for reconstructing, attributing, containing, validating, and recovering from consequential actions performed or influenced by autonomous AI systems."
+keywords:
+  - AI forensic readiness
+  - agentic AI
+  - digital forensics
+  - incident response
+  - evidence
+  - containment
+  - revocation
+  - reversibility
+

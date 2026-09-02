@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/ai-forensic-readiness/schemas/evidence-manifest.schema.json",
+  "title": "Reference Case Evidence Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["case_id", "generated_at", "synthetic_data", "artifacts"],
+  "properties": {
+    "case_id": {"type": "string", "pattern": "^case-[0-9]{3}$"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "synthetic_data": {"const": true},
+    "tooling": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "media_type", "sha256", "source", "collection_time"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "media_type": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"},
+          "source": {"type": "string", "minLength": 1},
+          "collection_time": {"type": "string", "format": "date-time"},
+          "notes": {"type": "string"}
+        }
+      }
+    }
+  }
+}
+

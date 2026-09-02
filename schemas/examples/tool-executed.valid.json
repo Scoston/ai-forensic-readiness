@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1.0-draft",
+  "event_id": "evt-0007",
+  "event_type": "ai.tool.executed",
+  "timestamp": "2026-09-01T14:03:17.412Z",
+  "observed_at": "2026-09-01T14:03:17.501Z",
+  "sequence": 7,
+  "correlation": {
+    "trace_id": "trace-case-001",
+    "session_id": "session-synthetic-001",
+    "task_id": "task-collect-public-report",
+    "parent_event_id": "evt-0006"
+  },
+  "principal": {
+    "human_id": "user-synthetic-01",
+    "agent_id": "research-agent",
+    "runtime_identity": "workload-research-agent",
+    "delegated_identity": "synthetic-doc-reader",
+    "tenant_id": "lab-tenant",
+    "authority_ref": "authz-0003"
+  },
+  "ai_component": {
+    "agent_version": "0.3.1-lab",
+    "model_id": "synthetic-model",
+    "model_version": "2026-08-lab",
+    "provider": "laboratory",
+    "system_prompt_version": "sha256:example-system-prompt",
+    "policy_version": "policy-lab-004"
+  },
+  "influence": {
+    "instruction_ref": "evidence/instructions/user-0001.json",
+    "retrieved_context_refs": ["evidence/retrieval/malicious-page-0002.json"],
+    "memory_read_refs": [],
+    "provenance_refs": ["source/synthetic-web-0002"]
+  },
+  "decision": {
+    "plan_step": "Read the requested document using the delegated reader.",
+    "policy_decision": "allow",
+    "approval_required": false
+  },
+  "action": {
+    "tool_id": "synthetic-document-reader",
+    "tool_version": "1.0.0",
+    "operation": "read_document",
+    "arguments_digest": "sha256:example-arguments-digest",
+    "target": "synthetic://documents/report-17",
+    "outcome": "succeeded",
+    "result_ref": "evidence/tool-results/result-0007.json",
+    "retry_count": 0
+  },
+  "integrity": {
+    "collector": "lab-evidence-gateway",
+    "hash_algorithm": "sha256",
+    "hash": "example-event-hash",
+    "retention_class": "case-evidence-365d",
+    "access_label": "synthetic-restricted"
+  }
+}
+

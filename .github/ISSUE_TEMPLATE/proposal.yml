@@ -1,0 +1,44 @@
+name: Specification proposal
+description: Propose a requirement, field, event type, maturity criterion, or model change.
+title: "[Proposal]: "
+labels: [proposal, needs-evidence]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Investigation problem
+      description: What question cannot be answered reliably today?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or reference case
+      description: Describe the incident, exercise, or authoritative source supporting the need.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true
+  - type: textarea
+    id: interoperability
+    attributes:
+      label: Existing-standard mapping
+      description: Identify similar OCSF, OpenTelemetry, IAM, cloud, or other maintained constructs.
+  - type: textarea
+    id: privacy
+    attributes:
+      label: Privacy and retention impact
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Test method
+      description: How can this proposal be validated or falsified?
+    validations:
+      required: true
+

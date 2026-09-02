@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "title": "AI Forensic Readiness architecture diagrams",
+  "description": "Portable discussion-draft diagrams for the evidence path, consequential action chain, and containment workflow.",
+  "diagrams": [
+    {
+      "id": "evidence_path",
+      "title": "AI forensic-readiness evidence path",
+      "kind": "raw",
+      "source": "flowchart TB\n    subgraph S[Evidence sources]\n        ID[Identity and authority]\n        AI[Agent and model events]\n        CTX[Context memory and retrieval]\n        ACT[Tools cloud SaaS and data]\n    end\n    COL[Protected collection and correlation]\n    NORM[Evidence normalization]\n    GRAPH[Timeline and AIRG reconstruction]\n    RESP[Containment recovery and validation]\n    ID --> COL\n    AI --> COL\n    CTX --> COL\n    ACT --> COL\n    COL --> NORM\n    NORM --> GRAPH\n    GRAPH --> RESP"
+    },
+    {
+      "id": "action_chain",
+      "title": "Consequential action chain",
+      "kind": "raw",
+      "source": "flowchart LR\n    H[Human principal] -->|instructs| A[Agent A]\n    A -->|retrieves| M[Memory or RAG]\n    M -->|influences| A\n    A -->|delegates| B[Agent B]\n    B -->|assumes| I[Delegated identity]\n    I -->|invokes| T[Tool or API]\n    T -->|modifies| S[Persistent state]"
+    },
+    {
+      "id": "containment",
+      "title": "Dependency-aware containment",
+      "kind": "raw",
+      "source": "flowchart TB\n    START[Compromised trajectory] --> INV[Inventory authority and dependencies]\n    INV --> FUT[Terminate future access]\n    INV --> STATE[Find persistent and derived state]\n    INV --> CHILD[Find child tasks and downstream consumers]\n    FUT --> FIX[Reverse or compensate]\n    STATE --> FIX\n    CHILD --> FIX\n    FIX --> TEST[Validate containment independently]\n    TEST --> CLOSE[Record residual risk and close]"
+    }
+  ]
+}
+
