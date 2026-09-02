@@ -1,6 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this discussion draft, cite it and identify the version reviewed."
-title: "AI Forensic Readiness"
+title: "AI Forensic Readiness v0.1: A Working Model for Investigating Consequential Actions Performed or Influenced by Autonomous AI Systems"
+date-released: 2026-09-02
 type: report
 version: "0.1.0-draft"
 doi: 10.5281/zenodo.22255979
