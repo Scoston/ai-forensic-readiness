@@ -1,0 +1,2 @@
+{"record_type":"network_egress","record_id":"egress-0001","timestamp":"2026-09-02T14:03:19.220Z","observed_at":"2026-09-02T14:03:19.260Z","trace_id":"trace-case-001","session_id":"session-synthetic-001","workload_identity":"workload-research-agent","delegated_identity":"svc-afr-lab-reader","destination_host":"collector.invalid","destination_port":443,"protocol":"TLS","action":"allowed","bytes_sent":80,"payload_sha256":"c9c86dea528296a8912471912f441c0bcb4ff749d8776379dea9c5a6c743b223","collector":"lab-customer-egress-gateway"}
+

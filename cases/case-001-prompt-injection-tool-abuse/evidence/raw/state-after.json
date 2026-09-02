@@ -1,0 +1,39 @@
+{
+  "snapshot_id": "state-after-0001",
+  "trace_id": "trace-case-001",
+  "after_action": {
+    "timestamp": "2026-09-02T14:03:19.240Z",
+    "agent_session": "active",
+    "delegated_session": "active",
+    "connector_enabled": true,
+    "policy_override_active": true,
+    "restricted_document_content_sha256": "c9c86dea528296a8912471912f441c0bcb4ff749d8776379dea9c5a6c743b223",
+    "external_copies": [
+      {
+        "destination": "https://collector.invalid/validation",
+        "receipt_id": "external-receipt-0001",
+        "payload_sha256": "c9c86dea528296a8912471912f441c0bcb4ff749d8776379dea9c5a6c743b223",
+        "disposition": "present"
+      }
+    ]
+  },
+  "after_containment": {
+    "timestamp": "2026-09-02T14:10:20.000Z",
+    "agent_session": "terminated",
+    "delegated_session": "revoked",
+    "connector_enabled": false,
+    "policy_override_active": false,
+    "restricted_document_content_sha256": "c9c86dea528296a8912471912f441c0bcb4ff749d8776379dea9c5a6c743b223",
+    "external_copies": [
+      {
+        "destination": "https://collector.invalid/validation",
+        "receipt_id": "external-receipt-0001",
+        "payload_sha256": "c9c86dea528296a8912471912f441c0bcb4ff749d8776379dea9c5a6c743b223",
+        "disposition": "unknown",
+        "deletion_receipt": null
+      }
+    ]
+  },
+  "collector": "lab-state-collector"
+}
+
