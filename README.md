@@ -4,7 +4,7 @@
 
 **Status:** Discussion Draft v0.1  
 **Author:** Dr. Stephen Coston  
-**Public review:** Not yet opened
+**Public review:** Open through October 17, 2026 - [Submit feedback](https://github.com/Scoston/ai-forensic-readiness/issues/1)
 
 AI systems increasingly act through tools, delegated identities, persistent memory, retrieval systems, cloud services, and other agents. Existing telemetry may prove that an API call or state change occurred while failing to preserve the instructions, context, authority, delegation, or persistent influence that caused it.
 

@@ -28,6 +28,6 @@ The first draft proposes:
 
 ## Status
 
-This is an open discussion draft for practitioner review and controlled validation. It is not presented as a formal standard.
+Public review is open through **October 17, 2026**. [Submit feedback](https://github.com/Scoston/ai-forensic-readiness/issues/1). This remains a working practitioner draft, not a formal standard.
 
 Dr. Stephen Coston · September 2026
