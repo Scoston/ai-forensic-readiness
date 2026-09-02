@@ -3,7 +3,7 @@ layout: default
 title: AI Forensic Readiness
 description: An open working model for investigating and recovering from consequential AI actions.
 ---
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22255979.svg)](https://doi.org/10.5281/zenodo.22255979)
 # AI Forensic Readiness
 
 When an AI system takes a consequential action, an organization may see fragments of what happened without being able to reconstruct the full chain of instruction, context, delegated authority, execution, persistent state, and recovery.

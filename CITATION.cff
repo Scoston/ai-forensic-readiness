@@ -3,6 +3,7 @@ message: "If you use this discussion draft, cite it and identify the version rev
 title: "AI Forensic Readiness"
 type: report
 version: "0.1.0-draft"
+doi: 10.5281/zenodo.22255979
 date-released: 2026-09-01
 authors:
   - family-names: Coston

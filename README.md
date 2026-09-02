@@ -1,5 +1,5 @@
 # AI Forensic Readiness
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22255979.svg)](https://doi.org/10.5281/zenodo.22255979)
 > A working model for reconstructing, attributing, containing, validating, and recovering from consequential actions performed or influenced by autonomous AI systems.
 
 **Status:** Discussion Draft v0.1  
@@ -67,4 +67,6 @@ Version 0.1 is a discussion draft. Proposed requirements should be validated thr
 
 ## Citation
 
-See [CITATION.cff](CITATION.cff). A DOI should be added after the first public GitHub release is archived through Zenodo.
+## Cite this work
+
+Coston, Stephen. (2026). *AI Forensic Readiness v0.1: A Working Model for Investigating Consequential Actions Performed or Influenced by Autonomous AI Systems* (Version 0.1.0-draft). Zenodo. https://doi.org/10.5281/zenodo.22255979
