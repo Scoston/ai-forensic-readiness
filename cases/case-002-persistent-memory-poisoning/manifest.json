@@ -1,0 +1,119 @@
+{
+  "case_id": "case-002",
+  "generated_at": "2026-09-03T13:15:00.000Z",
+  "synthetic_data": true,
+  "tooling": [
+    "AI Forensic Readiness v0.1 event model",
+    "SHA-256",
+    "deterministic two-condition replay fixture"
+  ],
+  "artifacts": [
+    {
+      "path": "evidence/README.md",
+      "media_type": "text/markdown",
+      "sha256": "02dcf0082b6270d744c79834d3d2dfb72116c44d3c80f828ebd2b9b32634e4a8",
+      "source": "case-author",
+      "collection_time": "2026-09-03T13:15:00.000Z",
+      "notes": "Evidence inventory and handling notes."
+    },
+    {
+      "path": "evidence/normalized/events.json",
+      "media_type": "application/json",
+      "sha256": "5ac1c52dc8b628232757cfd3f74136f10b745e7f77ab74e982916b91ae5ed1db",
+      "source": "lab-evidence-normalizer",
+      "collection_time": "2026-09-02T14:06:07.010Z",
+      "notes": "Normalized v0.1 cross-session investigation trajectory."
+    },
+    {
+      "path": "evidence/raw/agent-runtime.jsonl",
+      "media_type": "application/x-ndjson",
+      "sha256": "19dcb23f2bc921c2f6e832e3e76803a58455e3e9e18fdfbfac9781ae40d05b77",
+      "source": "lab-agent-audit",
+      "collection_time": "2026-09-02T14:05:50.000Z"
+    },
+    {
+      "path": "evidence/raw/authorization.jsonl",
+      "media_type": "application/x-ndjson",
+      "sha256": "2c20b724a634670becd9b73dabf4a05944b925617e778dc08f3757f07ad26f91",
+      "source": "lab-policy-service",
+      "collection_time": "2026-09-02T14:05:03.000Z"
+    },
+    {
+      "path": "evidence/raw/containment-validation.json",
+      "media_type": "application/json",
+      "sha256": "0c3eaa02153954e6b97283764c0ae918679cf76355e88cb1f8b6122b6d3cff9e",
+      "source": "lab-independent-response-controller",
+      "collection_time": "2026-09-02T14:06:00.000Z"
+    },
+    {
+      "path": "evidence/raw/deployment-manifest.json",
+      "media_type": "application/json",
+      "sha256": "b5500982d820ddbdfb7606c09f2606aabb64387c014310f5f6551cdbb79bd7a3",
+      "source": "lab-configuration-registry",
+      "collection_time": "2026-08-31T08:55:00.000Z"
+    },
+    {
+      "path": "evidence/raw/downstream-audit.jsonl",
+      "media_type": "application/x-ndjson",
+      "sha256": "a0e339387a6c4a126d811491998698472e62014d1c2427ba23ecbe868a464b66",
+      "source": "lab-ticket-service-audit",
+      "collection_time": "2026-09-02T14:05:04.000Z"
+    },
+    {
+      "path": "evidence/raw/memory-audit.jsonl",
+      "media_type": "application/x-ndjson",
+      "sha256": "e9b8a0178fcedd415de7a60b9aa8efda3def40282554e0192d2b21686f2d5d96",
+      "source": "lab-memory-control-plane",
+      "collection_time": "2026-09-02T14:05:02.000Z"
+    },
+    {
+      "path": "evidence/raw/replay-results.json",
+      "media_type": "application/json",
+      "sha256": "83a4fb0aa6a6ae4fab78749bdee503126b617b9d66cb25a48ba85769c51f3dea",
+      "source": "lab-independent-replay-harness",
+      "collection_time": "2026-09-02T14:06:00.000Z"
+    },
+    {
+      "path": "evidence/raw/retrieved-content.json",
+      "media_type": "application/json",
+      "sha256": "9c513687ddda8cdca93ab6fae0f15812bc1755343ae330b8c57fe8e4d3e9069c",
+      "source": "lab-retrieval-gateway",
+      "collection_time": "2026-08-31T09:00:07.120Z"
+    },
+    {
+      "path": "evidence/raw/source-control.jsonl",
+      "media_type": "application/x-ndjson",
+      "sha256": "d0e172265361263d0713f8c7c3eaa177bb9d63104cb6210d876b2530358e7194",
+      "source": "lab-content-moderation",
+      "collection_time": "2026-08-31T09:20:01.000Z"
+    },
+    {
+      "path": "evidence/raw/state-after.json",
+      "media_type": "application/json",
+      "sha256": "00e1e17910fae27800310cbe48e062b0385bc807fa3ed06cb8a1678e1ff9d4d0",
+      "source": "lab-state-collector",
+      "collection_time": "2026-09-02T14:05:04.000Z"
+    },
+    {
+      "path": "evidence/raw/state-before.json",
+      "media_type": "application/json",
+      "sha256": "663b1eb598667cefb5e70ac3483d2686f7599b63e97668eb366383c1fce335a0",
+      "source": "lab-state-collector",
+      "collection_time": "2026-09-02T13:00:03.000Z"
+    },
+    {
+      "path": "evidence/raw/tool-gateway.jsonl",
+      "media_type": "application/x-ndjson",
+      "sha256": "72aba27adb9518e15418fd50a4373f26763e0235f9bef0ad0525c5388be49d0f",
+      "source": "lab-ticket-tool-gateway",
+      "collection_time": "2026-09-02T14:00:10.000Z"
+    },
+    {
+      "path": "evidence/raw/user-instructions.jsonl",
+      "media_type": "application/x-ndjson",
+      "sha256": "7feceb0c3ab40ed7453f11571a7887f147cdb77b11a76b0be20fba615b2cf17b",
+      "source": "lab-agent-audit-and-replay-harness",
+      "collection_time": "2026-09-02T14:05:30.000Z"
+    }
+  ]
+}

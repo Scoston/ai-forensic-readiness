@@ -7,7 +7,7 @@ Reference cases are controlled, reproducible investigations used to validate or 
 | Case | Status | Focus | Primary claim tested |
 | --- | --- | --- | --- |
 | [001](case-001-prompt-injection-tool-abuse/README.md) | Complete synthetic bundle | Prompt injection → tool abuse | Influence, authorization, tool execution, state change, and containment can be reconstructed without overstating data disposition. |
-| [002](case-002-persistent-memory-poisoning/README.md) | Design scaffold | Persistent memory poisoning | Removing the original source does not contain durable derived influence. |
+| [002](case-002-persistent-memory-poisoning/README.md) | Complete synthetic bundle | Persistent memory poisoning | Source removal does not contain durable derived influence; memory lineage and remediation can be reconstructed and validated. |
 | [003](case-003-delegated-credential-containment/README.md) | Design scaffold | Delegated credential containment failure | Isolating the parent agent does not contain inherited authority or child workflows. |
 
 ## Standard evidence bundle

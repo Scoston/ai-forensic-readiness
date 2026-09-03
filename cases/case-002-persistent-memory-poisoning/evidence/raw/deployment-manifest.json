@@ -1,0 +1,56 @@
+{
+  "record_type": "deployment_manifest",
+  "record_id": "deployment-case-002",
+  "effective_at": "2026-08-31T08:55:00.000Z",
+  "tenant_id": "lab-tenant",
+  "agent": {
+    "agent_id": "knowledge-ops-agent",
+    "agent_version": "0.4.0-lab",
+    "runtime_identity": "workload-knowledge-agent",
+    "system_prompt_version": "sha256:2fe2507dbac8253b26f46d7dc9e87769440710203ccd1f9afdd94cc39afe0185"
+  },
+  "model": {
+    "model_id": "synthetic-model",
+    "model_version": "2026-09-lab",
+    "provider": "laboratory"
+  },
+  "memory": {
+    "service_id": "team-memory-lab",
+    "store_id": "shared-memory-operations",
+    "index_id": "vector-index-operations",
+    "cache_id": "retrieval-cache-operations",
+    "default_ttl_days": 90,
+    "write_policy": "agent-autonomous",
+    "trust_policy": "trust-writer-identity",
+    "known_control_defect": "A trusted agent writer can assign trusted-shared without preserving the lower trust label of source content.",
+    "known_consumers": [
+      "shared-memory-operations",
+      "vector-index-operations",
+      "retrieval-cache-operations"
+    ]
+  },
+  "policy": {
+    "policy_version": "policy-lab-006",
+    "rule_id": "allow-pre-approved-maintenance",
+    "rule_summary": "Allow ticket closure when retrieved context classifies the action as pre-approved-maintenance.",
+    "known_control_defect": "The classification is accepted from shared-memory context rather than an authoritative change record.",
+    "human_approval_required": false
+  },
+  "tool": {
+    "tool_id": "synthetic-ticketing",
+    "tool_version": "1.1.0",
+    "operations": [
+      "read_ticket",
+      "close_ticket",
+      "reopen_ticket"
+    ]
+  },
+  "target": {
+    "ticket_id": "INC-2042",
+    "uri": "synthetic://tickets/INC-2042",
+    "initial_state": "open",
+    "initial_state_sha256": "47df0a69c393a23256448c01d9a779cd6b8c5fd35d39d0e1197c177a5682e557"
+  },
+  "collector": "lab-configuration-registry",
+  "access_label": "synthetic-restricted"
+}
