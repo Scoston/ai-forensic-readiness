@@ -1,0 +1,41 @@
+{
+  "snapshot_id": "state-after-case-002",
+  "trace_id": "trace-case-002-response",
+  "after_action": {
+    "timestamp": "2026-09-02T13:00:10.030Z",
+    "source_status": "removed",
+    "active_memory_ids": [
+      "memory-0002"
+    ],
+    "vector_entry_ids": [
+      "vector-0002"
+    ],
+    "cache_entry_ids": [
+      "cache-0002"
+    ],
+    "ticket": {
+      "ticket_id": "INC-2042",
+      "state": "closed",
+      "state_sha256": "f8170f2b7f9d9688f75400124c37d1bda49ea1430631a672933c53bc8a5ffa1d"
+    }
+  },
+  "after_containment": {
+    "timestamp": "2026-09-02T14:05:04.000Z",
+    "source_status": "removed-and-blocked",
+    "active_memory_ids": [],
+    "vector_entry_ids": [],
+    "cache_entry_ids": [],
+    "forensic_quarantine_ids": [
+      "quarantine-memory-0002"
+    ],
+    "index_generation": 18,
+    "policy_rule_status": "disabled-for-workflow",
+    "ticket": {
+      "ticket_id": "INC-2042",
+      "state": "open",
+      "state_sha256": "47df0a69c393a23256448c01d9a779cd6b8c5fd35d39d0e1197c177a5682e557"
+    },
+    "historical_undocumented_consumers": "unknown"
+  },
+  "collector": "lab-state-collector"
+}

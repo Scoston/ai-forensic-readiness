@@ -10,6 +10,9 @@ All notable changes will be documented here.
 - Cross-source normalized event trajectory and AIRG reconstruction
 - Manifest hash, JSONL, event-order, parent-reference, and case-structure validation
 - Evidence-backed candidate improvements for the v0.2 public-review process
+- Completed Reference Case 002 persistent-memory-poisoning evidence bundle
+- Cross-session memory lineage, source-removal, containment, and controlled-replay evidence
+- Case 002 manifest, normalized-event, causal-comparison, and containment validation
 
 ### Planned
 

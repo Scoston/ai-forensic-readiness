@@ -1,0 +1,115 @@
+{
+  "record_type": "containment_validation",
+  "record_id": "containment-case-002",
+  "trace_id": "trace-case-002-response",
+  "initiated_by": "analyst-ir-02",
+  "actions": [
+    {
+      "action_id": "contain2-0001",
+      "timestamp": "2026-09-02T14:00:03.000Z",
+      "control": "preserve-in-forensic-quarantine",
+      "target": "memory-0002",
+      "result": "quarantine-memory-0002-sealed"
+    },
+    {
+      "action_id": "contain2-0002",
+      "timestamp": "2026-09-02T14:00:04.000Z",
+      "control": "remove-active-memory",
+      "target": "memory-0002",
+      "result": "removed"
+    },
+    {
+      "action_id": "contain2-0003",
+      "timestamp": "2026-09-02T14:00:05.000Z",
+      "control": "remove-vector-entry-and-rebuild-index",
+      "target": "vector-0002",
+      "result": "generation-18-complete"
+    },
+    {
+      "action_id": "contain2-0004",
+      "timestamp": "2026-09-02T14:00:08.000Z",
+      "control": "invalidate-cache-entry",
+      "target": "cache-0002",
+      "result": "invalidated"
+    },
+    {
+      "action_id": "contain2-0005",
+      "timestamp": "2026-09-02T14:00:07.000Z",
+      "control": "disable-policy-rule",
+      "target": "policy-lab-006:allow-pre-approved-maintenance",
+      "result": "disabled-for-workflow"
+    },
+    {
+      "action_id": "contain2-0006",
+      "timestamp": "2026-09-02T14:00:10.000Z",
+      "control": "reopen-ticket",
+      "target": "INC-2042",
+      "result": "open"
+    }
+  ],
+  "known_consumer_inventory": {
+    "source": "deployment-case-002",
+    "scope": "lab-tenant/workflow-case-002",
+    "observed_at": "2026-09-02T14:04:59.000Z",
+    "consumers": [
+      "shared-memory-operations",
+      "vector-index-operations",
+      "retrieval-cache-operations"
+    ]
+  },
+  "validation": [
+    {
+      "validation_id": "validate2-0001",
+      "timestamp": "2026-09-02T14:05:00.000Z",
+      "method": "active-memory-id-query",
+      "target": "shared-memory-operations:memory-0002",
+      "expected": "not-found",
+      "observed": "not-found"
+    },
+    {
+      "validation_id": "validate2-0002",
+      "timestamp": "2026-09-02T14:05:01.000Z",
+      "method": "vector-similarity-query",
+      "target": "vector-index-operations:Project-Juniper-readiness",
+      "expected": "no-match-memory-0002",
+      "observed": "no-match-memory-0002"
+    },
+    {
+      "validation_id": "validate2-0003",
+      "timestamp": "2026-09-02T14:05:02.000Z",
+      "method": "cache-key-query",
+      "target": "retrieval-cache-operations:cache-0002",
+      "expected": "cache-miss",
+      "observed": "cache-miss"
+    },
+    {
+      "validation_id": "validate2-0004",
+      "timestamp": "2026-09-02T14:05:03.000Z",
+      "method": "policy-evaluation-replay",
+      "target": "policy-lab-006:allow-pre-approved-maintenance",
+      "expected": "deny",
+      "observed": "deny"
+    },
+    {
+      "validation_id": "validate2-0005",
+      "timestamp": "2026-09-02T14:05:04.000Z",
+      "method": "authoritative-ticket-state-query",
+      "target": "INC-2042",
+      "expected": "open",
+      "observed": "open"
+    },
+    {
+      "validation_id": "validate2-0006",
+      "timestamp": "2026-09-02T14:06:00.000Z",
+      "method": "controlled-memory-availability-comparison",
+      "target": "replay-case-002",
+      "expected": "close-only-when-memory-active",
+      "observed": "close-only-when-memory-active"
+    }
+  ],
+  "active_retrieval_paths": "confirmed-removed-for-known-consumers",
+  "ticket_restoration": "confirmed",
+  "historical_undocumented_consumption": "unresolved",
+  "residual_risk_owner": "lab-risk-owner",
+  "collector": "lab-independent-response-controller"
+}
