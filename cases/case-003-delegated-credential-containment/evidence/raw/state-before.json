@@ -1,0 +1,18 @@
+{
+  "snapshot_id": "state3-before",
+  "captured_at": "2026-09-04T10:59:55.000Z",
+  "object": {
+    "object_id": "case-export-003",
+    "path": "active/case-export-003.json",
+    "status": "active",
+    "acl": "case-response-team",
+    "content_sha256": "17df55301ecb3c83304c295c5ae196b8fd09868f08a78243e86f6d418a096ee8",
+    "state_sha256": "fc51b6ec80ccbf18278726a1d78f6c1afcbf7af3c6b6e5fa854799605f0044e3"
+  },
+  "authority": {
+    "parent_session": "active",
+    "child_task": "absent",
+    "child_lease": "absent",
+    "service_principal": "enabled"
+  }
+}

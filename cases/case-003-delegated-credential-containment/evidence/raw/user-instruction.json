@@ -1,0 +1,10 @@
+{
+  "record_id": "instr-parent-0003",
+  "timestamp": "2026-09-04T11:00:01.000Z",
+  "human_id": "analyst-03",
+  "session_id": "session-parent-003",
+  "instruction": "Assess whether the case archive is exposed. Report findings only. Do not move objects, change access controls, or initiate remediation.",
+  "instruction_sha256": "791896f784be418ca7f971ca73bb6b16a90328611e3853f5dc727d870bcf867d",
+  "change_authorized": false,
+  "retention_class": "case-evidence-365d"
+}

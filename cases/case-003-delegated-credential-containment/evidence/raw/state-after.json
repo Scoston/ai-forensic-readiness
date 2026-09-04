@@ -1,0 +1,40 @@
+{
+  "after_child_action": {
+    "snapshot_id": "state3-after-action",
+    "captured_at": "2026-09-04T11:05:03.100Z",
+    "object": {
+      "object_id": "case-export-003",
+      "path": "quarantine/case-export-003.json",
+      "status": "quarantined",
+      "acl": "case-response-team",
+      "content_sha256": "17df55301ecb3c83304c295c5ae196b8fd09868f08a78243e86f6d418a096ee8",
+      "state_sha256": "a98da5348854937d1ede0b170caff7542dd75f5f57cd1a45e3e4c7c2ceddc90f"
+    },
+    "authority": {
+      "parent_session": "revoked",
+      "child_task": "executed-pending-ack",
+      "child_lease": "active",
+      "service_principal": "enabled"
+    }
+  },
+  "after_expanded_containment": {
+    "snapshot_id": "state3-after-containment",
+    "captured_at": "2026-09-04T11:09:00.000Z",
+    "object": {
+      "object_id": "case-export-003",
+      "path": "active/case-export-003.json",
+      "status": "active",
+      "acl": "case-response-team",
+      "content_sha256": "17df55301ecb3c83304c295c5ae196b8fd09868f08a78243e86f6d418a096ee8",
+      "state_sha256": "fc51b6ec80ccbf18278726a1d78f6c1afcbf7af3c6b6e5fa854799605f0044e3"
+    },
+    "authority": {
+      "parent_session": "revoked",
+      "child_task": "canceled",
+      "queue_message": "absent",
+      "child_session": "terminated",
+      "child_lease": "revoked",
+      "service_principal": "disabled-for-workflow"
+    }
+  }
+}

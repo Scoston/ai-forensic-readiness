@@ -3,3 +3,5 @@ cases/case-001-prompt-injection-tool-abuse/evidence/** text eol=lf
 cases/case-001-prompt-injection-tool-abuse/manifest.json text eol=lf
 cases/case-002-persistent-memory-poisoning/evidence/** text eol=lf
 cases/case-002-persistent-memory-poisoning/manifest.json text eol=lf
+cases/case-003-delegated-credential-containment/evidence/** text eol=lf
+cases/case-003-delegated-credential-containment/manifest.json text eol=lf

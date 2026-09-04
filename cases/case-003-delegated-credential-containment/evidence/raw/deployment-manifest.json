@@ -1,0 +1,45 @@
+{
+  "deployment_id": "deployment-case-003",
+  "captured_at": "2026-09-04T10:55:00.000Z",
+  "workflow_id": "workflow-case-003",
+  "parent": {
+    "agent_id": "orchestrator-agent-003",
+    "runtime_identity": "runtime-orchestrator-agent-003",
+    "session_id": "session-parent-003"
+  },
+  "child": {
+    "agent_id": "remediation-agent-003",
+    "runtime_identity": "runtime-remediation-agent-003",
+    "session_id": "session-child-003",
+    "queue_id": "delegated-remediation-queue"
+  },
+  "delegated_authority": {
+    "delegation_id": "delegation-003",
+    "task_id": "child-task-003",
+    "queue_message_id": "queue-msg-003",
+    "lease_id": "lease-child-003",
+    "service_principal": "svc-storage-remediator",
+    "scopes": ["storage:move"],
+    "audience": "storage-control.example.invalid",
+    "parent_dependency_enforced_at_use": false,
+    "expires_at": "2026-09-04T11:30:07.000Z"
+  },
+  "target": {
+    "tool_id": "synthetic-storage",
+    "object_uri": "synthetic://storage/case-archive/active/case-export-003.json"
+  },
+  "known_authority_artifacts": [
+    "runtime-orchestrator-agent-003",
+    "session-parent-003",
+    "delegation-003",
+    "child-task-003",
+    "queue-msg-003",
+    "runtime-remediation-agent-003",
+    "session-child-003",
+    "lease-child-003",
+    "svc-storage-remediator",
+    "policy-lab-007:storage-move"
+  ],
+  "inventory_scope": "deployment-declared",
+  "external_undocumented_delegation_coverage": "unknown"
+}
