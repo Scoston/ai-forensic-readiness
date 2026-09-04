@@ -36,6 +36,16 @@ The package contains **19 normalized events**, **13 integrity-verified evidence 
 
 [Examine Case 001](https://github.com/Scoston/ai-forensic-readiness/tree/main/cases/case-001-prompt-injection-tool-abuse) · [Review the AIRG](https://github.com/Scoston/ai-forensic-readiness/blob/main/cases/case-001-prompt-injection-tool-abuse/airg.md) · [Submit Case 001 feedback](https://github.com/Scoston/ai-forensic-readiness/issues/4)
 
+## Reference Case 002
+
+### Persistent Memory Poisoning → Delayed Tool Abuse
+
+Case 002 traces untrusted retrieved content into persistent agent memory, a vector derivative, and a cache. Although the original source is removed, the derived state survives and influences a later workflow that closes a synthetic incident ticket without user authorization.
+
+The package contains **35 normalized events**, **15 integrity-verified evidence artifacts**, a controlled replay, an AI Incident Reconstruction Graph, dependency-aware containment, reversal validation, and documentation of unresolved historical consumption.
+
+[Examine Case 002](https://github.com/Scoston/ai-forensic-readiness/tree/main/cases/case-002-persistent-memory-poisoning) · [Review the AIRG](https://github.com/Scoston/ai-forensic-readiness/blob/main/cases/case-002-persistent-memory-poisoning/airg.md) · [Submit Case 002 feedback](https://github.com/Scoston/ai-forensic-readiness/issues/7)
+
 ## Status
 
 Public review is open through **October 17, 2026**. [Submit feedback](https://github.com/Scoston/ai-forensic-readiness/issues/1). This remains a working practitioner draft, not a formal standard.
