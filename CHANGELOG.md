@@ -13,6 +13,9 @@ All notable changes will be documented here.
 - Completed Reference Case 002 persistent-memory-poisoning evidence bundle
 - Cross-session memory lineage, source-removal, containment, and controlled-replay evidence
 - Case 002 manifest, normalized-event, causal-comparison, and containment validation
+- Completed Reference Case 003 delegated-credential-containment evidence bundle
+- Parent-to-child authority lineage, post-isolation execution, expanded containment, and recovery evidence
+- Case 003 manifest, normalized-event, authority-inventory, temporal-order, and state-restoration validation
 
 ### Planned
 

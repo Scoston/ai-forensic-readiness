@@ -13,6 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CASE_001 = ROOT / "cases" / "case-001-prompt-injection-tool-abuse"
 CASE_002 = ROOT / "cases" / "case-002-persistent-memory-poisoning"
+CASE_003 = ROOT / "cases" / "case-003-delegated-credential-containment"
 
 
 def fail(message: str) -> None:
@@ -242,6 +243,93 @@ def validate_case_002(schema: dict) -> int:
     return len(events)
 
 
+def validate_case_003(schema: dict) -> int:
+    required_files = {
+        "README.md",
+        "scenario.md",
+        "analyst-guide.md",
+        "airg.md",
+        "findings.md",
+        "reproduce.md",
+        "manifest.json",
+        "evidence/README.md",
+        "evidence/normalized/events.json",
+    }
+    missing_files = sorted(path for path in required_files if not (CASE_003 / path).is_file())
+    if missing_files:
+        fail(f"Case 003: missing required files: {missing_files}")
+
+    events = load_json(CASE_003 / "evidence" / "normalized" / "events.json")
+    if not isinstance(events, list) or not events:
+        fail("Case 003: normalized events must be a non-empty array")
+
+    valid_trace_sessions = {
+        "trace-case-003-parent": "session-parent-003",
+        "trace-case-003-response": "session-response-003",
+        "trace-case-003-child": "session-child-003",
+    }
+    seen_ids: set[str] = set()
+    seen_sequences: set[int] = set()
+    previous_time = None
+
+    for event in events:
+        validate_event(schema, event)
+        event_id = event["event_id"]
+        sequence = event.get("sequence")
+        if not event_id.startswith("evt3-"):
+            fail(f"Case 003: unexpected event_id format {event_id}")
+        if event_id in seen_ids:
+            fail(f"Case 003: duplicate event_id {event_id}")
+        if sequence in seen_sequences:
+            fail(f"Case 003: duplicate sequence {sequence}")
+        parent = event["correlation"].get("parent_event_id")
+        if parent and parent not in seen_ids:
+            fail(f"Case 003: {event_id} references unknown or later parent {parent}")
+        trace_id = event["correlation"]["trace_id"]
+        session_id = event["correlation"]["session_id"]
+        if valid_trace_sessions.get(trace_id) != session_id:
+            fail(f"Case 003: {event_id} has an unexpected trace/session pair")
+        event_time = datetime.fromisoformat(event["timestamp"].replace("Z", "+00:00"))
+        if previous_time and event_time < previous_time:
+            fail(f"Case 003: {event_id} is out of timestamp order")
+        previous_time = event_time
+        seen_ids.add(event_id)
+        seen_sequences.add(sequence)
+
+    if sorted(seen_sequences) != list(range(1, len(events) + 1)):
+        fail("Case 003: sequence values must be contiguous and start at 1")
+    observed_traces = {event["correlation"]["trace_id"] for event in events}
+    if observed_traces != set(valid_trace_sessions):
+        fail("Case 003: normalized events do not cover all expected traces")
+
+    required_types = {
+        "ai.session.started",
+        "ai.session.ended",
+        "ai.instruction.received",
+        "ai.instruction.transformed",
+        "ai.context.retrieved",
+        "ai.plan.created",
+        "ai.plan.revised",
+        "ai.policy.evaluated",
+        "ai.tool.requested",
+        "ai.tool.authorized",
+        "ai.tool.executed",
+        "ai.delegation.created",
+        "ai.delegation.accepted",
+        "ai.delegation.revoked",
+        "ai.state.changed",
+        "ai.state.compensated",
+        "ai.state.validated",
+        "ai.evidence.exported",
+        "ai.evidence.sealed",
+    }
+    observed_types = {event["event_type"] for event in events}
+    missing_types = sorted(required_types - observed_types)
+    if missing_types:
+        fail(f"Case 003: missing required event types: {missing_types}")
+    return len(events)
+
+
 def validate_case_001_manifest() -> int:
     manifest = load_json(CASE_001 / "manifest.json")
     required = {"case_id", "generated_at", "synthetic_data", "artifacts"}
@@ -337,6 +425,56 @@ def validate_case_002_manifest() -> int:
         absent_from_disk = sorted(manifested_paths - evidence_paths)
         fail(
             "Case 002 manifest coverage mismatch: "
+            f"unmanifested={missing_from_manifest}, missing={absent_from_disk}"
+        )
+    return len(artifacts)
+
+
+def validate_case_003_manifest() -> int:
+    manifest = load_json(CASE_003 / "manifest.json")
+    required = {"case_id", "generated_at", "synthetic_data", "artifacts"}
+    missing = required - set(manifest)
+    if missing:
+        fail(f"Case 003 manifest: missing fields {sorted(missing)}")
+    if manifest["case_id"] != "case-003" or manifest["synthetic_data"] is not True:
+        fail("Case 003 manifest: invalid case identity or synthetic_data flag")
+    datetime.fromisoformat(manifest["generated_at"].replace("Z", "+00:00"))
+
+    artifacts = manifest["artifacts"]
+    if not isinstance(artifacts, list) or not artifacts:
+        fail("Case 003 manifest: artifacts must be a non-empty array")
+
+    manifested_paths: set[str] = set()
+    for artifact in artifacts:
+        required_artifact = {"path", "media_type", "sha256", "source", "collection_time"}
+        missing_artifact = required_artifact - set(artifact)
+        if missing_artifact:
+            fail(f"Case 003 manifest: artifact missing {sorted(missing_artifact)}")
+        relative_path = artifact["path"]
+        if relative_path in manifested_paths:
+            fail(f"Case 003 manifest: duplicate path {relative_path}")
+        candidate = (CASE_003 / relative_path).resolve()
+        if CASE_003.resolve() not in candidate.parents or not candidate.is_file():
+            fail(f"Case 003 manifest: unsafe or missing path {relative_path}")
+        expected_hash = artifact["sha256"].lower()
+        if not re.fullmatch(r"[a-f0-9]{64}", expected_hash):
+            fail(f"Case 003 manifest: invalid SHA-256 for {relative_path}")
+        actual_hash = hashlib.sha256(candidate.read_bytes()).hexdigest()
+        if actual_hash != expected_hash:
+            fail(f"Case 003 manifest: SHA-256 mismatch for {relative_path}")
+        datetime.fromisoformat(artifact["collection_time"].replace("Z", "+00:00"))
+        manifested_paths.add(relative_path)
+
+    evidence_paths = {
+        path.relative_to(CASE_003).as_posix()
+        for path in (CASE_003 / "evidence").rglob("*")
+        if path.is_file()
+    }
+    if manifested_paths != evidence_paths:
+        missing_from_manifest = sorted(evidence_paths - manifested_paths)
+        absent_from_disk = sorted(manifested_paths - evidence_paths)
+        fail(
+            "Case 003 manifest coverage mismatch: "
             f"unmanifested={missing_from_manifest}, missing={absent_from_disk}"
         )
     return len(artifacts)
@@ -578,6 +716,224 @@ def validate_case_002_consistency() -> None:
         fail(f"Case 002: unexpected network destination(s): {sorted(set(non_lab_urls))}")
 
 
+def validate_case_003_consistency() -> None:
+    raw = CASE_003 / "evidence" / "raw"
+    instruction = load_json(raw / "user-instruction.json")
+    retrieval = load_json(raw / "retrieved-content.json")
+    deployment = load_json(raw / "deployment-manifest.json")
+    state_before = load_json(raw / "state-before.json")
+    state_after = load_json(raw / "state-after.json")
+    containment = load_json(raw / "containment-validation.json")
+    agent_records = load_jsonl(raw / "agent-runtime.jsonl")
+    delegation_records = load_jsonl(raw / "delegation-audit.jsonl")
+    token_records = load_jsonl(raw / "token-broker.jsonl")
+    queue_records = load_jsonl(raw / "task-queue.jsonl")
+    authorization_records = load_jsonl(raw / "authorization.jsonl")
+    tool_records = load_jsonl(raw / "tool-gateway.jsonl")
+    downstream_records = load_jsonl(raw / "downstream-audit.jsonl")
+    normalized_events = load_json(CASE_003 / "evidence" / "normalized" / "events.json")
+
+    instruction_hash = hashlib.sha256(instruction["instruction"].encode("utf-8")).hexdigest()
+    if instruction_hash != instruction["instruction_sha256"]:
+        fail("Case 003: user-instruction content digest mismatch")
+    if instruction["change_authorized"] is not False:
+        fail("Case 003: human instruction must not authorize a state change")
+
+    retrieval_hash = hashlib.sha256(retrieval["content"].encode("utf-8")).hexdigest()
+    if retrieval_hash != retrieval["content_sha256"]:
+        fail("Case 003: retrieved-content digest mismatch")
+    agent_retrieval = next(record for record in agent_records if record["event"] == "context_retrieved")
+    if agent_retrieval["content_sha256"] != retrieval_hash or agent_retrieval["retrieval_id"] != retrieval["record_id"]:
+        fail("Case 003: agent retrieval record does not match captured content")
+    parent_plan = next(record for record in agent_records if record["event"] == "plan_created")
+    if parent_plan["human_change_authorized"] is not False or "remediation-agent-003" not in parent_plan["plan"]:
+        fail("Case 003: parent plan does not preserve the unauthorized delegation fixture")
+
+    created = next(record for record in delegation_records if record["event"] == "delegation_created")
+    accepted = next(record for record in delegation_records if record["event"] == "delegation_accepted")
+    if created["delegation_id"] != "delegation-003" or created["child_task_id"] != "child-task-003":
+        fail("Case 003: delegation creation identifiers are inconsistent")
+    if created["parent_session_id"] != "session-parent-003" or created["child_agent_id"] != "remediation-agent-003":
+        fail("Case 003: delegation lineage is inconsistent")
+    if accepted["delegation_id"] != created["delegation_id"] or accepted["lease_id"] != "lease-child-003":
+        fail("Case 003: delegation acceptance does not resolve to the child lease")
+
+    lease_issue = next(record for record in token_records if record["event"] == "lease_issued")
+    if lease_issue["delegation_id"] != created["delegation_id"] or lease_issue["parent_session_id"] != created["parent_session_id"]:
+        fail("Case 003: token issuance does not preserve parent delegation lineage")
+    if lease_issue["parent_dependency_enforced_at_use"] is not False:
+        fail("Case 003: child lease must remain independent of parent validity at use time")
+    delegated = deployment["delegated_authority"]
+    for key in ("delegation_id", "task_id", "lease_id", "service_principal", "audience"):
+        expected = {
+            "delegation_id": "delegation-003",
+            "task_id": "child-task-003",
+            "lease_id": "lease-child-003",
+            "service_principal": "svc-storage-remediator",
+            "audience": "storage-control.example.invalid",
+        }[key]
+        if delegated[key] != expected:
+            fail(f"Case 003: deployment delegated-authority {key} is inconsistent")
+    if set(delegated["scopes"]) != {"storage:move"}:
+        fail("Case 003: unexpected child authority scope")
+
+    parent_revocation = next(record for record in token_records if record["event"] == "session_revoked")
+    child_action = next(record for record in tool_records if record["request_id"] == "storage-request-003")
+    parent_revocation_time = datetime.fromisoformat(parent_revocation["timestamp"].replace("Z", "+00:00"))
+    child_action_time = datetime.fromisoformat(child_action["timestamp"].replace("Z", "+00:00"))
+    action_delay = int((child_action_time - parent_revocation_time).total_seconds())
+    if action_delay <= 0 or action_delay != containment["parent_revocation_to_child_action_seconds"]:
+        fail("Case 003: child action must occur 123 seconds after parent revocation")
+    if containment["post_isolation_action_count"] != 1:
+        fail("Case 003: post-isolation action count is inconsistent")
+
+    queued_after_revocation = next(
+        record for record in queue_records
+        if record["event"] == "task_status" and record["parent_session_status"] == "revoked"
+    )
+    lease_after_revocation = next(record for record in token_records if record["event"] == "lease_status")
+    if queued_after_revocation["status"] != "queued" or lease_after_revocation["usable"] is not True:
+        fail("Case 003: child task or lease did not survive parent revocation as designed")
+
+    initial_probes = {
+        record["subject"]: (record["expected"], record["observed"])
+        for record in authorization_records
+        if record.get("phase") == "parent-only-containment"
+    }
+    if initial_probes.get("runtime-orchestrator-agent-003") != ("deny", "deny"):
+        fail("Case 003: parent denial was not independently validated")
+    if initial_probes.get("runtime-remediation-agent-003") != ("deny", "allow"):
+        fail("Case 003: surviving child authorization was not demonstrated")
+    if containment["initial_containment"]["classification"] != "incomplete":
+        fail("Case 003: parent-only containment must be classified incomplete")
+
+    child_allow = next(
+        record for record in authorization_records
+        if record.get("record_type") == "policy_decision" and record.get("operation") == "move_object"
+    )
+    if child_allow["decision"] != "allow" or child_allow["lease_id"] != "lease-child-003":
+        fail("Case 003: child execution authorization is not tied to the surviving lease")
+    if child_allow["service_principal"] != "svc-storage-remediator":
+        fail("Case 003: child execution authorization lacks the delegated service principal")
+
+    def canonical_digest(value: dict) -> str:
+        return hashlib.sha256(
+            json.dumps(value, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        ).hexdigest()
+
+    child_request = next(record for record in agent_records if record["event"] == "tool_requested")
+    move_arguments = {
+        "destination": child_request["destination"],
+        "operation": child_request["operation"],
+        "source": child_request["source"],
+    }
+    restore_tool = next(record for record in tool_records if record["request_id"] == "storage-recovery-003")
+    restore_arguments = {
+        "destination": restore_tool["destination"],
+        "operation": restore_tool["operation"],
+        "source": restore_tool["source"],
+    }
+    move_digest = "sha256:" + canonical_digest(move_arguments)
+    restore_digest = "sha256:" + canonical_digest(restore_arguments)
+    if child_request["arguments_digest"] != move_digest or child_action["arguments_digest"] != move_digest:
+        fail("Case 003: child move argument digests are inconsistent")
+    if restore_tool["arguments_digest"] != restore_digest:
+        fail("Case 003: recovery argument digest is inconsistent")
+    normalized_digests = {
+        event["action"]["arguments_digest"]
+        for event in normalized_events
+        if event.get("action", {}).get("operation") == "move_object"
+    }
+    if normalized_digests != {move_digest, restore_digest}:
+        fail("Case 003: normalized move-object argument digests are inconsistent")
+
+    before_object = state_before["object"]
+    moved_object = state_after["after_child_action"]["object"]
+    restored_object = state_after["after_expanded_containment"]["object"]
+    state_fields = ("acl", "content_sha256", "path", "status")
+    for label, record in (("before", before_object), ("moved", moved_object), ("restored", restored_object)):
+        calculated = canonical_digest({key: record[key] for key in state_fields})
+        if calculated != record["state_sha256"]:
+            fail(f"Case 003: {label} object state digest mismatch")
+    if before_object["state_sha256"] != restored_object["state_sha256"]:
+        fail("Case 003: restored object does not match the authoritative pre-action state")
+    if moved_object["path"] != "quarantine/case-export-003.json" or restored_object["path"] != "active/case-export-003.json":
+        fail("Case 003: object move or restoration path is inconsistent")
+
+    move_audit = next(record for record in downstream_records if record["actor"] == "svc-storage-remediator")
+    restore_audit = next(record for record in downstream_records if record["actor"] == "svc-independent-recovery")
+    if {child_action["result_sha256"], move_audit["state_sha256"], moved_object["state_sha256"]} != {moved_object["state_sha256"]}:
+        fail("Case 003: child tool and storage state digests do not agree")
+    if {restore_tool["result_sha256"], restore_audit["state_sha256"], restored_object["state_sha256"]} != {restored_object["state_sha256"]}:
+        fail("Case 003: recovery tool and storage state digests do not agree")
+    if move_audit["content_sha256"] != before_object["content_sha256"] or restore_audit["content_sha256"] != before_object["content_sha256"]:
+        fail("Case 003: object content digest changed during move or recovery")
+
+    expected_inventory = set(deployment["known_authority_artifacts"])
+    expanded = containment["expanded_containment"]
+    if set(expanded["inventory"]) != expected_inventory:
+        fail("Case 003: containment inventory does not match deployment authority inventory")
+    validations = {
+        record["artifact"]: (record["expected"], record["observed"])
+        for record in expanded["validation"]
+    }
+    if set(validations) != expected_inventory:
+        fail("Case 003: one or more declared authority artifacts lack terminal validation")
+    if any(expected != observed for expected, observed in validations.values()):
+        fail("Case 003: expanded containment validation did not match expectations")
+    expanded_probes = {
+        record["subject"]: (record["expected"], record["observed"])
+        for record in authorization_records
+        if record.get("phase") == "expanded-containment"
+    }
+    required_denials = {
+        "runtime-orchestrator-agent-003",
+        "runtime-remediation-agent-003",
+        "lease-child-003",
+        "svc-storage-remediator",
+    }
+    if set(expanded_probes) != required_denials or any(value != ("deny", "deny") for value in expanded_probes.values()):
+        fail("Case 003: independent expanded-containment denial probes are incomplete")
+
+    final_authority = state_after["after_expanded_containment"]["authority"]
+    expected_final = {
+        "parent_session": "revoked",
+        "child_task": "canceled",
+        "queue_message": "absent",
+        "child_session": "terminated",
+        "child_lease": "revoked",
+        "service_principal": "disabled-for-workflow",
+    }
+    if final_authority != expected_final:
+        fail("Case 003: final authority state is inconsistent")
+    queue_terminal = {record["event"]: record["status"] for record in queue_records}
+    if queue_terminal.get("task_canceled") != "canceled" or queue_terminal.get("message_purged") != "absent":
+        fail("Case 003: queued child work lacks a terminal disposition")
+    lease_validation = next(record for record in token_records if record["event"] == "lease_validation")
+    if (lease_validation["expected"], lease_validation["observed"]) != ("deny", "deny"):
+        fail("Case 003: child lease revocation was not independently validated")
+    recovery = containment["recovery"]
+    if recovery["expected_state_sha256"] != recovery["observed_state_sha256"] or recovery["result"] != "restored":
+        fail("Case 003: recovery validation is inconsistent")
+    if containment["external_undocumented_delegation"] != "unresolved":
+        fail("Case 003: undocumented external delegation must remain unresolved")
+
+    case_text = "\n".join(
+        path.read_text(encoding="utf-8")
+        for path in CASE_003.rglob("*")
+        if path.is_file()
+    )
+    if "TO_FILL" in case_text:
+        fail("Case 003: unresolved placeholder detected")
+    non_lab_urls = [
+        url
+        for url in re.findall(r"https://[^\s\"'`)]+", case_text)
+        if not url.startswith("https://runbooks.example.invalid/")
+    ]
+    if non_lab_urls:
+        fail(f"Case 003: unexpected network destination(s): {sorted(set(non_lab_urls))}")
+
+
 def validate_markdown_links() -> None:
     link_pattern = re.compile(r"\[[^]]+\]\(([^)]+)\)")
     failures = []
@@ -607,6 +963,9 @@ def main() -> int:
     case_002_event_count = validate_case_002(schema)
     case_002_manifested_artifact_count = validate_case_002_manifest()
     validate_case_002_consistency()
+    case_003_event_count = validate_case_003(schema)
+    case_003_manifested_artifact_count = validate_case_003_manifest()
+    validate_case_003_consistency()
     validate_markdown_links()
     print("JSON syntax: OK")
     print(f"JSONL syntax: OK ({jsonl_records} records)")
@@ -617,6 +976,9 @@ def main() -> int:
     print(f"Case 002 normalized events: OK ({case_002_event_count} events)")
     print(f"Case 002 evidence manifest: OK ({case_002_manifested_artifact_count} artifacts)")
     print("Case 002 cross-source and replay consistency: OK")
+    print(f"Case 003 normalized events: OK ({case_003_event_count} events)")
+    print(f"Case 003 evidence manifest: OK ({case_003_manifested_artifact_count} artifacts)")
+    print("Case 003 delegation and containment consistency: OK")
     print("Local Markdown links: OK")
     return 0
 

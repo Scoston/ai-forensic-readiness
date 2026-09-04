@@ -1,0 +1,27 @@
+{
+  "case_id": "case-003",
+  "generated_at": "2026-09-04T12:35:00.000Z",
+  "synthetic_data": true,
+  "tooling": [
+    "AI Forensic Readiness v0.1 event model",
+    "SHA-256",
+    "independent authority-path validation fixture"
+  ],
+  "artifacts": [
+    {"path":"evidence/README.md","media_type":"text/markdown","sha256":"afb6aa0e00b00734ab9395075d3a5d52c05557984def398b3a2c1669b446eafb","source":"case-author","collection_time":"2026-09-04T12:35:00.000Z","notes":"Evidence inventory and handling notes."},
+    {"path":"evidence/normalized/events.json","media_type":"application/json","sha256":"a6a07beda1caf5485a994cc97efa59e42ac8bef7aacd927bf5c254d9dc992eac","source":"lab-evidence-normalizer","collection_time":"2026-09-04T11:09:07.010Z","notes":"Normalized parent, child, response, and recovery trajectory."},
+    {"path":"evidence/raw/agent-runtime.jsonl","media_type":"application/x-ndjson","sha256":"d6cb10fa92db635c4d979c04b9eb48668603f4b7a768fc8a646ad8a05975276b","source":"lab-agent-audit","collection_time":"2026-09-04T11:08:00.020Z"},
+    {"path":"evidence/raw/authorization.jsonl","media_type":"application/x-ndjson","sha256":"6f1d7013787ef120fc8e27f80545a1d28a3558ed0dddeda4b79e8c40a43555b8","source":"lab-policy-service","collection_time":"2026-09-04T11:09:00.040Z"},
+    {"path":"evidence/raw/containment-validation.json","media_type":"application/json","sha256":"d883be289e5bdbdee33eac6b7d2ddd93521ce6af18bdecefc3f221bc9abca9b9","source":"lab-independent-containment-controller","collection_time":"2026-09-04T11:09:00.050Z"},
+    {"path":"evidence/raw/delegation-audit.jsonl","media_type":"application/x-ndjson","sha256":"69e69cb400f43142e48b92251856a5d3725d77654b5778f6aec86599d9dfa767","source":"lab-delegation-broker","collection_time":"2026-09-04T11:07:02.020Z"},
+    {"path":"evidence/raw/deployment-manifest.json","media_type":"application/json","sha256":"93e4aa92f2a0bb9b032c4c6d074dc26682fcb4a294e28c7cdd96889065881613","source":"lab-configuration-registry","collection_time":"2026-09-04T10:55:00.000Z"},
+    {"path":"evidence/raw/downstream-audit.jsonl","media_type":"application/x-ndjson","sha256":"6b92def3e357d1c13af19f4ec7e12b779be2ba73834b2a069eb0c340d13036d8","source":"lab-storage-audit","collection_time":"2026-09-04T11:08:00.030Z"},
+    {"path":"evidence/raw/retrieved-content.json","media_type":"application/json","sha256":"20fcdc65426ceb47a11ba9cd2990db84aca25537f89159ad61d328636b4cd7ac","source":"lab-retrieval-gateway","collection_time":"2026-09-04T11:00:03.020Z"},
+    {"path":"evidence/raw/state-after.json","media_type":"application/json","sha256":"cb6824c1d7ce4e397a97a74b48fd2425cb25530a57b3ae1cd89f40c004cd3d27","source":"lab-state-collector","collection_time":"2026-09-04T11:09:00.010Z"},
+    {"path":"evidence/raw/state-before.json","media_type":"application/json","sha256":"c9d1cb6d8f7f0c3d9bba7e62b7c2baf27005819a535a3f56d4ba3399d2dc4000","source":"lab-state-collector","collection_time":"2026-09-04T10:59:55.010Z"},
+    {"path":"evidence/raw/task-queue.jsonl","media_type":"application/x-ndjson","sha256":"2e49f34fc309e52e17333cf8360ce44d354719e9c08d184a2ee9463809942ef0","source":"lab-task-queue-audit","collection_time":"2026-09-04T11:07:01.520Z"},
+    {"path":"evidence/raw/token-broker.jsonl","media_type":"application/x-ndjson","sha256":"45cd57b768f5f29e6b778df5a4055b2aed9ff7137e00f8513c805b613532bb08","source":"lab-token-broker","collection_time":"2026-09-04T11:09:00.020Z"},
+    {"path":"evidence/raw/tool-gateway.jsonl","media_type":"application/x-ndjson","sha256":"cfbf36b7a249a88b8ce9ec496d1e6f512cc75e3d8d7799162bb1a38765e50ca9","source":"lab-storage-tool-gateway","collection_time":"2026-09-04T11:08:00.010Z"},
+    {"path":"evidence/raw/user-instruction.json","media_type":"application/json","sha256":"aac53557a829a7650997772932a69382a9985395d6dc44d2bcc2ef56f5428de3","source":"lab-agent-audit","collection_time":"2026-09-04T11:00:01.020Z"}
+  ]
+}

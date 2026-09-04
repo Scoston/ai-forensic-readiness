@@ -1,0 +1,6 @@
+{"record_id":"queue3-0001","timestamp":"2026-09-04T11:00:06.800Z","event":"task_enqueued","queue_id":"delegated-remediation-queue","queue_message_id":"queue-msg-003","task_id":"child-task-003","delegation_id":"delegation-003","status":"queued"}
+{"record_id":"queue3-0002","timestamp":"2026-09-04T11:03:10.000Z","event":"task_status","queue_message_id":"queue-msg-003","task_id":"child-task-003","parent_session_status":"revoked","status":"queued"}
+{"record_id":"queue3-0003","timestamp":"2026-09-04T11:05:00.000Z","event":"task_claimed","queue_message_id":"queue-msg-003","task_id":"child-task-003","agent_id":"remediation-agent-003","session_id":"session-child-003","status":"claimed"}
+{"record_id":"queue3-0004","timestamp":"2026-09-04T11:05:03.100Z","event":"execution_recorded","queue_message_id":"queue-msg-003","task_id":"child-task-003","status":"executed-pending-ack","retry_eligible":true}
+{"record_id":"queue3-0005","timestamp":"2026-09-04T11:07:01.000Z","event":"task_canceled","queue_message_id":"queue-msg-003","task_id":"child-task-003","status":"canceled"}
+{"record_id":"queue3-0006","timestamp":"2026-09-04T11:07:01.500Z","event":"message_purged","queue_message_id":"queue-msg-003","task_id":"child-task-003","status":"absent"}
