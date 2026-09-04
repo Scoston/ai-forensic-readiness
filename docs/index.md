@@ -46,6 +46,16 @@ The package contains **35 normalized events**, **15 integrity-verified evidence 
 
 [Examine Case 002](https://github.com/Scoston/ai-forensic-readiness/tree/main/cases/case-002-persistent-memory-poisoning) · [Review the AIRG](https://github.com/Scoston/ai-forensic-readiness/blob/main/cases/case-002-persistent-memory-poisoning/airg.md) · [Submit Case 002 feedback](https://github.com/Scoston/ai-forensic-readiness/issues/7)
 
+## Reference Case 003
+
+### Delegated Credential Containment Failure
+
+Case 003 demonstrates why isolating a parent agent may not contain authority it has already delegated. A persisted child task and independently issued credential lease remain usable, allowing the child agent to move a synthetic storage object **123 seconds after the parent session was revoked**.
+
+The package contains **32 normalized events**, **15 integrity-verified evidence artifacts**, an authority-focused AI Incident Reconstruction Graph, independent authorization probes, parent-only and expanded containment validation, downstream recovery, and explicit limits on inventory-completeness claims.
+
+[Examine Case 003](https://github.com/Scoston/ai-forensic-readiness/tree/main/cases/case-003-delegated-credential-containment) · [Review the AIRG](https://github.com/Scoston/ai-forensic-readiness/blob/main/cases/case-003-delegated-credential-containment/airg.md) · [Submit Case 003 feedback](https://github.com/Scoston/ai-forensic-readiness/issues/10)
+
 ## Status
 
 Public review is open through **October 17, 2026**. [Submit feedback](https://github.com/Scoston/ai-forensic-readiness/issues/1). This remains a working practitioner draft, not a formal standard.
