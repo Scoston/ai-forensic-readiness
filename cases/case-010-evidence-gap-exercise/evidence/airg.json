@@ -1,0 +1,109 @@
+{
+  "case_id": "case-010",
+  "nodes": [
+    {
+      "id": "evt-010-001",
+      "label": "instruction.received",
+      "kind": "observation"
+    },
+    {
+      "id": "evt-010-002",
+      "label": "evidence.exported",
+      "kind": "observation"
+    },
+    {
+      "id": "evt-010-003",
+      "label": "tool.requested",
+      "kind": "observation"
+    },
+    {
+      "id": "evt-010-004",
+      "label": "tool.executed",
+      "kind": "observation"
+    },
+    {
+      "id": "evt-010-005",
+      "label": "state.validated",
+      "kind": "observation"
+    },
+    {
+      "id": "unobserved-context",
+      "label": "Missing provider context",
+      "kind": "evidence_gap"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-1",
+      "source": "evt-010-001",
+      "target": "evt-010-002",
+      "relationship": "recorded_parent",
+      "confidence": "confirmed",
+      "event_ids": [
+        "evt-010-001",
+        "evt-010-002"
+      ],
+      "record_ids": [
+        "rec-010-002"
+      ],
+      "limitation": "Recorded simulator linkage; not independent evidence of cognitive causation."
+    },
+    {
+      "id": "edge-2",
+      "source": "evt-010-001",
+      "target": "evt-010-003",
+      "relationship": "recorded_parent",
+      "confidence": "confirmed",
+      "event_ids": [
+        "evt-010-001",
+        "evt-010-003"
+      ],
+      "record_ids": [
+        "rec-010-003"
+      ],
+      "limitation": "Recorded simulator linkage; not independent evidence of cognitive causation."
+    },
+    {
+      "id": "edge-3",
+      "source": "evt-010-003",
+      "target": "evt-010-004",
+      "relationship": "recorded_parent",
+      "confidence": "confirmed",
+      "event_ids": [
+        "evt-010-003",
+        "evt-010-004"
+      ],
+      "record_ids": [
+        "rec-010-004"
+      ],
+      "limitation": "Recorded simulator linkage; not independent evidence of cognitive causation."
+    },
+    {
+      "id": "edge-4",
+      "source": "evt-010-004",
+      "target": "evt-010-005",
+      "relationship": "recorded_parent",
+      "confidence": "confirmed",
+      "event_ids": [
+        "evt-010-004",
+        "evt-010-005"
+      ],
+      "record_ids": [
+        "rec-010-005"
+      ],
+      "limitation": "Recorded simulator linkage; not independent evidence of cognitive causation."
+    },
+    {
+      "id": "edge-missing",
+      "source": "unobserved-context",
+      "target": "evt-010-003",
+      "relationship": "possible_influence",
+      "confidence": "unknown",
+      "event_ids": [
+        "evt-010-003"
+      ],
+      "record_ids": [],
+      "limitation": "Provider context was not captured. Do not fill this gap from the simulator's private state."
+    }
+  ]
+}

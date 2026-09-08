@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.org/ai-forensic-readiness/schemas/ai-investigation-event.schema.json",
+  "$id": "https://raw.githubusercontent.com/Scoston/ai-forensic-readiness/main/schemas/ai-investigation-event.schema.json",
   "title": "AI Investigation Event",
   "description": "Discussion-draft vendor-neutral envelope for consequential AI investigation events.",
   "type": "object",

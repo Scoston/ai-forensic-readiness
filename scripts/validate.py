@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dependency-free repository checks for the v0.1 discussion draft."""
+"""Repository schema, integrity, consistency and replay checks."""
 
 from __future__ import annotations
 
@@ -9,6 +9,11 @@ import re
 import sys
 from datetime import datetime
 from pathlib import Path
+
+try:
+    from .evidence import validate_schema, read_json, loads
+except ImportError:
+    from evidence import validate_schema, read_json, loads
 
 ROOT = Path(__file__).resolve().parents[1]
 CASE_001 = ROOT / "cases" / "case-001-prompt-injection-tool-abuse"
@@ -22,7 +27,7 @@ def fail(message: str) -> None:
 
 def load_json(path: Path):
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        return read_json(path)
     except Exception as exc:
         fail(f"{path.relative_to(ROOT)}: invalid JSON: {exc}")
 
@@ -33,7 +38,7 @@ def load_jsonl(path: Path) -> list[dict]:
         if not line.strip():
             continue
         try:
-            record = json.loads(line)
+            record = loads(line)
         except Exception as exc:
             fail(f"{path.relative_to(ROOT)}:{number}: invalid JSONL: {exc}")
         if not isinstance(record, dict):
@@ -45,39 +50,7 @@ def load_jsonl(path: Path) -> list[dict]:
 
 
 def validate_event(schema: dict, event: dict) -> None:
-    if not isinstance(event, dict):
-        fail("event example: event must be an object")
-    allowed = set(schema["properties"])
-    extra = set(event) - allowed
-    if extra:
-        fail(f"event example: unexpected properties: {sorted(extra)}")
-    missing = set(schema["required"]) - set(event)
-    if missing:
-        fail(f"event example: missing properties: {sorted(missing)}")
-    if event["schema_version"] != schema["properties"]["schema_version"]["const"]:
-        fail("event example: schema_version does not match schema")
-    permitted = set(schema["properties"]["event_type"]["enum"])
-    if event["event_type"] not in permitted:
-        fail("event example: event_type is not permitted")
-    for key in ("timestamp", "observed_at"):
-        if key in event:
-            datetime.fromisoformat(event[key].replace("Z", "+00:00"))
-    for group, value in event.items():
-        definition = schema["properties"][group]
-        if definition.get("type") != "object":
-            continue
-        if not isinstance(value, dict):
-            fail(f"event example: {group} must be an object")
-        missing_nested = set(definition.get("required", [])) - set(value)
-        if missing_nested:
-            fail(f"event example: {group} missing {sorted(missing_nested)}")
-        extra_nested = set(value) - set(definition["properties"])
-        if extra_nested:
-            fail(f"event example: {group} has unexpected {sorted(extra_nested)}")
-        for key, nested_value in value.items():
-            permitted_values = definition["properties"][key].get("enum")
-            if permitted_values and nested_value not in permitted_values:
-                fail(f"event example: {group}.{key} is not permitted")
+    validate_schema(schema, event, "event")
 
 
 def validate_case_001(schema: dict) -> int:
@@ -937,7 +910,7 @@ def validate_case_003_consistency() -> None:
 def validate_markdown_links() -> None:
     link_pattern = re.compile(r"\[[^]]+\]\(([^)]+)\)")
     failures = []
-    for path in ROOT.rglob("*.md"):
+    for path in repository_files("*.md"):
         for target in link_pattern.findall(path.read_text(encoding="utf-8")):
             if target.startswith(("http://", "https://", "mailto:", "#")):
                 continue
@@ -948,11 +921,16 @@ def validate_markdown_links() -> None:
         fail("broken local links:\n" + "\n".join(failures))
 
 
+def repository_files(pattern):
+    excluded = {".git", ".venv", "__pycache__", "dist", "site"}
+    return (p for p in ROOT.rglob(pattern) if not excluded.intersection(p.relative_to(ROOT).parts))
+
+
 def main() -> int:
-    for path in ROOT.rglob("*.json"):
+    for path in repository_files("*.json"):
         load_json(path)
     jsonl_records = 0
-    for path in ROOT.rglob("*.jsonl"):
+    for path in repository_files("*.jsonl"):
         jsonl_records += len(load_jsonl(path))
     schema = load_json(ROOT / "schemas" / "ai-investigation-event.schema.json")
     event = load_json(ROOT / "schemas" / "examples" / "tool-executed.valid.json")
@@ -966,10 +944,15 @@ def main() -> int:
     case_003_event_count = validate_case_003(schema)
     case_003_manifested_artifact_count = validate_case_003_manifest()
     validate_case_003_consistency()
+    try:
+        from .validate_extended import validate_all
+    except ImportError:
+        from validate_extended import validate_all
+    validate_all()
     validate_markdown_links()
     print("JSON syntax: OK")
     print(f"JSONL syntax: OK ({jsonl_records} records)")
-    print("AI event example: structurally valid for v0.1")
+    print("AI event example: JSON Schema Draft 2020-12 valid")
     print(f"Case 001 normalized events: OK ({case_001_event_count} events)")
     print(f"Case 001 evidence manifest: OK ({case_001_manifested_artifact_count} artifacts)")
     print("Case 001 cross-source consistency: OK")

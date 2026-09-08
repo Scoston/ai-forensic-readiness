@@ -57,3 +57,24 @@ The overall level should not exceed the lowest capability required to investigat
 - Unresolved evidence gaps:
 - Residual risk owner and decision:
 
+## v0.2 evidence gate
+
+Complete this gate for the selected consequence before assigning a readiness level.
+Unknown means insufficient evidence, not a passing control.
+
+| Requirement | Evidence to retain | Pass / fail / unknown |
+| --- | --- | --- |
+| Supported v0.1/v0.2 schema and complete manifest | Validator output, trusted manifest and protected originals | |
+| Authority lifecycle | Parent/child grants, scope, audience, expiry and at-use denial probes | |
+| Material context provenance | Protected content/chunk references, digests, trust and boundary | |
+| Operational derivative disposition | Store/index/cache inventory, consumers, deletion or retention receipts | |
+| Meaningful approval evidence | Actual presentation, operation/target binding, decision and available alternatives | |
+| Configuration/evaluation alignment | Pinned deployed/evaluated manifests and changes | |
+| Scoped recovery claim | Expected/observed state, independent validator and residual effects | |
+| Capture quality and uncertainty | Missing-source interval, sampling and clock limits | |
+| Independent reconstruction | Completed blind-exercise record identifying assistance and disagreements | |
+
+The repository tests and synthetic cases do not themselves satisfy an enterprise's
+deployment gate. Use the [review kit](../research/review-kit.md) to collect actual
+exercise evidence. An R3 consequence may remain irreversible even when access
+revocation is effective; record that residual limit explicitly.

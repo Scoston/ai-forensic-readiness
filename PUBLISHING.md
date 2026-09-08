@@ -1,75 +1,73 @@
-# Publication plan
+# Publication and completion status
 
-## Recommended canonical locations
+Reviewed September 8, 2026 against repository main commit
+`0e65affd8ccadba15ce76f75c009a141d10560e4`, the five pre-existing open issues,
+all six merged pull requests, and the source specification's build plan.
 
-| Purpose | Location | Recommended address |
+## Completed repository work
+
+| Item | Evidence / disposition |
+| --- | --- |
+| Public repository and project identity | Scoston/ai-forensic-readiness; authored by Dr. Stephen Coston |
+| Prose/code licensing | CC BY 4.0 prose and diagrams; Apache-2.0 schemas and code retained |
+| v0.1 release and citation | Existing v0.1.0-draft archive and DOI retained; not reassigned to v0.2 |
+| Initial three cases | Original synthetic bundles and 86 events preserved |
+| Remaining seven research cases | Complete failure/control simulation bundles, graphs, manifests and analyst guidance |
+| Reproducible control comparisons | Twenty local conditions; supplemental 001-003 models are separate from original evidence |
+| Real schema identifiers | Placeholder example.org schema IDs replaced with repository paths |
+| Full conformance | Draft 2020-12 validation, format support and positive/negative fixtures |
+| Evidence integrity and graph references | All manifests, raw/normalized links, safe paths and graph evidence checked |
+| OCSF / OpenTelemetry mappings | Local converters, source-preservation tests, concrete examples and loss disclosure |
+| v0.2 synthesis and change disposition | Specification and RFC 0001; public proposal issue 12 |
+| Case 003 review question | Evidence-based identity/authority/expiry response and grant-boundary tests |
+| Practitioner briefing | Versioned Markdown and PDF review material |
+| Review preparation | Focused review kit and blind-exercise form; invitations not sent |
+| Repository navigation | README, case index, Pages landing page and assessment updated |
+
+## External and administrative milestones
+
+These items are not replaced by a passing test or a checked box in this repository.
+
+| Item | Current state | Concrete remaining action |
 | --- | --- | --- |
-| Working specification and contributions | Public GitHub repository | `https://github.com/Scoston/ai-forensic-readiness` |
-| Project landing page | GitHub Pages initially | `https://scoston.github.io/ai-forensic-readiness/` |
-| Citable release archive | Zenodo GitHub integration | DOI assigned to each tagged release |
-| Practitioner distribution | LinkedIn and Substack | Case-based posts linking to the canonical GitHub release |
-| Later flagship paper | SSRN or arXiv | After controlled reference cases produce results |
+| 45-day public review | Open through October 17, 2026 | Receive, evaluate and record actual feedback |
+| Named technical review | Review kit prepared; recipients not selected | Select reviewers and send invitations with explicit authorization |
+| Independent reproduction / live integration | Not measured | Run the review kit against independent investigators and actual enforcement systems |
+| Branch protection | main was unprotected at audit | Owner applies the prepared settings after checking the current CI job names |
+| Private vulnerability reporting | Previously reported enabled; no administrative re-verification in this review | Owner confirms in repository security settings |
+| v0.2 GitHub Release and Zenodo archive | Candidate files prepared; v0.1 remains the archived release | Finalize review disposition, publish the intended release, verify the new archive and then add its assigned DOI |
 
-GitHub should remain the canonical working source. Other channels should link back to the tagged specification rather than host competing versions.
+The connected repository tools support code, issue and pull-request work but do
+not expose administration or release/Zenodo creation here. This does not block
+uploading the implementation to the existing repository. Do not relabel the v0.1
+DOI as v0.2 or claim the public review has finished.
 
-## Pre-publication checklist
+## Owner branch-protection command
 
-- [ ] Confirm author name, biography, and contact route.
-- [ ] Confirm the repository name and public visibility.
-- [ ] Review the CC BY 4.0 and Apache-2.0 split.
-- [ ] Replace placeholder schema `$id` values after the final repository URL is confirmed.
-- [ ] Confirm whether the draft should use “Dr. Stephen Coston” or “Stephen Coston” in citation metadata.
-- [ ] Run `python scripts/validate.py`.
-- [ ] Review Mermaid rendering on GitHub after the first push.
-- [ ] Review the PDF and Markdown specification side by side.
-- [ ] Enable private vulnerability reporting and branch protection.
-- [ ] Create the `v0.1.0-draft` GitHub release only after the repository renders correctly.
-
-## GitHub publication sequence
-
-After final review:
+The prepared [branch-protection settings](release/branch-protection.json) require
+pull requests and both validation matrix checks without requiring another
+maintainer's approval. Confirm the emitted check names first, then run from an
+owner-authenticated GitHub CLI:
 
 ```bash
-git init -b main
-git add .
-git commit -m "Publish AI Forensic Readiness v0.1 discussion draft"
-gh repo create Scoston/ai-forensic-readiness --public --source . --remote origin --push
+gh api --method PUT repos/Scoston/ai-forensic-readiness/branches/main/protection --input release/branch-protection.json
 ```
 
-Recommended repository settings:
+This requires repository administration permission. Do not bypass existing rules
+or create alternate credentials if it is denied.
 
-- Require a pull request for changes to `main` after the initial release.
-- Require the validation workflow to pass.
-- Enable Discussions for broader practitioner questions.
-- Enable private vulnerability reporting.
-- Disable wiki initially so project knowledge remains version-controlled.
-- Add repository topics: `ai-security`, `digital-forensics`, `incident-response`, `agentic-ai`, `dfir`, `ocsf`, `ai-governance`.
+## Release preparation
 
-## GitHub Pages
+```bash
+python -m pip install -r requirements.txt
+python scripts/validate.py
+python scripts/build_cases.py --check
+python -m unittest discover -s tests -v
+```
 
-The `docs/` directory contains an initial landing page. Configure Pages to deploy from the `main` branch and `/docs` folder. Use the generated site as the stable introduction; link technical readers to the versioned specification.
+Use the [v0.2 release notes](release/v0.2-review-notes.md) and reviewed PDF assets.
+For the evolving draft, cite an exact Git commit. Keep CITATION.cff tied to the
+archived version until a new DOI is actually assigned and verified.
 
-## Zenodo and DOI
-
-1. Sign into Zenodo using the GitHub account that owns the repository.
-2. Enable the repository in Zenodo’s GitHub integration.
-3. Create the GitHub release `v0.1.0-draft`.
-4. Confirm the archived metadata, authorship, license, and files.
-5. Add the resulting version DOI and concept DOI to `CITATION.cff`, the README, and the project site.
-
-Use the concept DOI when citing the evolving project and the version DOI when citing the exact draft reviewed.
-
-## Public-review sequence
-
-1. Publish the repository and v0.1 discussion-draft release.
-2. Open a 45-day comment period using labeled proposal issues.
-3. Publish one concise launch article explaining the investigation gap.
-4. Publish Case 001 rather than a second abstract thought-leadership post.
-5. Invite named review from DFIR, AI platform, IAM, privacy, governance, OCSF, and observability practitioners.
-6. Record accepted, deferred, and rejected changes in public issues and the changelog.
-7. Release v0.2 only after controlled-case evidence changes or validates the model.
-
-## Naming posture
-
-Use **AI Forensic Readiness** as the category and **Agentic Incident Response** as an operational subdomain. Do not describe v0.1 as an industry standard. Preferred language is “working model,” “discussion draft,” or “open practitioner specification.”
-
+The GitHub Pages site continues to use main and /docs. Mermaid source has static
+validation; the publication workflow and host rendering are separate checks.

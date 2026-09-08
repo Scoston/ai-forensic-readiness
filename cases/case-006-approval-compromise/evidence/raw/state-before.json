@@ -1,0 +1,5 @@
+{
+  "target": "synthetic://production-object",
+  "action": "delete_object",
+  "object_exists": true
+}

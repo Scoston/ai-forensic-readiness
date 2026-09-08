@@ -1,0 +1,15 @@
+{
+  "baseline": {
+    "model": "synthetic-v1",
+    "policy": "read-only",
+    "prompt": "prompt-1",
+    "tool": "tool-1"
+  },
+  "deployed": {
+    "model": "synthetic-v2",
+    "policy": "allow-delete",
+    "prompt": "prompt-1",
+    "tool": "tool-1"
+  },
+  "object_exists": true
+}

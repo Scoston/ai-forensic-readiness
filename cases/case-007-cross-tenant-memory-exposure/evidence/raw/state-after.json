@@ -1,0 +1,6 @@
+{
+  "source_tenant": "tenant-A",
+  "consumer_tenant": "tenant-B",
+  "memory_namespace": "shared",
+  "exposed": true
+}

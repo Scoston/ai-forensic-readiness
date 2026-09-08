@@ -1,0 +1,77 @@
+{
+  "case_id": "case-008",
+  "nodes": [
+    {
+      "id": "evt-008-001",
+      "label": "instruction.received",
+      "kind": "observation"
+    },
+    {
+      "id": "evt-008-002",
+      "label": "state.changed",
+      "kind": "observation"
+    },
+    {
+      "id": "evt-008-003",
+      "label": "policy.evaluated",
+      "kind": "observation"
+    },
+    {
+      "id": "evt-008-004",
+      "label": "tool.executed",
+      "kind": "observation"
+    },
+    {
+      "id": "evt-008-005",
+      "label": "state.validated",
+      "kind": "observation"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-1",
+      "source": "evt-008-001",
+      "target": "evt-008-002",
+      "relationship": "recorded_parent",
+      "confidence": "confirmed",
+      "event_ids": [
+        "evt-008-001",
+        "evt-008-002"
+      ],
+      "record_ids": [
+        "rec-008-002"
+      ],
+      "limitation": "Recorded simulator linkage; not independent evidence of cognitive causation."
+    },
+    {
+      "id": "edge-2",
+      "source": "evt-008-002",
+      "target": "evt-008-003",
+      "relationship": "recorded_parent",
+      "confidence": "confirmed",
+      "event_ids": [
+        "evt-008-002",
+        "evt-008-003"
+      ],
+      "record_ids": [
+        "rec-008-003"
+      ],
+      "limitation": "Recorded simulator linkage; not independent evidence of cognitive causation."
+    },
+    {
+      "id": "edge-3",
+      "source": "evt-008-003",
+      "target": "evt-008-004",
+      "relationship": "recorded_parent",
+      "confidence": "confirmed",
+      "event_ids": [
+        "evt-008-003",
+        "evt-008-004"
+      ],
+      "record_ids": [
+        "rec-008-004"
+      ],
+      "limitation": "Recorded simulator linkage; not independent evidence of cognitive causation."
+    }
+  ]
+}

@@ -1,0 +1,925 @@
+{
+  "method": "supplemental deterministic model; not replay of the original event times",
+  "failure": {
+    "case_id": "case-003",
+    "condition": "failure",
+    "synthetic_data": true,
+    "method": "deterministic-state-machine",
+    "state_before": {
+      "parent_active": true,
+      "child_active": true,
+      "object_path": "original"
+    },
+    "state_after": {
+      "parent_active": false,
+      "child_active": true,
+      "object_path": "quarantine"
+    },
+    "records": [
+      {
+        "record_id": "rec-003-001",
+        "event_id": "evt-003-001",
+        "timestamp": "2026-09-08T12:00:01.000Z",
+        "source": "sim-instruction-vault",
+        "event_type": "ai.instruction.received",
+        "payload": {
+          "instruction": "Perform only the described synthetic exercise.",
+          "condition": "failure"
+        },
+        "parent_event_id": null,
+        "normalized_groups": {}
+      },
+      {
+        "record_id": "rec-003-002",
+        "event_id": "evt-003-002",
+        "timestamp": "2026-09-08T12:00:02.000Z",
+        "source": "sim-token-broker",
+        "event_type": "ai.delegation.created",
+        "payload": {
+          "grant_id": "grant-child",
+          "parent_grant_id": "grant-parent",
+          "parent_agent_id": "agent-parent",
+          "child_agent_id": "agent-child",
+          "lease_id": "lease-child",
+          "credential_subject": "runtime-child",
+          "scopes": [
+            "storage:move"
+          ],
+          "audiences": [
+            "synthetic://storage"
+          ],
+          "issued_at": "2026-09-08T11:59:00Z",
+          "expires_at": "2026-09-08T12:30:00Z",
+          "parent_expires_at": "2026-09-08T12:30:00Z",
+          "parent_dependency_enforced_at_use": false,
+          "revocation_mechanism": "independent",
+          "task_id": "child-task"
+        },
+        "parent_event_id": "evt-003-001",
+        "normalized_groups": {
+          "delegation": {
+            "grant_id": "grant-child",
+            "parent_grant_id": "grant-parent",
+            "parent_agent_id": "agent-parent",
+            "child_agent_id": "agent-child",
+            "lease_id": "lease-child",
+            "credential_subject": "runtime-child",
+            "scopes": [
+              "storage:move"
+            ],
+            "audiences": [
+              "synthetic://storage"
+            ],
+            "issued_at": "2026-09-08T11:59:00Z",
+            "expires_at": "2026-09-08T12:30:00Z",
+            "parent_expires_at": "2026-09-08T12:30:00Z",
+            "parent_dependency_enforced_at_use": false,
+            "revocation_mechanism": "independent",
+            "task_id": "child-task"
+          }
+        }
+      },
+      {
+        "record_id": "rec-003-003",
+        "event_id": "evt-003-003",
+        "timestamp": "2026-09-08T12:00:03.000Z",
+        "source": "sim-control-plane",
+        "event_type": "ai.delegation.revoked",
+        "payload": {
+          "target": "grant-parent",
+          "child_identity": "runtime-child"
+        },
+        "parent_event_id": "evt-003-002",
+        "normalized_groups": {
+          "delegation": {
+            "grant_id": "grant-child",
+            "parent_grant_id": "grant-parent",
+            "parent_agent_id": "agent-parent",
+            "child_agent_id": "agent-child",
+            "lease_id": "lease-child",
+            "credential_subject": "runtime-child",
+            "scopes": [
+              "storage:move"
+            ],
+            "audiences": [
+              "synthetic://storage"
+            ],
+            "issued_at": "2026-09-08T11:59:00Z",
+            "expires_at": "2026-09-08T12:30:00Z",
+            "parent_expires_at": "2026-09-08T12:30:00Z",
+            "parent_dependency_enforced_at_use": false,
+            "revocation_mechanism": "independent",
+            "task_id": "child-task"
+          }
+        }
+      },
+      {
+        "record_id": "rec-003-004",
+        "event_id": "evt-003-004",
+        "timestamp": "2026-09-08T12:00:04.000Z",
+        "source": "sim-resource-server",
+        "event_type": "ai.policy.evaluated",
+        "payload": {
+          "allow": true,
+          "lease_expired": false,
+          "parent_revoked": true
+        },
+        "parent_event_id": "evt-003-003",
+        "normalized_groups": {
+          "decision": {
+            "policy_decision": "allow",
+            "approval_required": false,
+            "consequence": "high",
+            "reversibility_at_authorization": "R1",
+            "policy_rule_id": "rule-003-failure",
+            "evaluated_input_refs": [
+              "#/failure/state_before"
+            ],
+            "reason": "evaluate descendant grant at use"
+          }
+        }
+      },
+      {
+        "record_id": "rec-003-005",
+        "event_id": "evt-003-005",
+        "timestamp": "2026-09-08T12:00:05.000Z",
+        "source": "sim-storage-audit",
+        "event_type": "ai.tool.executed",
+        "payload": {
+          "object_path": "quarantine"
+        },
+        "parent_event_id": "evt-003-004",
+        "normalized_groups": {
+          "action": {
+            "tool_id": "sim-tool-003",
+            "tool_version": "1.0-lab",
+            "operation": "move_object",
+            "target": "synthetic://object-1",
+            "outcome": "succeeded",
+            "request_id": "request-003"
+          },
+          "decision": {
+            "policy_decision": "allow",
+            "approval_required": false,
+            "consequence": "high",
+            "reversibility_at_authorization": "R1",
+            "policy_rule_id": "rule-003-failure",
+            "evaluated_input_refs": [
+              "#/failure/state_before"
+            ],
+            "reason": "parent lifecycle not checked"
+          }
+        }
+      },
+      {
+        "record_id": "rec-003-006",
+        "event_id": "evt-003-006",
+        "timestamp": "2026-09-08T12:00:06.000Z",
+        "source": "sim-validation-controller",
+        "event_type": "ai.state.validated",
+        "payload": {
+          "probe": "descendant-denial",
+          "expected": false,
+          "observed": true,
+          "result": "fail"
+        },
+        "parent_event_id": null,
+        "normalized_groups": {
+          "validation": {
+            "method": "descendant-denial",
+            "scope": "parent grant, one child lease and one target",
+            "expected": "False",
+            "observed": "True",
+            "result": "fail",
+            "validator_identity": "sim-validation-controller",
+            "independence": "simulation_only"
+          }
+        }
+      }
+    ],
+    "events": [
+      {
+        "schema_version": "0.2.0-draft",
+        "event_id": "evt-003-001",
+        "event_type": "ai.instruction.received",
+        "timestamp": "2026-09-08T12:00:01.000Z",
+        "observed_at": "2026-09-08T12:00:01.000Z",
+        "sequence": 1,
+        "correlation": {
+          "trace_id": "sim-case-003-failure",
+          "session_id": "session-003",
+          "task_id": "task-003"
+        },
+        "principal": {
+          "agent_id": "agent-003",
+          "runtime_identity": "runtime-003",
+          "human_id": "synthetic-requester",
+          "tenant_id": "tenant-lab"
+        },
+        "integrity": {
+          "collector": "sim-instruction-vault",
+          "hash_algorithm": "sha256",
+          "hash": "d573e7631633409259d7a5cdfd2835c674f38434e2b07bd5c2f098203f79eb1c",
+          "retention_class": "public-synthetic",
+          "access_label": "synthetic-only"
+        },
+        "evidence_refs": [
+          "#/failure/records/0"
+        ],
+        "evidence_quality": {
+          "capture_status": "complete",
+          "confidence": "confirmed",
+          "limitations": [
+            "Computed by a deterministic simulator; logical sources share one trust domain."
+          ]
+        }
+      },
+      {
+        "schema_version": "0.2.0-draft",
+        "event_id": "evt-003-002",
+        "event_type": "ai.delegation.created",
+        "timestamp": "2026-09-08T12:00:02.000Z",
+        "observed_at": "2026-09-08T12:00:02.000Z",
+        "sequence": 2,
+        "correlation": {
+          "trace_id": "sim-case-003-failure",
+          "session_id": "session-003",
+          "task_id": "task-003",
+          "parent_event_id": "evt-003-001"
+        },
+        "principal": {
+          "agent_id": "agent-003",
+          "runtime_identity": "runtime-003",
+          "human_id": "synthetic-requester",
+          "tenant_id": "tenant-lab"
+        },
+        "integrity": {
+          "collector": "sim-token-broker",
+          "hash_algorithm": "sha256",
+          "hash": "5c0753a65a9be63f83a0cac0ac1d4a40a68706b868699895dc1f0e1591588015",
+          "retention_class": "public-synthetic",
+          "access_label": "synthetic-only"
+        },
+        "evidence_refs": [
+          "#/failure/records/1"
+        ],
+        "evidence_quality": {
+          "capture_status": "complete",
+          "confidence": "confirmed",
+          "limitations": [
+            "Computed by a deterministic simulator; logical sources share one trust domain."
+          ]
+        },
+        "delegation": {
+          "grant_id": "grant-child",
+          "parent_grant_id": "grant-parent",
+          "parent_agent_id": "agent-parent",
+          "child_agent_id": "agent-child",
+          "lease_id": "lease-child",
+          "credential_subject": "runtime-child",
+          "scopes": [
+            "storage:move"
+          ],
+          "audiences": [
+            "synthetic://storage"
+          ],
+          "issued_at": "2026-09-08T11:59:00Z",
+          "expires_at": "2026-09-08T12:30:00Z",
+          "parent_expires_at": "2026-09-08T12:30:00Z",
+          "parent_dependency_enforced_at_use": false,
+          "revocation_mechanism": "independent",
+          "task_id": "child-task"
+        }
+      },
+      {
+        "schema_version": "0.2.0-draft",
+        "event_id": "evt-003-003",
+        "event_type": "ai.delegation.revoked",
+        "timestamp": "2026-09-08T12:00:03.000Z",
+        "observed_at": "2026-09-08T12:00:03.000Z",
+        "sequence": 3,
+        "correlation": {
+          "trace_id": "sim-case-003-failure",
+          "session_id": "session-003",
+          "task_id": "task-003",
+          "parent_event_id": "evt-003-002"
+        },
+        "principal": {
+          "agent_id": "agent-003",
+          "runtime_identity": "runtime-003",
+          "human_id": "synthetic-requester",
+          "tenant_id": "tenant-lab"
+        },
+        "integrity": {
+          "collector": "sim-control-plane",
+          "hash_algorithm": "sha256",
+          "hash": "20a8879af4a469c4dec0fa3d8accc690814ec918037f83e3d02b9777153db6a7",
+          "retention_class": "public-synthetic",
+          "access_label": "synthetic-only"
+        },
+        "evidence_refs": [
+          "#/failure/records/2"
+        ],
+        "evidence_quality": {
+          "capture_status": "complete",
+          "confidence": "confirmed",
+          "limitations": [
+            "Computed by a deterministic simulator; logical sources share one trust domain."
+          ]
+        },
+        "delegation": {
+          "grant_id": "grant-child",
+          "parent_grant_id": "grant-parent",
+          "parent_agent_id": "agent-parent",
+          "child_agent_id": "agent-child",
+          "lease_id": "lease-child",
+          "credential_subject": "runtime-child",
+          "scopes": [
+            "storage:move"
+          ],
+          "audiences": [
+            "synthetic://storage"
+          ],
+          "issued_at": "2026-09-08T11:59:00Z",
+          "expires_at": "2026-09-08T12:30:00Z",
+          "parent_expires_at": "2026-09-08T12:30:00Z",
+          "parent_dependency_enforced_at_use": false,
+          "revocation_mechanism": "independent",
+          "task_id": "child-task"
+        }
+      },
+      {
+        "schema_version": "0.2.0-draft",
+        "event_id": "evt-003-004",
+        "event_type": "ai.policy.evaluated",
+        "timestamp": "2026-09-08T12:00:04.000Z",
+        "observed_at": "2026-09-08T12:00:04.000Z",
+        "sequence": 4,
+        "correlation": {
+          "trace_id": "sim-case-003-failure",
+          "session_id": "session-003",
+          "task_id": "task-003",
+          "parent_event_id": "evt-003-003"
+        },
+        "principal": {
+          "agent_id": "agent-003",
+          "runtime_identity": "runtime-003",
+          "human_id": "synthetic-requester",
+          "tenant_id": "tenant-lab"
+        },
+        "integrity": {
+          "collector": "sim-resource-server",
+          "hash_algorithm": "sha256",
+          "hash": "7f661c1c89b7c4a39d7fa05b670c01c9582ad9b8547f1e40798c50a1b7dd7452",
+          "retention_class": "public-synthetic",
+          "access_label": "synthetic-only"
+        },
+        "evidence_refs": [
+          "#/failure/records/3"
+        ],
+        "evidence_quality": {
+          "capture_status": "complete",
+          "confidence": "confirmed",
+          "limitations": [
+            "Computed by a deterministic simulator; logical sources share one trust domain."
+          ]
+        },
+        "decision": {
+          "policy_decision": "allow",
+          "approval_required": false,
+          "consequence": "high",
+          "reversibility_at_authorization": "R1",
+          "policy_rule_id": "rule-003-failure",
+          "evaluated_input_refs": [
+            "#/failure/state_before"
+          ],
+          "reason": "evaluate descendant grant at use"
+        }
+      },
+      {
+        "schema_version": "0.2.0-draft",
+        "event_id": "evt-003-005",
+        "event_type": "ai.tool.executed",
+        "timestamp": "2026-09-08T12:00:05.000Z",
+        "observed_at": "2026-09-08T12:00:05.000Z",
+        "sequence": 5,
+        "correlation": {
+          "trace_id": "sim-case-003-failure",
+          "session_id": "session-003",
+          "task_id": "task-003",
+          "parent_event_id": "evt-003-004"
+        },
+        "principal": {
+          "agent_id": "agent-003",
+          "runtime_identity": "runtime-003",
+          "human_id": "synthetic-requester",
+          "tenant_id": "tenant-lab"
+        },
+        "integrity": {
+          "collector": "sim-storage-audit",
+          "hash_algorithm": "sha256",
+          "hash": "84714262afff0fdcfc5a600d42e5a3a61a9bbaaddc9f71ce1c8749b1de34b664",
+          "retention_class": "public-synthetic",
+          "access_label": "synthetic-only"
+        },
+        "evidence_refs": [
+          "#/failure/records/4"
+        ],
+        "evidence_quality": {
+          "capture_status": "complete",
+          "confidence": "confirmed",
+          "limitations": [
+            "Computed by a deterministic simulator; logical sources share one trust domain."
+          ]
+        },
+        "action": {
+          "tool_id": "sim-tool-003",
+          "tool_version": "1.0-lab",
+          "operation": "move_object",
+          "target": "synthetic://object-1",
+          "outcome": "succeeded",
+          "request_id": "request-003"
+        },
+        "decision": {
+          "policy_decision": "allow",
+          "approval_required": false,
+          "consequence": "high",
+          "reversibility_at_authorization": "R1",
+          "policy_rule_id": "rule-003-failure",
+          "evaluated_input_refs": [
+            "#/failure/state_before"
+          ],
+          "reason": "parent lifecycle not checked"
+        }
+      },
+      {
+        "schema_version": "0.2.0-draft",
+        "event_id": "evt-003-006",
+        "event_type": "ai.state.validated",
+        "timestamp": "2026-09-08T12:00:06.000Z",
+        "observed_at": "2026-09-08T12:00:06.000Z",
+        "sequence": 6,
+        "correlation": {
+          "trace_id": "sim-case-003-failure",
+          "session_id": "session-003",
+          "task_id": "task-003"
+        },
+        "principal": {
+          "agent_id": "agent-003",
+          "runtime_identity": "runtime-003",
+          "human_id": "synthetic-requester",
+          "tenant_id": "tenant-lab"
+        },
+        "integrity": {
+          "collector": "sim-validation-controller",
+          "hash_algorithm": "sha256",
+          "hash": "2180b5d9a475241d1135751634fb9fdd32177c980e1ba923ab8fdcee756ede9f",
+          "retention_class": "public-synthetic",
+          "access_label": "synthetic-only"
+        },
+        "evidence_refs": [
+          "#/failure/records/5"
+        ],
+        "evidence_quality": {
+          "capture_status": "complete",
+          "confidence": "confirmed",
+          "limitations": [
+            "Computed by a deterministic simulator; logical sources share one trust domain."
+          ]
+        },
+        "validation": {
+          "method": "descendant-denial",
+          "scope": "parent grant, one child lease and one target",
+          "expected": "False",
+          "observed": "True",
+          "result": "fail",
+          "validator_identity": "sim-validation-controller",
+          "independence": "simulation_only"
+        }
+      }
+    ],
+    "conclusion": {
+      "child_allowed_after_parent_revocation": true,
+      "lease_expired": false,
+      "distinct_child_identity": true,
+      "authority_lifecycle_failure": true
+    }
+  },
+  "control": {
+    "case_id": "case-003",
+    "condition": "control",
+    "synthetic_data": true,
+    "method": "deterministic-state-machine",
+    "state_before": {
+      "parent_active": true,
+      "child_active": true,
+      "object_path": "original"
+    },
+    "state_after": {
+      "parent_active": false,
+      "child_active": true,
+      "object_path": "original"
+    },
+    "records": [
+      {
+        "record_id": "rec-003-001",
+        "event_id": "evt-003-001",
+        "timestamp": "2026-09-08T12:00:01.000Z",
+        "source": "sim-instruction-vault",
+        "event_type": "ai.instruction.received",
+        "payload": {
+          "instruction": "Perform only the described synthetic exercise.",
+          "condition": "control"
+        },
+        "parent_event_id": null,
+        "normalized_groups": {}
+      },
+      {
+        "record_id": "rec-003-002",
+        "event_id": "evt-003-002",
+        "timestamp": "2026-09-08T12:00:02.000Z",
+        "source": "sim-token-broker",
+        "event_type": "ai.delegation.created",
+        "payload": {
+          "grant_id": "grant-child",
+          "parent_grant_id": "grant-parent",
+          "parent_agent_id": "agent-parent",
+          "child_agent_id": "agent-child",
+          "lease_id": "lease-child",
+          "credential_subject": "runtime-child",
+          "scopes": [
+            "storage:move"
+          ],
+          "audiences": [
+            "synthetic://storage"
+          ],
+          "issued_at": "2026-09-08T11:59:00Z",
+          "expires_at": "2026-09-08T12:30:00Z",
+          "parent_expires_at": "2026-09-08T12:30:00Z",
+          "parent_dependency_enforced_at_use": true,
+          "revocation_mechanism": "parent_bound",
+          "task_id": "child-task"
+        },
+        "parent_event_id": "evt-003-001",
+        "normalized_groups": {
+          "delegation": {
+            "grant_id": "grant-child",
+            "parent_grant_id": "grant-parent",
+            "parent_agent_id": "agent-parent",
+            "child_agent_id": "agent-child",
+            "lease_id": "lease-child",
+            "credential_subject": "runtime-child",
+            "scopes": [
+              "storage:move"
+            ],
+            "audiences": [
+              "synthetic://storage"
+            ],
+            "issued_at": "2026-09-08T11:59:00Z",
+            "expires_at": "2026-09-08T12:30:00Z",
+            "parent_expires_at": "2026-09-08T12:30:00Z",
+            "parent_dependency_enforced_at_use": true,
+            "revocation_mechanism": "parent_bound",
+            "task_id": "child-task"
+          }
+        }
+      },
+      {
+        "record_id": "rec-003-003",
+        "event_id": "evt-003-003",
+        "timestamp": "2026-09-08T12:00:03.000Z",
+        "source": "sim-control-plane",
+        "event_type": "ai.delegation.revoked",
+        "payload": {
+          "target": "grant-parent",
+          "child_identity": "runtime-child"
+        },
+        "parent_event_id": "evt-003-002",
+        "normalized_groups": {
+          "delegation": {
+            "grant_id": "grant-child",
+            "parent_grant_id": "grant-parent",
+            "parent_agent_id": "agent-parent",
+            "child_agent_id": "agent-child",
+            "lease_id": "lease-child",
+            "credential_subject": "runtime-child",
+            "scopes": [
+              "storage:move"
+            ],
+            "audiences": [
+              "synthetic://storage"
+            ],
+            "issued_at": "2026-09-08T11:59:00Z",
+            "expires_at": "2026-09-08T12:30:00Z",
+            "parent_expires_at": "2026-09-08T12:30:00Z",
+            "parent_dependency_enforced_at_use": true,
+            "revocation_mechanism": "parent_bound",
+            "task_id": "child-task"
+          }
+        }
+      },
+      {
+        "record_id": "rec-003-004",
+        "event_id": "evt-003-004",
+        "timestamp": "2026-09-08T12:00:04.000Z",
+        "source": "sim-resource-server",
+        "event_type": "ai.policy.evaluated",
+        "payload": {
+          "allow": false,
+          "lease_expired": false,
+          "parent_revoked": true
+        },
+        "parent_event_id": "evt-003-003",
+        "normalized_groups": {
+          "decision": {
+            "policy_decision": "deny",
+            "approval_required": false,
+            "consequence": "high",
+            "reversibility_at_authorization": "R1",
+            "policy_rule_id": "rule-003-control",
+            "evaluated_input_refs": [
+              "#/control/state_before"
+            ],
+            "reason": "evaluate descendant grant at use"
+          }
+        }
+      },
+      {
+        "record_id": "rec-003-005",
+        "event_id": "evt-003-005",
+        "timestamp": "2026-09-08T12:00:05.000Z",
+        "source": "sim-validation-controller",
+        "event_type": "ai.state.validated",
+        "payload": {
+          "probe": "descendant-denial",
+          "expected": false,
+          "observed": false,
+          "result": "pass"
+        },
+        "parent_event_id": null,
+        "normalized_groups": {
+          "validation": {
+            "method": "descendant-denial",
+            "scope": "parent grant, one child lease and one target",
+            "expected": "False",
+            "observed": "False",
+            "result": "pass",
+            "validator_identity": "sim-validation-controller",
+            "independence": "simulation_only"
+          }
+        }
+      }
+    ],
+    "events": [
+      {
+        "schema_version": "0.2.0-draft",
+        "event_id": "evt-003-001",
+        "event_type": "ai.instruction.received",
+        "timestamp": "2026-09-08T12:00:01.000Z",
+        "observed_at": "2026-09-08T12:00:01.000Z",
+        "sequence": 1,
+        "correlation": {
+          "trace_id": "sim-case-003-control",
+          "session_id": "session-003",
+          "task_id": "task-003"
+        },
+        "principal": {
+          "agent_id": "agent-003",
+          "runtime_identity": "runtime-003",
+          "human_id": "synthetic-requester",
+          "tenant_id": "tenant-lab"
+        },
+        "integrity": {
+          "collector": "sim-instruction-vault",
+          "hash_algorithm": "sha256",
+          "hash": "58c9b3abcda8987720bb5c9538f44019cca5e7f9e0a4d7a3d776d7d97a5f8a23",
+          "retention_class": "public-synthetic",
+          "access_label": "synthetic-only"
+        },
+        "evidence_refs": [
+          "#/control/records/0"
+        ],
+        "evidence_quality": {
+          "capture_status": "complete",
+          "confidence": "confirmed",
+          "limitations": [
+            "Computed by a deterministic simulator; logical sources share one trust domain."
+          ]
+        }
+      },
+      {
+        "schema_version": "0.2.0-draft",
+        "event_id": "evt-003-002",
+        "event_type": "ai.delegation.created",
+        "timestamp": "2026-09-08T12:00:02.000Z",
+        "observed_at": "2026-09-08T12:00:02.000Z",
+        "sequence": 2,
+        "correlation": {
+          "trace_id": "sim-case-003-control",
+          "session_id": "session-003",
+          "task_id": "task-003",
+          "parent_event_id": "evt-003-001"
+        },
+        "principal": {
+          "agent_id": "agent-003",
+          "runtime_identity": "runtime-003",
+          "human_id": "synthetic-requester",
+          "tenant_id": "tenant-lab"
+        },
+        "integrity": {
+          "collector": "sim-token-broker",
+          "hash_algorithm": "sha256",
+          "hash": "3e9c36f2da65115a2d69d7e9d9c6e9c4a9081376ee17a7738b20b9025dfc0339",
+          "retention_class": "public-synthetic",
+          "access_label": "synthetic-only"
+        },
+        "evidence_refs": [
+          "#/control/records/1"
+        ],
+        "evidence_quality": {
+          "capture_status": "complete",
+          "confidence": "confirmed",
+          "limitations": [
+            "Computed by a deterministic simulator; logical sources share one trust domain."
+          ]
+        },
+        "delegation": {
+          "grant_id": "grant-child",
+          "parent_grant_id": "grant-parent",
+          "parent_agent_id": "agent-parent",
+          "child_agent_id": "agent-child",
+          "lease_id": "lease-child",
+          "credential_subject": "runtime-child",
+          "scopes": [
+            "storage:move"
+          ],
+          "audiences": [
+            "synthetic://storage"
+          ],
+          "issued_at": "2026-09-08T11:59:00Z",
+          "expires_at": "2026-09-08T12:30:00Z",
+          "parent_expires_at": "2026-09-08T12:30:00Z",
+          "parent_dependency_enforced_at_use": true,
+          "revocation_mechanism": "parent_bound",
+          "task_id": "child-task"
+        }
+      },
+      {
+        "schema_version": "0.2.0-draft",
+        "event_id": "evt-003-003",
+        "event_type": "ai.delegation.revoked",
+        "timestamp": "2026-09-08T12:00:03.000Z",
+        "observed_at": "2026-09-08T12:00:03.000Z",
+        "sequence": 3,
+        "correlation": {
+          "trace_id": "sim-case-003-control",
+          "session_id": "session-003",
+          "task_id": "task-003",
+          "parent_event_id": "evt-003-002"
+        },
+        "principal": {
+          "agent_id": "agent-003",
+          "runtime_identity": "runtime-003",
+          "human_id": "synthetic-requester",
+          "tenant_id": "tenant-lab"
+        },
+        "integrity": {
+          "collector": "sim-control-plane",
+          "hash_algorithm": "sha256",
+          "hash": "3e1d98464d9a75bef48c5c8c3988bf2c3527a1cda4ad5fb9b27ef4281aaf6568",
+          "retention_class": "public-synthetic",
+          "access_label": "synthetic-only"
+        },
+        "evidence_refs": [
+          "#/control/records/2"
+        ],
+        "evidence_quality": {
+          "capture_status": "complete",
+          "confidence": "confirmed",
+          "limitations": [
+            "Computed by a deterministic simulator; logical sources share one trust domain."
+          ]
+        },
+        "delegation": {
+          "grant_id": "grant-child",
+          "parent_grant_id": "grant-parent",
+          "parent_agent_id": "agent-parent",
+          "child_agent_id": "agent-child",
+          "lease_id": "lease-child",
+          "credential_subject": "runtime-child",
+          "scopes": [
+            "storage:move"
+          ],
+          "audiences": [
+            "synthetic://storage"
+          ],
+          "issued_at": "2026-09-08T11:59:00Z",
+          "expires_at": "2026-09-08T12:30:00Z",
+          "parent_expires_at": "2026-09-08T12:30:00Z",
+          "parent_dependency_enforced_at_use": true,
+          "revocation_mechanism": "parent_bound",
+          "task_id": "child-task"
+        }
+      },
+      {
+        "schema_version": "0.2.0-draft",
+        "event_id": "evt-003-004",
+        "event_type": "ai.policy.evaluated",
+        "timestamp": "2026-09-08T12:00:04.000Z",
+        "observed_at": "2026-09-08T12:00:04.000Z",
+        "sequence": 4,
+        "correlation": {
+          "trace_id": "sim-case-003-control",
+          "session_id": "session-003",
+          "task_id": "task-003",
+          "parent_event_id": "evt-003-003"
+        },
+        "principal": {
+          "agent_id": "agent-003",
+          "runtime_identity": "runtime-003",
+          "human_id": "synthetic-requester",
+          "tenant_id": "tenant-lab"
+        },
+        "integrity": {
+          "collector": "sim-resource-server",
+          "hash_algorithm": "sha256",
+          "hash": "35d559bd21ef2fc6f53063fb9ac2a350c066fb562e4fc13d87e1bcceedb94c2f",
+          "retention_class": "public-synthetic",
+          "access_label": "synthetic-only"
+        },
+        "evidence_refs": [
+          "#/control/records/3"
+        ],
+        "evidence_quality": {
+          "capture_status": "complete",
+          "confidence": "confirmed",
+          "limitations": [
+            "Computed by a deterministic simulator; logical sources share one trust domain."
+          ]
+        },
+        "decision": {
+          "policy_decision": "deny",
+          "approval_required": false,
+          "consequence": "high",
+          "reversibility_at_authorization": "R1",
+          "policy_rule_id": "rule-003-control",
+          "evaluated_input_refs": [
+            "#/control/state_before"
+          ],
+          "reason": "evaluate descendant grant at use"
+        }
+      },
+      {
+        "schema_version": "0.2.0-draft",
+        "event_id": "evt-003-005",
+        "event_type": "ai.state.validated",
+        "timestamp": "2026-09-08T12:00:05.000Z",
+        "observed_at": "2026-09-08T12:00:05.000Z",
+        "sequence": 5,
+        "correlation": {
+          "trace_id": "sim-case-003-control",
+          "session_id": "session-003",
+          "task_id": "task-003"
+        },
+        "principal": {
+          "agent_id": "agent-003",
+          "runtime_identity": "runtime-003",
+          "human_id": "synthetic-requester",
+          "tenant_id": "tenant-lab"
+        },
+        "integrity": {
+          "collector": "sim-validation-controller",
+          "hash_algorithm": "sha256",
+          "hash": "2d680d1117c4d42a451a7f917f9deb7e18eb4e37bb32ffb78b6dde49255ffdf2",
+          "retention_class": "public-synthetic",
+          "access_label": "synthetic-only"
+        },
+        "evidence_refs": [
+          "#/control/records/4"
+        ],
+        "evidence_quality": {
+          "capture_status": "complete",
+          "confidence": "confirmed",
+          "limitations": [
+            "Computed by a deterministic simulator; logical sources share one trust domain."
+          ]
+        },
+        "validation": {
+          "method": "descendant-denial",
+          "scope": "parent grant, one child lease and one target",
+          "expected": "False",
+          "observed": "False",
+          "result": "pass",
+          "validator_identity": "sim-validation-controller",
+          "independence": "simulation_only"
+        }
+      }
+    ],
+    "conclusion": {
+      "child_allowed_after_parent_revocation": false,
+      "lease_expired": false,
+      "distinct_child_identity": true,
+      "authority_lifecycle_failure": false
+    }
+  }
+}
