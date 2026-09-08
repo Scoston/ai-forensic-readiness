@@ -1,0 +1,99 @@
+{
+  "case_id": "case-009",
+  "generated_at": "2026-09-08T12:01:00Z",
+  "synthetic_data": true,
+  "tooling": [
+    "Python standard library",
+    "scripts/simulations.py"
+  ],
+  "artifacts": [
+    {
+      "path": "evidence/README.md",
+      "media_type": "text/markdown",
+      "sha256": "7458867af0683433b6710d86f512a5e9f02b2c8cc43f22a6958b996c28279b02",
+      "source": "deterministic-laboratory-simulator",
+      "collection_time": "2026-09-08T12:01:00Z",
+      "notes": "Synthetic; no independent evidence collection."
+    },
+    {
+      "path": "evidence/airg.json",
+      "media_type": "application/json",
+      "sha256": "d2d02b7841d2353d6ed4a804b4123fdd33dc2f0f035f35cc9180bd72ddb630c2",
+      "source": "deterministic-laboratory-simulator",
+      "collection_time": "2026-09-08T12:01:00Z",
+      "notes": "Synthetic; no independent evidence collection."
+    },
+    {
+      "path": "evidence/normalized/control-events.json",
+      "media_type": "application/json",
+      "sha256": "2866c441f47f698c9261c15bb9ba1a9107d44fc282540d54f70d204524dd3a15",
+      "source": "deterministic-laboratory-simulator",
+      "collection_time": "2026-09-08T12:01:00Z",
+      "notes": "Synthetic; no independent evidence collection."
+    },
+    {
+      "path": "evidence/normalized/events.json",
+      "media_type": "application/json",
+      "sha256": "d5dd8a376ae4d10f21a333cab35622a48db1cd43cfcd1f117414ddb050ff11da",
+      "source": "deterministic-laboratory-simulator",
+      "collection_time": "2026-09-08T12:01:00Z",
+      "notes": "Synthetic; no independent evidence collection."
+    },
+    {
+      "path": "evidence/raw/control-state-after.json",
+      "media_type": "application/json",
+      "sha256": "c40db358b8db95aaacc3ccd7f780b8b43520ac0e44691ae7a6eab8fbc29cfcb6",
+      "source": "deterministic-laboratory-simulator",
+      "collection_time": "2026-09-08T12:01:00Z",
+      "notes": "Synthetic; no independent evidence collection."
+    },
+    {
+      "path": "evidence/raw/control-state-before.json",
+      "media_type": "application/json",
+      "sha256": "c40db358b8db95aaacc3ccd7f780b8b43520ac0e44691ae7a6eab8fbc29cfcb6",
+      "source": "deterministic-laboratory-simulator",
+      "collection_time": "2026-09-08T12:01:00Z",
+      "notes": "Synthetic; no independent evidence collection."
+    },
+    {
+      "path": "evidence/raw/records-control.jsonl",
+      "media_type": "application/x-ndjson",
+      "sha256": "8f75d8b76db3b8c91efac82f317c144f62918cbf1f701375fcbbbaeb369b553e",
+      "source": "deterministic-laboratory-simulator",
+      "collection_time": "2026-09-08T12:01:00Z",
+      "notes": "Synthetic; no independent evidence collection."
+    },
+    {
+      "path": "evidence/raw/records.jsonl",
+      "media_type": "application/x-ndjson",
+      "sha256": "fc981c9d8694173e027873b65e4e8fa96e783f5e135c620dbc143f3d3234c4b7",
+      "source": "deterministic-laboratory-simulator",
+      "collection_time": "2026-09-08T12:01:00Z",
+      "notes": "Synthetic; no independent evidence collection."
+    },
+    {
+      "path": "evidence/raw/replay-results.json",
+      "media_type": "application/json",
+      "sha256": "fbbd33d422f7c0bf25cfe28e125fb248f2d418db1b21ca93f3bd1d62eb0e0d3b",
+      "source": "deterministic-laboratory-simulator",
+      "collection_time": "2026-09-08T12:01:00Z",
+      "notes": "Synthetic; no independent evidence collection."
+    },
+    {
+      "path": "evidence/raw/state-after.json",
+      "media_type": "application/json",
+      "sha256": "69dfddb20a98065fedacbca11c39909ab0fbde2013b170ad1bffe2e19a23ffdd",
+      "source": "deterministic-laboratory-simulator",
+      "collection_time": "2026-09-08T12:01:00Z",
+      "notes": "Synthetic; no independent evidence collection."
+    },
+    {
+      "path": "evidence/raw/state-before.json",
+      "media_type": "application/json",
+      "sha256": "c40db358b8db95aaacc3ccd7f780b8b43520ac0e44691ae7a6eab8fbc29cfcb6",
+      "source": "deterministic-laboratory-simulator",
+      "collection_time": "2026-09-08T12:01:00Z",
+      "notes": "Synthetic; no independent evidence collection."
+    }
+  ]
+}

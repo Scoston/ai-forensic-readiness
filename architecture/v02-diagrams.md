@@ -1,0 +1,42 @@
+# AI forensic readiness: authority and evidence boundaries
+
+## Distinct identity with parent-bound authority
+
+<!-- mermaid:id=authority-lifecycle -->
+```mermaid
+flowchart TB
+  parent["Parent grant"]
+  child["Child grant and lease"]
+  queue["Queued task"]
+  check["Resource authorization"]
+  deny["Denied action"]
+  receipt["Executed action receipt"]
+  parent -->|delegates| child
+  child -->|authorizes work| queue
+  queue -->|attempts operation| check
+  parent -->|status and expiry| check
+  child -->|scope and audience| check
+  check -->|invalid authority| deny
+  check -->|valid authority| receipt
+%% portable-canonical-v2:eyJhY2Nlc3NpYmlsaXR5IjpudWxsLCJkYXRhIjp7ImRpcmVjdGlvbiI6IlRCIiwiZWRnZXMiOlt7ImZyb20iOiJwYXJlbnQiLCJsYWJlbCI6ImRlbGVnYXRlcyIsInRvIjoiY2hpbGQifSx7ImZyb20iOiJjaGlsZCIsImxhYmVsIjoiYXV0aG9yaXplcyB3b3JrIiwidG8iOiJxdWV1ZSJ9LHsiZnJvbSI6InF1ZXVlIiwibGFiZWwiOiJhdHRlbXB0cyBvcGVyYXRpb24iLCJ0byI6ImNoZWNrIn0seyJmcm9tIjoicGFyZW50IiwibGFiZWwiOiJzdGF0dXMgYW5kIGV4cGlyeSIsInRvIjoiY2hlY2sifSx7ImZyb20iOiJjaGlsZCIsImxhYmVsIjoic2NvcGUgYW5kIGF1ZGllbmNlIiwidG8iOiJjaGVjayJ9LHsiZnJvbSI6ImNoZWNrIiwibGFiZWwiOiJpbnZhbGlkIGF1dGhvcml0eSIsInRvIjoiZGVueSJ9LHsiZnJvbSI6ImNoZWNrIiwibGFiZWwiOiJ2YWxpZCBhdXRob3JpdHkiLCJ0byI6InJlY2VpcHQifV0sIm5vZGVzIjpbeyJpZCI6InBhcmVudCIsImxhYmVsIjoiUGFyZW50IGdyYW50In0seyJpZCI6ImNoaWxkIiwibGFiZWwiOiJDaGlsZCBncmFudCBhbmQgbGVhc2UifSx7ImlkIjoicXVldWUiLCJsYWJlbCI6IlF1ZXVlZCB0YXNrIn0seyJpZCI6ImNoZWNrIiwibGFiZWwiOiJSZXNvdXJjZSBhdXRob3JpemF0aW9uIn0seyJpZCI6ImRlbnkiLCJsYWJlbCI6IkRlbmllZCBhY3Rpb24ifSx7ImlkIjoicmVjZWlwdCIsImxhYmVsIjoiRXhlY3V0ZWQgYWN0aW9uIHJlY2VpcHQifV19LCJkZXNjcmlwdGlvbiI6bnVsbCwiaWQiOiJhdXRob3JpdHktbGlmZWN5Y2xlIiwia2luZCI6ImZsb3djaGFydCIsInNvdXJjZVNoYTI1NiI6Ijc1NjZjODdlMGRmZTg5YTNkYWM4ZGQ4ZGE0ZTE3Y2RhYTVhZDE1NDM5MTUxNjRkZmQzNjNmMTkxOWU4NzRmNmEiLCJzdHlsZXMiOltdLCJ0aXRsZSI6IkRpc3RpbmN0IGlkZW50aXR5IHdpdGggcGFyZW50LWJvdW5kIGF1dGhvcml0eSIsInZlcnNpb24iOjF9
+```
+
+## Execution proof and missing influence
+
+<!-- mermaid:id=evidence-boundary -->
+```mermaid
+flowchart TB
+  provider["Provider context gap"]
+  gateway["Gateway request"]
+  resource["Resource receipt"]
+  graph["Evidence-linked reconstruction"]
+  unknown["Influence remains unknown"]
+  confirmed["Execution supported"]
+  provider -.->|missing context| graph
+  gateway -->|request identifier| resource
+  gateway -->|request evidence| graph
+  resource -->|state evidence| graph
+  graph -->|scope the gap| unknown
+  graph -->|join receipts| confirmed
+%% portable-canonical-v2:eyJhY2Nlc3NpYmlsaXR5IjpudWxsLCJkYXRhIjp7ImRpcmVjdGlvbiI6IlRCIiwiZWRnZXMiOlt7ImFycm93IjoiLS4tPiIsImZyb20iOiJwcm92aWRlciIsImxhYmVsIjoibWlzc2luZyBjb250ZXh0IiwidG8iOiJncmFwaCJ9LHsiZnJvbSI6ImdhdGV3YXkiLCJsYWJlbCI6InJlcXVlc3QgaWRlbnRpZmllciIsInRvIjoicmVzb3VyY2UifSx7ImZyb20iOiJnYXRld2F5IiwibGFiZWwiOiJyZXF1ZXN0IGV2aWRlbmNlIiwidG8iOiJncmFwaCJ9LHsiZnJvbSI6InJlc291cmNlIiwibGFiZWwiOiJzdGF0ZSBldmlkZW5jZSIsInRvIjoiZ3JhcGgifSx7ImZyb20iOiJncmFwaCIsImxhYmVsIjoic2NvcGUgdGhlIGdhcCIsInRvIjoidW5rbm93biJ9LHsiZnJvbSI6ImdyYXBoIiwibGFiZWwiOiJqb2luIHJlY2VpcHRzIiwidG8iOiJjb25maXJtZWQifV0sIm5vZGVzIjpbeyJpZCI6InByb3ZpZGVyIiwibGFiZWwiOiJQcm92aWRlciBjb250ZXh0IGdhcCJ9LHsiaWQiOiJnYXRld2F5IiwibGFiZWwiOiJHYXRld2F5IHJlcXVlc3QifSx7ImlkIjoicmVzb3VyY2UiLCJsYWJlbCI6IlJlc291cmNlIHJlY2VpcHQifSx7ImlkIjoiZ3JhcGgiLCJsYWJlbCI6IkV2aWRlbmNlLWxpbmtlZCByZWNvbnN0cnVjdGlvbiJ9LHsiaWQiOiJ1bmtub3duIiwibGFiZWwiOiJJbmZsdWVuY2UgcmVtYWlucyB1bmtub3duIn0seyJpZCI6ImNvbmZpcm1lZCIsImxhYmVsIjoiRXhlY3V0aW9uIHN1cHBvcnRlZCJ9XX0sImRlc2NyaXB0aW9uIjpudWxsLCJpZCI6ImV2aWRlbmNlLWJvdW5kYXJ5Iiwia2luZCI6ImZsb3djaGFydCIsInNvdXJjZVNoYTI1NiI6IjQ4NmIwNmYyZGJjN2JlODc1NThmYmMxYzEyYmFiMzcyYjA0MDhhNjgzYjQwMjljNjZiY2ZiZDhlNWNkOTM0MjkiLCJzdHlsZXMiOltdLCJ0aXRsZSI6IkV4ZWN1dGlvbiBwcm9vZiBhbmQgbWlzc2luZyBpbmZsdWVuY2UiLCJ2ZXJzaW9uIjoxfQ
+```

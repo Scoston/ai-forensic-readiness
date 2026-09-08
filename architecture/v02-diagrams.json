@@ -1,0 +1,144 @@
+{
+  "version": 2,
+  "title": "AI forensic readiness: authority and evidence boundaries",
+  "diagrams": [
+    {
+      "id": "authority-lifecycle",
+      "title": "Distinct identity with parent-bound authority",
+      "kind": "flowchart",
+      "data": {
+        "direction": "TB",
+        "nodes": [
+          {
+            "id": "parent",
+            "label": "Parent grant"
+          },
+          {
+            "id": "child",
+            "label": "Child grant and lease"
+          },
+          {
+            "id": "queue",
+            "label": "Queued task"
+          },
+          {
+            "id": "check",
+            "label": "Resource authorization"
+          },
+          {
+            "id": "deny",
+            "label": "Denied action"
+          },
+          {
+            "id": "receipt",
+            "label": "Executed action receipt"
+          }
+        ],
+        "edges": [
+          {
+            "from": "parent",
+            "to": "child",
+            "label": "delegates"
+          },
+          {
+            "from": "child",
+            "to": "queue",
+            "label": "authorizes work"
+          },
+          {
+            "from": "queue",
+            "to": "check",
+            "label": "attempts operation"
+          },
+          {
+            "from": "parent",
+            "to": "check",
+            "label": "status and expiry"
+          },
+          {
+            "from": "child",
+            "to": "check",
+            "label": "scope and audience"
+          },
+          {
+            "from": "check",
+            "to": "deny",
+            "label": "invalid authority"
+          },
+          {
+            "from": "check",
+            "to": "receipt",
+            "label": "valid authority"
+          }
+        ]
+      }
+    },
+    {
+      "id": "evidence-boundary",
+      "title": "Execution proof and missing influence",
+      "kind": "flowchart",
+      "data": {
+        "direction": "TB",
+        "nodes": [
+          {
+            "id": "provider",
+            "label": "Provider context gap"
+          },
+          {
+            "id": "gateway",
+            "label": "Gateway request"
+          },
+          {
+            "id": "resource",
+            "label": "Resource receipt"
+          },
+          {
+            "id": "graph",
+            "label": "Evidence-linked reconstruction"
+          },
+          {
+            "id": "unknown",
+            "label": "Influence remains unknown"
+          },
+          {
+            "id": "confirmed",
+            "label": "Execution supported"
+          }
+        ],
+        "edges": [
+          {
+            "from": "provider",
+            "to": "graph",
+            "label": "missing context",
+            "arrow": "-.->"
+          },
+          {
+            "from": "gateway",
+            "to": "resource",
+            "label": "request identifier"
+          },
+          {
+            "from": "gateway",
+            "to": "graph",
+            "label": "request evidence"
+          },
+          {
+            "from": "resource",
+            "to": "graph",
+            "label": "state evidence"
+          },
+          {
+            "from": "graph",
+            "to": "unknown",
+            "label": "scope the gap"
+          },
+          {
+            "from": "graph",
+            "to": "confirmed",
+            "label": "join receipts"
+          }
+        ]
+      }
+    }
+  ]
+}

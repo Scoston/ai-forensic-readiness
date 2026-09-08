@@ -1,0 +1,97 @@
+{
+  "case_id": "case-007",
+  "nodes": [
+    {
+      "id": "evt-007-001",
+      "label": "instruction.received",
+      "kind": "observation"
+    },
+    {
+      "id": "evt-007-002",
+      "label": "memory.written",
+      "kind": "observation"
+    },
+    {
+      "id": "evt-007-003",
+      "label": "policy.evaluated",
+      "kind": "observation"
+    },
+    {
+      "id": "evt-007-004",
+      "label": "memory.read",
+      "kind": "observation"
+    },
+    {
+      "id": "evt-007-005",
+      "label": "plan.created",
+      "kind": "observation"
+    },
+    {
+      "id": "evt-007-006",
+      "label": "state.validated",
+      "kind": "observation"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-1",
+      "source": "evt-007-001",
+      "target": "evt-007-002",
+      "relationship": "recorded_parent",
+      "confidence": "confirmed",
+      "event_ids": [
+        "evt-007-001",
+        "evt-007-002"
+      ],
+      "record_ids": [
+        "rec-007-002"
+      ],
+      "limitation": "Recorded simulator linkage; not independent evidence of cognitive causation."
+    },
+    {
+      "id": "edge-2",
+      "source": "evt-007-002",
+      "target": "evt-007-003",
+      "relationship": "recorded_parent",
+      "confidence": "confirmed",
+      "event_ids": [
+        "evt-007-002",
+        "evt-007-003"
+      ],
+      "record_ids": [
+        "rec-007-003"
+      ],
+      "limitation": "Recorded simulator linkage; not independent evidence of cognitive causation."
+    },
+    {
+      "id": "edge-3",
+      "source": "evt-007-003",
+      "target": "evt-007-004",
+      "relationship": "recorded_parent",
+      "confidence": "confirmed",
+      "event_ids": [
+        "evt-007-003",
+        "evt-007-004"
+      ],
+      "record_ids": [
+        "rec-007-004"
+      ],
+      "limitation": "Recorded simulator linkage; not independent evidence of cognitive causation."
+    },
+    {
+      "id": "edge-4",
+      "source": "evt-007-004",
+      "target": "evt-007-005",
+      "relationship": "recorded_parent",
+      "confidence": "confirmed",
+      "event_ids": [
+        "evt-007-004",
+        "evt-007-005"
+      ],
+      "record_ids": [
+        "rec-007-005"
+      ],
+      "limitation": "Recorded simulator linkage; not independent evidence of cognitive causation."
+    }
+  ]
+}

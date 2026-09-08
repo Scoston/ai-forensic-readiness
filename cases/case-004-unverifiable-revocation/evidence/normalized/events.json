@@ -1,0 +1,232 @@
+[
+  {
+    "schema_version": "0.2.0-draft",
+    "event_id": "evt-004-001",
+    "event_type": "ai.instruction.received",
+    "timestamp": "2026-09-08T12:00:01.000Z",
+    "observed_at": "2026-09-08T12:00:01.000Z",
+    "sequence": 1,
+    "correlation": {
+      "trace_id": "sim-case-004-failure",
+      "session_id": "session-004",
+      "task_id": "task-004"
+    },
+    "principal": {
+      "agent_id": "agent-004",
+      "runtime_identity": "runtime-004",
+      "human_id": "synthetic-requester",
+      "tenant_id": "tenant-lab"
+    },
+    "integrity": {
+      "collector": "sim-instruction-vault",
+      "hash_algorithm": "sha256",
+      "hash": "a7f210df5a17789316203ddcb2610f1324f354c7b5ee47b89a293c3741273f9f",
+      "retention_class": "public-synthetic",
+      "access_label": "synthetic-only"
+    },
+    "evidence_refs": [
+      "evidence/raw/records.jsonl#rec-004-001"
+    ],
+    "evidence_quality": {
+      "capture_status": "complete",
+      "confidence": "confirmed",
+      "limitations": [
+        "Computed by a deterministic simulator; logical sources share one trust domain."
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2.0-draft",
+    "event_id": "evt-004-002",
+    "event_type": "ai.memory.written",
+    "timestamp": "2026-09-08T12:00:02.000Z",
+    "observed_at": "2026-09-08T12:00:02.000Z",
+    "sequence": 2,
+    "correlation": {
+      "trace_id": "sim-case-004-failure",
+      "session_id": "session-004",
+      "task_id": "task-004",
+      "parent_event_id": "evt-004-001"
+    },
+    "principal": {
+      "agent_id": "agent-004",
+      "runtime_identity": "runtime-004",
+      "human_id": "synthetic-requester",
+      "tenant_id": "tenant-lab"
+    },
+    "integrity": {
+      "collector": "sim-derivative-registry",
+      "hash_algorithm": "sha256",
+      "hash": "0740d4bc38cad471b1d2a8b684fe27a8391aa90f4eb1dd5222a0d835f7b7a400",
+      "retention_class": "public-synthetic",
+      "access_label": "synthetic-only"
+    },
+    "evidence_refs": [
+      "evidence/raw/records.jsonl#rec-004-002"
+    ],
+    "evidence_quality": {
+      "capture_status": "complete",
+      "confidence": "confirmed",
+      "limitations": [
+        "Computed by a deterministic simulator; logical sources share one trust domain."
+      ]
+    },
+    "memory": {
+      "record_id": "memory-1",
+      "source_refs": [
+        "source-mail"
+      ],
+      "writer_id": "sim-summarizer",
+      "transformation_ref": "summary-transform-1",
+      "value_sha256": "6d104b42323f26b4f074173f0e91b1eded1b506545dedd91840de795e241cc5a",
+      "derivative_ids": [
+        "vector-1",
+        "cache-1"
+      ],
+      "consumer_scope": "tenant-A",
+      "source_trust": "untrusted-content",
+      "derived_trust": "untrusted-content",
+      "disposition": "active"
+    }
+  },
+  {
+    "schema_version": "0.2.0-draft",
+    "event_id": "evt-004-003",
+    "event_type": "ai.policy.evaluated",
+    "timestamp": "2026-09-08T12:00:03.000Z",
+    "observed_at": "2026-09-08T12:00:03.000Z",
+    "sequence": 3,
+    "correlation": {
+      "trace_id": "sim-case-004-failure",
+      "session_id": "session-004",
+      "task_id": "task-004",
+      "parent_event_id": "evt-004-001"
+    },
+    "principal": {
+      "agent_id": "agent-004",
+      "runtime_identity": "runtime-004",
+      "human_id": "synthetic-requester",
+      "tenant_id": "tenant-lab"
+    },
+    "integrity": {
+      "collector": "sim-mail-gateway",
+      "hash_algorithm": "sha256",
+      "hash": "4a7e8b2cd20a46f0a466c50dbb3931e2436b914e1e6c51f5098396b1f76782f0",
+      "retention_class": "public-synthetic",
+      "access_label": "synthetic-only"
+    },
+    "evidence_refs": [
+      "evidence/raw/records.jsonl#rec-004-003"
+    ],
+    "evidence_quality": {
+      "capture_status": "complete",
+      "confidence": "confirmed",
+      "limitations": [
+        "Computed by a deterministic simulator; logical sources share one trust domain."
+      ]
+    },
+    "decision": {
+      "policy_decision": "deny",
+      "approval_required": false,
+      "consequence": "high",
+      "reversibility_at_authorization": "R1",
+      "policy_rule_id": "rule-004-failure",
+      "evaluated_input_refs": [
+        "evidence/raw/state-before.json"
+      ],
+      "reason": "mail grant revoked"
+    }
+  },
+  {
+    "schema_version": "0.2.0-draft",
+    "event_id": "evt-004-004",
+    "event_type": "ai.state.validated",
+    "timestamp": "2026-09-08T12:00:04.000Z",
+    "observed_at": "2026-09-08T12:00:04.000Z",
+    "sequence": 4,
+    "correlation": {
+      "trace_id": "sim-case-004-failure",
+      "session_id": "session-004",
+      "task_id": "task-004",
+      "parent_event_id": "evt-004-003"
+    },
+    "principal": {
+      "agent_id": "agent-004",
+      "runtime_identity": "runtime-004",
+      "human_id": "synthetic-requester",
+      "tenant_id": "tenant-lab"
+    },
+    "integrity": {
+      "collector": "sim-validation-controller",
+      "hash_algorithm": "sha256",
+      "hash": "5d7fa9831341b0866ac9a0baa24a1211edc9e161479a2ee498a74cbf950157ad",
+      "retention_class": "public-synthetic",
+      "access_label": "synthetic-only"
+    },
+    "evidence_refs": [
+      "evidence/raw/records.jsonl#rec-004-004"
+    ],
+    "evidence_quality": {
+      "capture_status": "complete",
+      "confidence": "confirmed",
+      "limitations": [
+        "Computed by a deterministic simulator; logical sources share one trust domain."
+      ]
+    },
+    "validation": {
+      "method": "mail-api-denied",
+      "scope": "one mail grant",
+      "expected": "False",
+      "observed": "False",
+      "result": "pass",
+      "validator_identity": "sim-validation-controller",
+      "independence": "simulation_only"
+    }
+  },
+  {
+    "schema_version": "0.2.0-draft",
+    "event_id": "evt-004-005",
+    "event_type": "ai.state.validated",
+    "timestamp": "2026-09-08T12:00:05.000Z",
+    "observed_at": "2026-09-08T12:00:05.000Z",
+    "sequence": 5,
+    "correlation": {
+      "trace_id": "sim-case-004-failure",
+      "session_id": "session-004",
+      "task_id": "task-004",
+      "parent_event_id": "evt-004-002"
+    },
+    "principal": {
+      "agent_id": "agent-004",
+      "runtime_identity": "runtime-004",
+      "human_id": "synthetic-requester",
+      "tenant_id": "tenant-lab"
+    },
+    "integrity": {
+      "collector": "sim-validation-controller",
+      "hash_algorithm": "sha256",
+      "hash": "f3c11491924c1e2dea192f4b68de522ebb21d7a7b861aaf967218dc3b05afbbf",
+      "retention_class": "public-synthetic",
+      "access_label": "synthetic-only"
+    },
+    "evidence_refs": [
+      "evidence/raw/records.jsonl#rec-004-005"
+    ],
+    "evidence_quality": {
+      "capture_status": "complete",
+      "confidence": "confirmed",
+      "limitations": [
+        "Computed by a deterministic simulator; logical sources share one trust domain."
+      ]
+    },
+    "validation": {
+      "method": "operational-derivatives-absent",
+      "scope": "declared summary, vector and cache only",
+      "expected": "[]",
+      "observed": "['summary', 'embedding', 'cache']",
+      "result": "fail",
+      "validator_identity": "sim-validation-controller",
+      "independence": "simulation_only"
+    }
+  }
+]

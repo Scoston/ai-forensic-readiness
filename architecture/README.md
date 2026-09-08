@@ -1,5 +1,10 @@
 # Reference architecture
 
+The [v0.2 authority and evidence diagrams](v02-diagrams.md) show parent-bound
+delegation and the separation between execution proof and missing influence.
+Their canonical source is [v02-diagrams.json](v02-diagrams.json). Static validation
+is not evidence of GitHub renderer acceptance.
+
 These diagrams are explanatory discussion-draft artifacts. They communicate the logical relationships the specification expects; they do not mandate a product architecture.
 
 ## AI forensic-readiness evidence path
@@ -54,4 +59,3 @@ flowchart TB
 ```
 
 The canonical diagram source used for static validation is stored in [`canonical-diagrams.json`](canonical-diagrams.json).
-

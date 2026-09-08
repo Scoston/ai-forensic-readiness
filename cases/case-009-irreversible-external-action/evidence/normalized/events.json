@@ -1,0 +1,274 @@
+[
+  {
+    "schema_version": "0.2.0-draft",
+    "event_id": "evt-009-001",
+    "event_type": "ai.instruction.received",
+    "timestamp": "2026-09-08T12:00:01.000Z",
+    "observed_at": "2026-09-08T12:00:01.000Z",
+    "sequence": 1,
+    "correlation": {
+      "trace_id": "sim-case-009-failure",
+      "session_id": "session-009",
+      "task_id": "task-009"
+    },
+    "principal": {
+      "agent_id": "agent-009",
+      "runtime_identity": "runtime-009",
+      "human_id": "synthetic-requester",
+      "tenant_id": "tenant-lab"
+    },
+    "integrity": {
+      "collector": "sim-instruction-vault",
+      "hash_algorithm": "sha256",
+      "hash": "e32782ae56ec94eb7241b0e79706ead27ceb8fbae5871208b3c1fd7ba853ce18",
+      "retention_class": "public-synthetic",
+      "access_label": "synthetic-only"
+    },
+    "evidence_refs": [
+      "evidence/raw/records.jsonl#rec-009-001"
+    ],
+    "evidence_quality": {
+      "capture_status": "complete",
+      "confidence": "confirmed",
+      "limitations": [
+        "Computed by a deterministic simulator; logical sources share one trust domain."
+      ]
+    }
+  },
+  {
+    "schema_version": "0.2.0-draft",
+    "event_id": "evt-009-002",
+    "event_type": "ai.tool.requested",
+    "timestamp": "2026-09-08T12:00:02.000Z",
+    "observed_at": "2026-09-08T12:00:02.000Z",
+    "sequence": 2,
+    "correlation": {
+      "trace_id": "sim-case-009-failure",
+      "session_id": "session-009",
+      "task_id": "task-009",
+      "parent_event_id": "evt-009-001"
+    },
+    "principal": {
+      "agent_id": "agent-009",
+      "runtime_identity": "runtime-009",
+      "human_id": "synthetic-requester",
+      "tenant_id": "tenant-lab"
+    },
+    "integrity": {
+      "collector": "sim-runtime",
+      "hash_algorithm": "sha256",
+      "hash": "6223322c4e3df647bbcbbaa834d55b1e1acaa54bf411486804dce515fa977b0d",
+      "retention_class": "public-synthetic",
+      "access_label": "synthetic-only"
+    },
+    "evidence_refs": [
+      "evidence/raw/records.jsonl#rec-009-002"
+    ],
+    "evidence_quality": {
+      "capture_status": "complete",
+      "confidence": "confirmed",
+      "limitations": [
+        "Computed by a deterministic simulator; logical sources share one trust domain."
+      ]
+    },
+    "action": {
+      "tool_id": "sim-tool-009",
+      "tool_version": "1.0-lab",
+      "operation": "publish",
+      "target": "synthetic://public-message",
+      "outcome": "requested",
+      "request_id": "request-009"
+    }
+  },
+  {
+    "schema_version": "0.2.0-draft",
+    "event_id": "evt-009-003",
+    "event_type": "ai.policy.evaluated",
+    "timestamp": "2026-09-08T12:00:03.000Z",
+    "observed_at": "2026-09-08T12:00:03.000Z",
+    "sequence": 3,
+    "correlation": {
+      "trace_id": "sim-case-009-failure",
+      "session_id": "session-009",
+      "task_id": "task-009",
+      "parent_event_id": "evt-009-002"
+    },
+    "principal": {
+      "agent_id": "agent-009",
+      "runtime_identity": "runtime-009",
+      "human_id": "synthetic-requester",
+      "tenant_id": "tenant-lab"
+    },
+    "integrity": {
+      "collector": "sim-publication-gateway",
+      "hash_algorithm": "sha256",
+      "hash": "f3ce532f74141c5acbe7138a2c1911b303756f7abef971d2538f522811083936",
+      "retention_class": "public-synthetic",
+      "access_label": "synthetic-only"
+    },
+    "evidence_refs": [
+      "evidence/raw/records.jsonl#rec-009-003"
+    ],
+    "evidence_quality": {
+      "capture_status": "complete",
+      "confidence": "confirmed",
+      "limitations": [
+        "Computed by a deterministic simulator; logical sources share one trust domain."
+      ]
+    },
+    "decision": {
+      "policy_decision": "allow",
+      "approval_required": false,
+      "consequence": "high",
+      "reversibility_at_authorization": "R3",
+      "policy_rule_id": "rule-009-failure",
+      "evaluated_input_refs": [
+        "evidence/raw/state-before.json"
+      ],
+      "reason": "R3 publication needs independent approval; absent in exercise"
+    }
+  },
+  {
+    "schema_version": "0.2.0-draft",
+    "event_id": "evt-009-004",
+    "event_type": "ai.tool.executed",
+    "timestamp": "2026-09-08T12:00:04.000Z",
+    "observed_at": "2026-09-08T12:00:04.000Z",
+    "sequence": 4,
+    "correlation": {
+      "trace_id": "sim-case-009-failure",
+      "session_id": "session-009",
+      "task_id": "task-009",
+      "parent_event_id": "evt-009-003"
+    },
+    "principal": {
+      "agent_id": "agent-009",
+      "runtime_identity": "runtime-009",
+      "human_id": "synthetic-requester",
+      "tenant_id": "tenant-lab"
+    },
+    "integrity": {
+      "collector": "sim-recipient-receipt",
+      "hash_algorithm": "sha256",
+      "hash": "08a19a72fe615dd281f5c108f3ff45bb800d801285caf59e360fe5be311c397e",
+      "retention_class": "public-synthetic",
+      "access_label": "synthetic-only"
+    },
+    "evidence_refs": [
+      "evidence/raw/records.jsonl#rec-009-004"
+    ],
+    "evidence_quality": {
+      "capture_status": "complete",
+      "confidence": "confirmed",
+      "limitations": [
+        "Computed by a deterministic simulator; logical sources share one trust domain."
+      ]
+    },
+    "action": {
+      "tool_id": "sim-tool-009",
+      "tool_version": "1.0-lab",
+      "operation": "publish",
+      "target": "synthetic://public-message",
+      "outcome": "succeeded",
+      "request_id": "request-009"
+    },
+    "decision": {
+      "policy_decision": "allow",
+      "approval_required": false,
+      "consequence": "high",
+      "reversibility_at_authorization": "R3",
+      "policy_rule_id": "rule-009-failure",
+      "evaluated_input_refs": [
+        "evidence/raw/state-before.json"
+      ],
+      "reason": "irreversibility omitted by unsafe gate"
+    }
+  },
+  {
+    "schema_version": "0.2.0-draft",
+    "event_id": "evt-009-005",
+    "event_type": "ai.state.compensated",
+    "timestamp": "2026-09-08T12:00:05.000Z",
+    "observed_at": "2026-09-08T12:00:05.000Z",
+    "sequence": 5,
+    "correlation": {
+      "trace_id": "sim-case-009-failure",
+      "session_id": "session-009",
+      "task_id": "task-009",
+      "parent_event_id": "evt-009-004"
+    },
+    "principal": {
+      "agent_id": "agent-009",
+      "runtime_identity": "runtime-009",
+      "human_id": "synthetic-requester",
+      "tenant_id": "tenant-lab"
+    },
+    "integrity": {
+      "collector": "sim-response-controller",
+      "hash_algorithm": "sha256",
+      "hash": "7c2994b6b60e3a52f8dcff6b4e871b4468f5c097cb73da68e0add12aa45e6a8a",
+      "retention_class": "public-synthetic",
+      "access_label": "synthetic-only"
+    },
+    "evidence_refs": [
+      "evidence/raw/records.jsonl#rec-009-005"
+    ],
+    "evidence_quality": {
+      "capture_status": "complete",
+      "confidence": "confirmed",
+      "limitations": [
+        "Computed by a deterministic simulator; logical sources share one trust domain."
+      ]
+    },
+    "state": {
+      "reversibility_class": "R3",
+      "disposition": "compensated",
+      "disposition_scope": "local copy and correction only"
+    }
+  },
+  {
+    "schema_version": "0.2.0-draft",
+    "event_id": "evt-009-006",
+    "event_type": "ai.state.validated",
+    "timestamp": "2026-09-08T12:00:06.000Z",
+    "observed_at": "2026-09-08T12:00:06.000Z",
+    "sequence": 6,
+    "correlation": {
+      "trace_id": "sim-case-009-failure",
+      "session_id": "session-009",
+      "task_id": "task-009"
+    },
+    "principal": {
+      "agent_id": "agent-009",
+      "runtime_identity": "runtime-009",
+      "human_id": "synthetic-requester",
+      "tenant_id": "tenant-lab"
+    },
+    "integrity": {
+      "collector": "sim-validation-controller",
+      "hash_algorithm": "sha256",
+      "hash": "ffdf5d3dddd4381bfe9e312a2e02223572c767bd5183af589b70ffc1438d1a04",
+      "retention_class": "public-synthetic",
+      "access_label": "synthetic-only"
+    },
+    "evidence_refs": [
+      "evidence/raw/records.jsonl#rec-009-006"
+    ],
+    "evidence_quality": {
+      "capture_status": "complete",
+      "confidence": "confirmed",
+      "limitations": [
+        "Computed by a deterministic simulator; logical sources share one trust domain."
+      ]
+    },
+    "validation": {
+      "method": "external-copy-absent",
+      "scope": "one simulated recipient; no real recipient deletion proof",
+      "expected": "False",
+      "observed": "True",
+      "result": "fail",
+      "validator_identity": "sim-validation-controller",
+      "independence": "simulation_only"
+    }
+  }
+]

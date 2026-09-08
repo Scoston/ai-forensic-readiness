@@ -17,11 +17,22 @@ All notable changes will be documented here.
 - Parent-to-child authority lineage, post-isolation execution, expanded containment, and recovery evidence
 - Case 003 manifest, normalized-event, authority-inventory, temporal-order, and state-restoration validation
 
-### Planned
+### Completed in the v0.2 review build - 2026-09-08
 
-- Public-review issue set
-- Initial OCSF and OpenTelemetry field mappings
-- Schema conformance examples and automated validation
+- Completed Cases 004-010 with failure/control experiments and evidence-linked graphs
+- Added twenty deterministic scenario conditions, preserving original Cases 001-003
+- Added the v0.2 evidence profile, RFC 0001, review disposition and practitioner briefing
+- Added OCSF 1.6.0 and OTel logical log projections, examples and loss disclosures
+- Replaced placeholder schema IDs and partial validation with full Draft 2020-12 checks
+- Added conformance rejection fixtures, manifest/graph checks and regression tests
+- Addressed Case 003's identity versus authority-lifecycle review question
+- Updated assessment, publication status and project navigation
+
+### External milestones
+
+Public review remains open through October 17, 2026. Independent reviews, live
+integrations, branch protection and new archival release/DOI work are tracked in
+PUBLISHING.md with their actual status; they are not claimed complete.
 
 ## [0.1.0-draft] - 2026-09-01
 

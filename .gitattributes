@@ -1,7 +1,9 @@
-# Preserve byte-stable evidence fixtures for manifest verification on all platforms.
-cases/case-001-prompt-injection-tool-abuse/evidence/** text eol=lf
-cases/case-001-prompt-injection-tool-abuse/manifest.json text eol=lf
-cases/case-002-persistent-memory-poisoning/evidence/** text eol=lf
-cases/case-002-persistent-memory-poisoning/manifest.json text eol=lf
-cases/case-003-delegated-credential-containment/evidence/** text eol=lf
-cases/case-003-delegated-credential-containment/manifest.json text eol=lf
+# Preserve evidence and generated-source bytes on Windows as well as Unix.
+*.json text eol=lf
+*.jsonl text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+*.txt text eol=lf
+*.cff text eol=lf
+*.pdf binary

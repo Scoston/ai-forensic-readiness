@@ -1,0 +1,17 @@
+{
+  "renderer": "reportlab 4.4.9",
+  "assets": [
+    {
+      "source": "spec/AI-Forensic-Readiness-v0.2.md",
+      "source_sha256": "cfd4eeac0166d9ef00af9d999bfb9df4e102119e5f3aee23edee7dd765259cf9",
+      "pdf": "release/AI_Forensic_Readiness_v0.2.pdf",
+      "pdf_sha256": "863f29e7a490d639820c6e5c14c7e59cc4ece39eb4616baa40038f97218ae44f"
+    },
+    {
+      "source": "research/practitioner-briefing.md",
+      "source_sha256": "7db0fc881835b40f1d753a9b762d616b09dfff0b3cc38531c84444d27ee1f78d",
+      "pdf": "release/AI_Forensic_Readiness_Practitioner_Briefing.pdf",
+      "pdf_sha256": "4b61f43522db683e68cd32040c2df2a8235279169574b90710b3a874c96868a1"
+    }
+  ]
+}

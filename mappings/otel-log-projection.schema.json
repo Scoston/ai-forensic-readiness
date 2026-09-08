@@ -1,0 +1,88 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "Timestamp": {
+      "type": "string",
+      "pattern": "^[0-9]+$"
+    },
+    "ObservedTimestamp": {
+      "type": "string",
+      "pattern": "^[0-9]+$"
+    },
+    "EventName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "Resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "service.name": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "service.name"
+      ]
+    },
+    "InstrumentationScope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "name",
+        "version"
+      ]
+    },
+    "Attributes": {
+      "type": "object"
+    },
+    "Body": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ai_forensic_readiness": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "ai_forensic_readiness"
+      ]
+    },
+    "TraceId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{32}$"
+    },
+    "SpanId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{16}$"
+    }
+  },
+  "required": [
+    "Timestamp",
+    "EventName",
+    "Resource",
+    "InstrumentationScope",
+    "Attributes",
+    "Body"
+  ],
+  "dependentRequired": {
+    "SpanId": [
+      "TraceId"
+    ]
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "otel-log-projection local reference shape; not upstream conformance certification",
+  "$id": "https://raw.githubusercontent.com/Scoston/ai-forensic-readiness/main/mappings/otel-log-projection.schema.json"
+}

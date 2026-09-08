@@ -1,0 +1,117 @@
+[
+  {
+    "path": "schemas/examples/tool-executed.valid.json",
+    "valid": true,
+    "reason": "complete example for declared schema"
+  },
+  {
+    "path": "schemas/examples/invalid/v01-boolean-type.json",
+    "valid": false,
+    "reason": "boolean-type"
+  },
+  {
+    "path": "schemas/examples/invalid/v01-negative-retry.json",
+    "valid": false,
+    "reason": "negative-retry"
+  },
+  {
+    "path": "schemas/examples/invalid/v01-empty-agent.json",
+    "valid": false,
+    "reason": "empty-agent"
+  },
+  {
+    "path": "schemas/examples/invalid/v01-wrong-array-item.json",
+    "valid": false,
+    "reason": "wrong-array-item"
+  },
+  {
+    "path": "schemas/examples/invalid/v01-duplicate-refs.json",
+    "valid": false,
+    "reason": "duplicate-refs"
+  },
+  {
+    "path": "schemas/examples/invalid/v01-unknown-nested-key.json",
+    "valid": false,
+    "reason": "unknown-nested-key"
+  },
+  {
+    "path": "schemas/examples/invalid/v01-timezone-missing.json",
+    "valid": false,
+    "reason": "timezone-missing"
+  },
+  {
+    "path": "schemas/examples/invalid/v01-boolean-sequence.json",
+    "valid": false,
+    "reason": "boolean-sequence"
+  },
+  {
+    "path": "schemas/examples/invalid/v01-impossible-date.json",
+    "valid": false,
+    "reason": "impossible-date"
+  },
+  {
+    "path": "schemas/examples/v02/tool-executed.valid.json",
+    "valid": true,
+    "reason": "complete example for declared schema"
+  },
+  {
+    "path": "schemas/examples/invalid/v02-boolean-type.json",
+    "valid": false,
+    "reason": "boolean-type"
+  },
+  {
+    "path": "schemas/examples/invalid/v02-negative-retry.json",
+    "valid": false,
+    "reason": "negative-retry"
+  },
+  {
+    "path": "schemas/examples/invalid/v02-empty-agent.json",
+    "valid": false,
+    "reason": "empty-agent"
+  },
+  {
+    "path": "schemas/examples/invalid/v02-wrong-array-item.json",
+    "valid": false,
+    "reason": "wrong-array-item"
+  },
+  {
+    "path": "schemas/examples/invalid/v02-duplicate-refs.json",
+    "valid": false,
+    "reason": "duplicate-refs"
+  },
+  {
+    "path": "schemas/examples/invalid/v02-unknown-nested-key.json",
+    "valid": false,
+    "reason": "unknown-nested-key"
+  },
+  {
+    "path": "schemas/examples/invalid/v02-timezone-missing.json",
+    "valid": false,
+    "reason": "timezone-missing"
+  },
+  {
+    "path": "schemas/examples/invalid/v02-boolean-sequence.json",
+    "valid": false,
+    "reason": "boolean-sequence"
+  },
+  {
+    "path": "schemas/examples/invalid/v02-impossible-date.json",
+    "valid": false,
+    "reason": "impossible-date"
+  },
+  {
+    "path": "schemas/examples/invalid/v02-risk-missing.json",
+    "valid": false,
+    "reason": "risk-missing"
+  },
+  {
+    "path": "schemas/examples/invalid/v02-missing-evidence.json",
+    "valid": false,
+    "reason": "missing-evidence"
+  },
+  {
+    "path": "schemas/examples/invalid/v02-confidence-invalid.json",
+    "valid": false,
+    "reason": "confidence-invalid"
+  }
+]

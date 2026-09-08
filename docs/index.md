@@ -12,6 +12,25 @@ When an AI system takes a consequential action, an organization may see fragment
 
 > The organizational and technical ability to reconstruct, attribute, contain, validate, and recover from consequential actions performed or influenced by AI systems.
 
+## v0.2 review build
+
+The project now covers all ten research scenarios, with **158 normalized events**
+and **120 manifested artifacts**. Seven new cases address revocation, tool
+manipulation, approval compromise, tenant exposure, configuration drift,
+irreversible actions and evidence gaps. Twenty local failure/control conditions
+support repeatable review.
+
+The v0.2 profile adds explicit evidence references, content-chunk identity, memory
+lineage, grant lifecycle, approval presentation and scoped validation. OCSF and
+OpenTelemetry reference converters preserve the original envelope and document
+mapping limits. Full schema checks and regression tests run in CI.
+
+[Read v0.2](https://github.com/Scoston/ai-forensic-readiness/blob/main/spec/AI-Forensic-Readiness-v0.2.md) · [Practitioner briefing](https://github.com/Scoston/ai-forensic-readiness/blob/main/research/practitioner-briefing.md) · [All ten cases](https://github.com/Scoston/ai-forensic-readiness/blob/main/cases/README.md) · [Technical review kit](https://github.com/Scoston/ai-forensic-readiness/blob/main/research/review-kit.md)
+
+These are synthetic investigations and deterministic simulations. Production
+control effectiveness, live integrations and independent reviewer results remain
+to be established. The public review deadline is unchanged.
+
 ## Discussion Draft v0.1
 
 The first draft proposes:
