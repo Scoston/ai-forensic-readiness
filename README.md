@@ -1,8 +1,8 @@
 # AI Forensic Readiness
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22255979.svg)](https://doi.org/10.5281/zenodo.22255979)
+[![v0.2 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22677119.svg)](https://doi.org/10.5281/zenodo.22677119)
 > A working model for reconstructing, attributing, containing, validating, and recovering from consequential actions performed or influenced by autonomous AI systems.
 
-**Status:** v0.2 discussion draft available for review; v0.1 remains the archived release
+**Status:** v0.2 discussion draft archived on Zenodo and open for review
 **Author:** Dr. Stephen Coston
 **Public review:** Open through October 17, 2026 - [Submit feedback](https://github.com/Scoston/ai-forensic-readiness/issues/1)
 
@@ -13,6 +13,7 @@ This project proposes a forensic-readiness model for closing that investigation 
 ## Start here
 
 - [Read the v0.2 discussion draft](spec/AI-Forensic-Readiness-v0.2.md)
+- [Download the archived v0.2 report, briefing and repository bundle](https://zenodo.org/records/22677119)
 - [Practitioner briefing](research/practitioner-briefing.md)
 - [Cross-case findings and limits](research/cross-case-findings.md)
 - [Read the v0.1 specification](spec/AI-Forensic-Readiness-v0.1.md)
@@ -94,7 +95,7 @@ The canonical Mermaid document is statically linted with the Mermaid diagram too
 
 ## Release posture
 
-Version 0.1 is a discussion draft. Proposed requirements should be validated through controlled investigations before being presented as mature practice. Every proposed field or control should answer a documented investigation question and include privacy, retention, and existing-standard considerations.
+Version 0.2 is an archived discussion draft. Public review remains open through October 17, 2026. Proposed requirements should be validated through controlled investigations before being presented as mature practice. Every proposed field or control should answer a documented investigation question and include privacy, retention, and existing-standard considerations.
 
 ## Licensing
 
@@ -103,7 +104,14 @@ Version 0.1 is a discussion draft. Proposed requirements should be validated thr
 
 ## Cite this work
 
-Coston, Stephen. (2026). *AI Forensic Readiness v0.1: A Working Model for Investigating Consequential Actions Performed or Influenced by Autonomous AI Systems* (Version 0.1.0-draft). Zenodo. https://doi.org/10.5281/zenodo.22255979
+Coston Jr., Stephen. (2026). *AI Forensic Readiness v0.2 — Discussion Draft*
+(Version 0.2.0-draft). Zenodo. [10.5281/zenodo.22677119](https://doi.org/10.5281/zenodo.22677119).
 
-This DOI and `CITATION.cff` identify the archived v0.1 release. For the unarchived
-v0.2 draft, include its Git commit and specification path; no v0.2 DOI is claimed.
+The version DOI and `CITATION.cff` identify the archive of commit
+`2db88053c8579e4db7aa6a5a45ea4c325a787ec9`. Cite an exact Git commit for later
+repository changes. The archived PDFs and specification retain their original
+pre-publication wording; use this citation for the subsequently assigned DOI.
+
+The [v0.1 archive](https://doi.org/10.5281/zenodo.22255979) remains available for
+citations to that version. The [concept DOI](https://doi.org/10.5281/zenodo.22255978)
+identifies the version family; use the v0.2 DOI above when citing this draft.

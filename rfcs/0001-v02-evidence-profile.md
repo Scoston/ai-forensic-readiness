@@ -93,6 +93,12 @@ production reliability. Those limitations remain in the specification and review
 
 ## Deferred external evidence
 
-The 45-day review, real-system integrations, independent reproductions and new
-Zenodo archival metadata require evidence that is not present yet. The candidate
-and review materials are complete without representing these milestones as done.
+The 45-day review, real-system integrations and independent reproductions still
+require external evidence. The candidate and review materials are complete
+without representing those milestones as done.
+
+The v0.2 draft is now [archived on Zenodo](https://doi.org/10.5281/zenodo.22677119).
+Its DOI and file contents were verified on September 9, 2026; this establishes
+archival provenance, not independent validation of the proposed requirements.
+See [publication status](../PUBLISHING.md) for verification details and remaining
+owner metadata corrections.
