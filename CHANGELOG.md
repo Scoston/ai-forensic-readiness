@@ -4,6 +4,17 @@ All notable changes will be documented here.
 
 ## [Unreleased]
 
+### Changed
+
+- Updated citation, README, Pages and publication status to the verified v0.2 Zenodo archive
+- Corrected CFF metadata to use a preferred report citation and the registered author name
+- Recorded archive file verification and the remaining owner metadata corrections
+
+## [0.2.0-draft] - 2026-09-08
+
+Archived on [Zenodo](https://doi.org/10.5281/zenodo.22677119) from commit
+`2db88053c8579e4db7aa6a5a45ea4c325a787ec9`; verified September 9, 2026.
+
 ### Added
 
 - Completed Reference Case 001 synthetic evidence bundle
@@ -30,9 +41,10 @@ All notable changes will be documented here.
 
 ### External milestones
 
-Public review remains open through October 17, 2026. Independent reviews, live
-integrations, branch protection and new archival release/DOI work are tracked in
-PUBLISHING.md with their actual status; they are not claimed complete.
+Public review remains open through October 17, 2026. The v0.2 Zenodo archive and
+DOI are published. Independent reviews, live integrations, branch protection,
+the GitHub Release and remaining archive metadata corrections are tracked in
+PUBLISHING.md with their actual status.
 
 ## [0.1.0-draft] - 2026-09-01
 

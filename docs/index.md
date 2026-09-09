@@ -3,7 +3,7 @@ layout: default
 title: AI Forensic Readiness
 description: An open working model for investigating and recovering from consequential AI actions.
 ---
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22255979.svg)](https://doi.org/10.5281/zenodo.22255979)
+[![v0.2 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22677119.svg)](https://doi.org/10.5281/zenodo.22677119)
 # AI Forensic Readiness
 
 When an AI system takes a consequential action, an organization may see fragments of what happened without being able to reconstruct the full chain of instruction, context, delegated authority, execution, persistent state, and recovery.
@@ -13,6 +13,10 @@ When an AI system takes a consequential action, an organization may see fragment
 > The organizational and technical ability to reconstruct, attribute, contain, validate, and recover from consequential actions performed or influenced by AI systems.
 
 ## v0.2 review build
+
+Version **0.2.0-draft** is [archived on Zenodo](https://zenodo.org/records/22677119)
+with the specification PDF, practitioner briefing and complete repository bundle
+from commit `2db88053c8579e4db7aa6a5a45ea4c325a787ec9`.
 
 The project now covers all ten research scenarios, with **158 normalized events**
 and **120 manifested artifacts**. Seven new cases address revocation, tool
@@ -32,6 +36,8 @@ control effectiveness, live integrations and independent reviewer results remain
 to be established. The public review deadline is unchanged.
 
 ## Discussion Draft v0.1
+
+The [original v0.1 archive](https://doi.org/10.5281/zenodo.22255979) remains available.
 
 The first draft proposes:
 
@@ -78,5 +84,10 @@ The package contains **32 normalized events**, **15 integrity-verified evidence 
 ## Status
 
 Public review is open through **October 17, 2026**. [Submit feedback](https://github.com/Scoston/ai-forensic-readiness/issues/1). This remains a working practitioner draft, not a formal standard.
+
+## Cite v0.2
+
+Coston Jr., Stephen. (2026). *AI Forensic Readiness v0.2 — Discussion Draft*
+(Version 0.2.0-draft). Zenodo. [10.5281/zenodo.22677119](https://doi.org/10.5281/zenodo.22677119).
 
 Dr. Stephen Coston · September 2026
