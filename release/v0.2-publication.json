@@ -1,0 +1,30 @@
+{
+  "repository": "Scoston/ai-forensic-readiness",
+  "version": "0.2.0-draft",
+  "tag": "v0.2.0-draft",
+  "title": "AI Forensic Readiness v0.2 — Discussion Draft",
+  "source_commit": "2db88053c8579e4db7aa6a5a45ea4c325a787ec9",
+  "zenodo_record": 22677119,
+  "doi": "10.5281/zenodo.22677119",
+  "notes": "release/v0.2-github-release.md",
+  "assets": [
+    {
+      "name": "AI_Forensic_Readiness_v0.2.pdf",
+      "zenodo_name": "AI_Forensic_Readiness_v0.2.pdf",
+      "size": 17146,
+      "sha256": "863f29e7a490d639820c6e5c14c7e59cc4ece39eb4616baa40038f97218ae44f"
+    },
+    {
+      "name": "AI_Forensic_Readiness_Practitioner_Briefing.pdf",
+      "zenodo_name": "AI_Forensic_Readiness_Practitioner_Briefing (1).pdf",
+      "size": 5753,
+      "sha256": "4b61f43522db683e68cd32040c2df2a8235279169574b90710b3a874c96868a1"
+    },
+    {
+      "name": "ai-forensic-readiness-v0.2.0-draft-source.zip",
+      "zenodo_name": "ai-forensic-readiness-2db88053c8579e4db7aa6a5a45ea4c325a787ec9.zip",
+      "size": 607728,
+      "sha256": "4fd699d4ae08a838cb9353baf95d2409e2d0620de40d5111701063f0fa08fee3"
+    }
+  ]
+}

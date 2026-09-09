@@ -6,6 +6,9 @@
 - [v0.2 review notes](v0.2-review-notes.md)
 - [Published v0.2 Zenodo archive](https://zenodo.org/records/22677119)
 - [Publication status](../PUBLISHING.md)
+- [GitHub release notes](v0.2-github-release.md) and [verified publication manifest](v0.2-publication.json)
+- [Owner command for release publication and repository settings](OWNER-STEPS.md)
+- [Reviewer package](reviewer-packs-v0.2.zip), [checksum](reviewer-packs-v0.2.sha256) and [review instructions](../research/review-kit.md)
 
 The v0.2 archive has DOI [10.5281/zenodo.22677119](https://doi.org/10.5281/zenodo.22677119)
 and contains the PDFs and source bundle from commit

@@ -1,0 +1,38 @@
+name: Prepare v0.2 draft release
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/prepare-release.yml
+      - scripts/publication.py
+      - scripts/prepare_release.py
+      - release/v0.2-publication.json
+      - release/v0.2-github-release.md
+
+permissions:
+  contents: read
+
+concurrency:
+  group: prepare-v02-release
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    if: github.repository == 'Scoston/ai-forensic-readiness' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Verify archive and prepare an unpublished release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/prepare_release.py --apply

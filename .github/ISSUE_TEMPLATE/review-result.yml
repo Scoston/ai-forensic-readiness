@@ -1,0 +1,66 @@
+name: Technical review or reproduction result
+description: Record an actual review of a case, requirement or implementation.
+title: "[Review result] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Public review is open through October 17, 2026. Use the [review kit](https://github.com/Scoston/ai-forensic-readiness/blob/main/research/review-kit.md).
+        Submit only results from work actually performed. This is a public issue: omit confidential records, credentials and personal incident data.
+  - type: input
+    id: source
+    attributes:
+      label: Version, source commit and case or requirement
+      description: The v0.2 archive is commit 2db88053c8579e4db7aa6a5a45ea4c325a787ec9, DOI 10.5281/zenodo.22677119. Identify a different exact commit if used.
+    validations:
+      required: true
+  - type: dropdown
+    id: method
+    attributes:
+      label: Work actually performed
+      options:
+        - Evidence reconstruction from a review pack
+        - Local deterministic replay or software tests
+        - Live controlled integration experiment
+        - Specification or mapping review
+    validations:
+      required: true
+  - type: textarea
+    id: background
+    attributes:
+      label: Reviewer background, relationship and assistance
+      description: State relevant experience, relationship to the author, potential conflicts, prior familiarity, collaborators and any AI or other assistance. Do not include private contact details.
+    validations:
+      required: true
+  - type: textarea
+    id: procedure
+    attributes:
+      label: Materials and procedure
+      description: Identify files examined, commands and environment if applicable, and whether author findings were visible before your initial response. Elapsed time and interruptions are optional.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Findings and supporting evidence
+      description: Cite file and record identifiers. Distinguish observations, inferences and disputed conclusions. Attach the completed response form if applicable.
+    validations:
+      required: true
+  - type: textarea
+    id: limits
+    attributes:
+      label: Unknowns, disagreements and proposed changes
+      description: Include alternative explanations, missing sources, scope limits and disagreements after comparing the author's findings. State none where appropriate.
+    validations:
+      required: true
+  - type: dropdown
+    id: attribution
+    attributes:
+      label: Attribution preference for project summaries
+      description: Your GitHub account and this submission remain public regardless of the selection.
+      options:
+        - Link this public issue without naming me separately
+        - Credit my GitHub username and link this issue
+        - Ask me before quoting or naming me in a project summary
+    validations:
+      required: true

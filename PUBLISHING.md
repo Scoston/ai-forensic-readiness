@@ -27,7 +27,9 @@ Its source bundle is commit `2db88053c8579e4db7aa6a5a45ea4c325a787ec9`.
 | v0.2 synthesis and change disposition | Specification and RFC 0001; public proposal issue 12 |
 | Case 003 review question | Evidence-based identity/authority/expiry response and grant-boundary tests |
 | Practitioner briefing | Versioned Markdown and PDF review material |
-| Review preparation | Focused review kit and blind-exercise form; invitations not sent |
+| Review preparation | Ten downloadable case packs with 78 hash-verified raw artifacts, explicit omissions, empty response forms and a review-result issue form; invitations not sent |
+| GitHub release preparation | Pinned archive manifest, draft-only preparation workflow and owner publication command |
+| Private vulnerability reporting | GitHub's public reporting-status endpoint confirmed enabled on September 9, 2026 |
 | Repository navigation | README, case index, Pages landing page and assessment updated |
 
 ## External and administrative milestones
@@ -37,16 +39,20 @@ These items are not replaced by a passing test or a checked box in this reposito
 | Item | Current state | Concrete remaining action |
 | --- | --- | --- |
 | 45-day public review | Open through October 17, 2026 | Receive, evaluate and record actual feedback |
-| Named technical review | Review kit prepared; recipients not selected | Select reviewers and send invitations with explicit authorization |
+| Named technical review | Downloadable review packs and submission form prepared; recipients not selected | Select reviewers and send invitations with explicit authorization |
 | Independent reproduction / live integration | Not measured | Run the review kit against independent investigators and actual enforcement systems |
-| Branch protection | main was unprotected at audit | Owner applies the prepared settings after checking the current CI job names |
-| Private vulnerability reporting | Previously reported enabled; no administrative re-verification in this review | Owner confirms in repository security settings |
+| Branch protection | main remains unprotected at the September 9 check | Run the owner command, which checks current main's CI and preserves any existing stronger policy |
+| Private vulnerability reporting | Confirmed enabled September 9, 2026 | No remaining enablement action; owner command rechecks the setting |
 | v0.2 Zenodo archive | Complete; files verified and owner metadata corrections confirmed September 9, 2026 | No remaining action for this Zenodo deposit |
-| v0.2 GitHub Release | No v0.2 GitHub Release exists as of September 9, 2026 | Owner publishes the discussion-draft release from commit `2db88053c8579e4db7aa6a5a45ea4c325a787ec9` with the existing Zenodo DOI |
+| v0.2 GitHub Release | Workflow prepares an unpublished draft from the archived commit; public publication is an owner step | Run [the owner command](release/OWNER-STEPS.md) to publish the verified prerelease with the existing DOI after checking automatic Zenodo archiving |
 
 The connected repository tools support code, issue and pull-request work but do
-not expose administration or release/Zenodo creation here. This does not block
-uploading the implementation to the existing repository. Do not relabel the v0.1
+not expose repository administration or direct release writes here. The draft
+preparation workflow uses GitHub Actions' repository content permission. Final
+publication and administration use the owner's existing authenticated GitHub CLI
+through the documented command. The workflow never publishes a release; the
+owner command checks active Zenodo release webhooks before publication to avoid
+a second archive for the already deposited v0.2 files. Do not relabel the v0.1
 DOI as v0.2 or claim the public review has finished.
 
 ## Verified v0.2 archive
@@ -91,19 +97,22 @@ Verified against the published record updated September 9, 2026 at 15:48 UTC:
 The Zenodo deposit and its owner metadata corrections are complete. Public review
 and the separate GitHub Release retain the statuses listed above.
 
-## Owner branch-protection command
+## Owner completion command
 
 The prepared [branch-protection settings](release/branch-protection.json) require
 pull requests and both validation matrix checks without requiring another
-maintainer's approval. Confirm the emitted check names first, then run from an
+maintainer's approval. The [owner instructions](release/OWNER-STEPS.md) provide one
+command that verifies current main's CI, configures protection and reporting, and
+publishes the verified prerelease. From an updated checkout with an
 owner-authenticated GitHub CLI:
 
 ```bash
-gh api --method PUT repos/Scoston/ai-forensic-readiness/branches/main/protection --input release/branch-protection.json
+python scripts/finish_publication.py --apply
 ```
 
-This requires repository administration permission. Do not bypass existing rules
-or create alternate credentials if it is denied.
+On Windows, use `py` in place of `python`. Omit `--apply` for a read-only plan.
+This requires repository administration permission and does not replace an
+existing protection policy that differs from the prepared baseline.
 
 ## Release preparation
 
@@ -118,6 +127,17 @@ Use the [v0.2 release notes](release/v0.2-review-notes.md) and reviewed PDF asse
 Use the verified v0.2 DOI for the archived build. For subsequent changes on main,
 cite an exact Git commit; keep `CITATION.cff` tied to the archived version until
 another version is published and verified.
+
+For byte-verified local copies of the existing archive and `SHA256SUMS.txt`:
+
+```bash
+python scripts/prepare_release.py
+```
+
+This command checks the two PDF files and all 280 source files against the
+archived Git commit. The preparation workflow adds `--apply` to create the
+unpublished draft and upload those exact assets. The downloadable reviewer packs
+are a later repository addition and are not inserted into the existing archive.
 
 The GitHub Pages site continues to use main and /docs. Mermaid source has static
 validation; the publication workflow and host rendering are separate checks.
