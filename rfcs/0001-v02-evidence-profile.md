@@ -100,5 +100,6 @@ without representing those milestones as done.
 The v0.2 draft is now [archived on Zenodo](https://doi.org/10.5281/zenodo.22677119).
 Its DOI and file contents were verified on September 9, 2026; this establishes
 archival provenance, not independent validation of the proposed requirements.
-See [publication status](../PUBLISHING.md) for verification details and remaining
-owner metadata corrections.
+The owner's Zenodo metadata corrections are also verified. See
+[publication status](../PUBLISHING.md) for verification details and the remaining
+external milestones.

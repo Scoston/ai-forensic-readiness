@@ -41,7 +41,7 @@ These items are not replaced by a passing test or a checked box in this reposito
 | Independent reproduction / live integration | Not measured | Run the review kit against independent investigators and actual enforcement systems |
 | Branch protection | main was unprotected at audit | Owner applies the prepared settings after checking the current CI job names |
 | Private vulnerability reporting | Previously reported enabled; no administrative re-verification in this review | Owner confirms in repository security settings |
-| v0.2 Zenodo archive | Published; both PDFs and all 280 files in the ZIP match the reviewed commit | Owner removes the stale v0.1 related-work link and clarifies license scopes as described below |
+| v0.2 Zenodo archive | Complete; files verified and owner metadata corrections confirmed September 9, 2026 | No remaining action for this Zenodo deposit |
 | v0.2 GitHub Release | No v0.2 GitHub Release exists as of September 9, 2026 | Owner publishes the discussion-draft release from commit `2db88053c8579e4db7aa6a5a45ea4c325a787ec9` with the existing Zenodo DOI |
 
 The connected repository tools support code, issue and pull-request work but do
@@ -77,20 +77,19 @@ deposit. The current `CITATION.cff` provides the assigned DOI and preferred repo
 citation. Repository updates after the archived commit require their own commit
 reference.
 
-### Owner metadata corrections on Zenodo
+### Completed Zenodo metadata corrections
 
-The published record still contains an inherited **Is identical to** relationship
-to the GitHub `v0.1.0-draft` release. This incorrectly equates v0.2 with v0.1.
-The current Repository URL is already correct.
+Verified against the published record updated September 9, 2026 at 15:48 UTC:
 
-1. Open [the v0.2 record](https://zenodo.org/records/22677119) while signed in as its owner and click **Edit**.
-2. Under **Related works**, remove the **Is identical to** entry ending in `/releases/tag/v0.1.0-draft`. Keep the existing version history.
-3. Add this license scope to **Description**: “Specification, explanatory text and diagrams are licensed under CC BY 4.0. Schemas, examples and code are licensed under Apache-2.0; see the license files in the source archive.”
-4. Save and publish the metadata correction on this same record.
+- The inherited **Is identical to** relationship to the GitHub `v0.1.0-draft`
+  release has been removed. The repository link and existing version history remain.
+- The description now explicitly assigns CC BY 4.0 to specification text and
+  diagrams, and Apache-2.0 to schemas, examples and code.
+- The DOI, version and all three file identifiers, sizes and checksums match the
+  previously verified archive.
 
-The archive currently lists CC BY 4.0 without this scope in its description. The
-included repository contains both license files. These owner edits clarify the
-metadata and do not require a new research version or replacement files.
+The Zenodo deposit and its owner metadata corrections are complete. Public review
+and the separate GitHub Release retain the statuses listed above.
 
 ## Owner branch-protection command
 

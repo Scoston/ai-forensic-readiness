@@ -8,7 +8,7 @@ All notable changes will be documented here.
 
 - Updated citation, README, Pages and publication status to the verified v0.2 Zenodo archive
 - Corrected CFF metadata to use a preferred report citation and the registered author name
-- Recorded archive file verification and the remaining owner metadata corrections
+- Recorded archive file verification and confirmed completion of the owner's Zenodo metadata corrections
 
 ## [0.2.0-draft] - 2026-09-08
 
@@ -42,9 +42,9 @@ Archived on [Zenodo](https://doi.org/10.5281/zenodo.22677119) from commit
 ### External milestones
 
 Public review remains open through October 17, 2026. The v0.2 Zenodo archive and
-DOI are published. Independent reviews, live integrations, branch protection,
-the GitHub Release and remaining archive metadata corrections are tracked in
-PUBLISHING.md with their actual status.
+DOI are published, and the owner's Zenodo metadata corrections are verified.
+Independent reviews, live integrations, branch protection and the GitHub Release
+are tracked in PUBLISHING.md with their actual status.
 
 ## [0.1.0-draft] - 2026-09-01
 
