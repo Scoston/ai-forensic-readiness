@@ -35,6 +35,11 @@ These are synthetic investigations and deterministic simulations. Production
 control effectiveness, live integrations and independent reviewer results remain
 to be established. The public review deadline is unchanged.
 
+Reviewers can [download the ten-case evidence package](https://github.com/Scoston/ai-forensic-readiness/raw/refs/heads/main/release/reviewer-packs-v0.2.zip)
+and [submit a review result](https://github.com/Scoston/ai-forensic-readiness/issues/new?template=review-result.yml).
+Read the technical review kit before beginning; the package includes raw evidence
+and empty response forms, with author interpretations withheld for the initial exercise.
+
 ## Discussion Draft v0.1
 
 The [original v0.1 archive](https://doi.org/10.5281/zenodo.22255979) remains available.

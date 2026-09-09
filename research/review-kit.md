@@ -7,6 +7,27 @@ for v0.2 changes. Existing case review threads remain open.
 The repository contains synthetic cases and deterministic tests. This kit is ready
 for external reviewers; it does not record invitations sent or independent reviews completed.
 
+## Download and submit
+
+- [Download the ten-case reviewer package](https://github.com/Scoston/ai-forensic-readiness/raw/refs/heads/main/release/reviewer-packs-v0.2.zip)
+- [Package SHA-256](../release/reviewer-packs-v0.2.sha256)
+- [Investigator instructions](reviewer-instructions.md)
+- [Submit an actual review or reproduction result](https://github.com/Scoston/ai-forensic-readiness/issues/new?template=review-result.yml)
+
+The package contains 78 raw artifacts copied byte for byte from archived commit
+`2db88053c8579e4db7aa6a5a45ea4c325a787ec9`, plus derived manifests and empty response
+forms. It is a later review aid, outside the original Zenodo deposit. Each derived
+manifest preserves the included artifacts' original SHA-256 hashes and identifies
+the intentionally withheld files. These packaging omissions are not incident
+telemetry gaps. The original manifests and complete source remain in the
+[Zenodo archive](https://zenodo.org/records/22677119).
+
+To reproduce and check the package from a full Git checkout:
+
+```bash
+python scripts/build_review_packs.py --output release/reviewer-packs-v0.2.zip --check
+```
+
 ## Review assignments
 
 | Expertise | Review question | Starting material |
@@ -21,17 +42,26 @@ for external reviewers; it does not record invitations sent or independent revie
 Select named reviewers and confirm the contact route before sending invitations.
 No private employer information or confidential incident evidence is needed.
 
-## Blind exercise procedure
+## Evidence reconstruction procedure
 
 1. Record the exact Git commit, case, participant role and start time.
-2. Give the investigator only `evidence/`, `manifest.json` and `analyst-guide.md`.
-   Do not supply findings, ground truth or simulator code initially.
-3. Ask for the six-question reconstruction and an evidence-linked graph.
+2. Give the investigator `instructions.md` and one `case-NNN/` directory from the
+   reviewer package. Verify the included artifact hashes before starting. Do not
+   provide the original evidence folder or analyst guide: those contain author
+   interpretations, graphs or replay answers.
+3. Ask for the six-question reconstruction, an evidence-linked graph and the
+   completed `response.md`. Record prior familiarity and any assistance.
 4. Require a separate list of unknowns, alternative explanations and missing logs.
-5. Reveal the scenario and findings. Record disagreements before discussion.
+5. Save the initial response, then reveal the full scenario, findings, analyst
+   guide, normalized events, graph and replay results from the archived source.
+   Record disagreements before discussion.
 6. Have a different person validate containment/recovery against the artifacts.
 7. Record elapsed time and supported/unsupported graph edges without treating
    assisted answers or repeated runs by the same author as independent replication.
+
+This is an evidence-first exercise, not a claim of formal blinding. The source is
+public, and raw records may themselves contain system claims or descriptive
+identifiers. Record those limitations when interpreting reviewer performance.
 
 ## Result form
 

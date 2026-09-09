@@ -4,11 +4,19 @@ All notable changes will be documented here.
 
 ## [Unreleased]
 
+### Added
+
+- Verified GitHub draft-release workflow, pinned archive manifest and owner command for publication and repository settings
+- Ten downloadable review packs with 78 original raw artifacts, explicit omissions and empty response forms
+- Structured issue form for actual technical reviews and reproduction results
+- Publication and review-pack regression checks, including hash mismatches, tag conflicts, existing policies and duplicate-archive prevention
+
 ### Changed
 
 - Updated citation, README, Pages and publication status to the verified v0.2 Zenodo archive
 - Corrected CFF metadata to use a preferred report citation and the registered author name
 - Recorded archive file verification and confirmed completion of the owner's Zenodo metadata corrections
+- Corrected review instructions so the initial exercise does not supply author graphs, normalized interpretations or replay answers
 
 ## [0.2.0-draft] - 2026-09-08
 

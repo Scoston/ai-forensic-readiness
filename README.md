@@ -21,6 +21,8 @@ This project proposes a forensic-readiness model for closing that investigation 
 - [Inspect the event schema](schemas/ai-investigation-event.schema.json)
 - [Run the maturity assessment](assessments/maturity-assessment.md)
 - [Explore the reference investigations](cases/README.md)
+- [Download reviewer packs and submit a technical review](research/review-kit.md)
+- [Finish the GitHub release and repository settings](release/OWNER-STEPS.md)
 - [Comment or contribute](CONTRIBUTING.md)
 
 ## Implemented investigation coverage
